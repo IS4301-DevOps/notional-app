@@ -1,8 +1,19 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        sky: colors.sky,
+        teal: colors.teal,
+        cyan: colors.cyan,
+        rose: colors.rose,
+        primary: colors.green,
+        secondary: colors.lime,
+        accent: colors.orange,
+      },
+    },
   },
-  plugins: [],
-}
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
+};
