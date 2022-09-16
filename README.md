@@ -22,9 +22,6 @@ To view and modify db data, run:
 
 `npx prisma studio`
 
-Links:
-[Prisma Docs](https://www.prisma.io/docs/)
-
 # Fix Typescript error relating to `prisma.ts`
 
 run `yarn add -D @prisma/client`
@@ -32,3 +29,8 @@ run `yarn add -D @prisma/client`
 # Guidelines
 
 - Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
+
+# Resources
+- [NextJS](https://nextjs.org/docs/getting-started)
+- [ReactJS](https://reactjs.org/docs/getting-started.html)
+- [Prisma](https://www.prisma.io/docs/)
