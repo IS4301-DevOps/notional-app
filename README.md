@@ -10,12 +10,17 @@ npm i yarn --global
 5. `yarn dev`
 
 # Database
-
-Online Heroku PostgreSQL server
-
 After modifying the database, run:
 
 `npx prisma generate`
+
+To sync Prisma schema with Heroku db, run:
+
+`npx prisma db push`
+
+To view and modify db data, run:
+
+`npx prisma studio`
 
 # Fix Typescript error relating to `prisma.ts`
 
@@ -24,3 +29,8 @@ run `yarn add -D @prisma/client`
 # Guidelines
 
 - Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
+
+# Resources
+- [NextJS](https://nextjs.org/docs/getting-started)
+- [ReactJS](https://reactjs.org/docs/getting-started.html)
+- [Prisma](https://www.prisma.io/docs/)
