@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { User } from '../../interfaces';
 
 type Props = {
@@ -15,6 +16,7 @@ const WelcomeCard = ({ user }: Props) => {
           <div className='sm:flex sm:space-x-5'>
             <div className='flex-shrink-0'>
               <img className='mx-auto h-20 w-20 rounded-full' src={user.imageUrl} alt='' />
+              {/* <Image className='mx-auto rounded-full' src={user.imageUrl} alt='' height={20} width={20}/> */}
             </div>
             <div className='mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left'>
               <p className='text-sm font-medium text-gray-600'>Welcome back,</p>

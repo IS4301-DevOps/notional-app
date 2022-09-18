@@ -45,7 +45,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                   <div className='absolute left-0 flex-shrink-0 py-5 lg:static'>
                     <a href='#'>
                       <span className='sr-only'>Your Company</span>
-                      <img className='h-8 w-auto' src='https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=200' alt='' />
+                      <img className='h-8 w-auto' src='https://tailwindui.com/img/logos/mark.svg?color=gray&shade=600' alt='' />
                     </a>
                   </div>
 
@@ -53,7 +53,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                   <div className='hidden lg:ml-4 lg:flex lg:items-center lg:py-5 lg:pr-0.5'>
                     <button
                       type='button'
-                      className='flex-shrink-0 rounded-full p-1 text-cyan-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
+                      className='flex-shrink-0 rounded-full p-1 text-gray-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
                     >
                       <span className='sr-only'>View notifications</span>
                       <BellIcon className='h-6 w-6' aria-hidden='true' />
@@ -101,7 +101,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                               key={item.name}
                               href={item.href}
                               className={classNames(
-                                item.current ? 'text-white' : 'text-cyan-100',
+                                item.current ? 'text-white' : 'text-gray-100',
                                 'text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10',
                               )}
                               aria-current={item.current ? 'page' : undefined}
@@ -122,7 +122,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                   {/* Menu button */}
                   <div className='absolute right-0 flex-shrink-0 lg:hidden'>
                     {/* Mobile menu button */}
-                    <Popover.Button className='inline-flex items-center justify-center rounded-md bg-transparent p-2 text-cyan-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'>
+                    <Popover.Button className='inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'>
                       <span className='sr-only'>Open main menu</span>
                       {open ? (
                         <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
@@ -167,12 +167,12 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                             <div>
                               <img
                                 className='h-8 w-auto'
-                                src='https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=600'
+                                src='https://tailwindui.com/img/logos/mark.svg?color=gray&shade=600'
                                 alt='Your Company'
                               />
                             </div>
                             <div className='-mr-2'>
-                              <Popover.Button className='inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500'>
+                              <Popover.Button className='inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500'>
                                 <span className='sr-only'>Close menu</span>
                                 <XMarkIcon className='h-6 w-6' aria-hidden='true' />
                               </Popover.Button>
@@ -201,7 +201,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                             </div>
                             <button
                               type='button'
-                              className='ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2'
+                              className='ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
                             >
                               <span className='sr-only'>View notifications</span>
                               <BellIcon className='h-6 w-6' aria-hidden='true' />
