@@ -12,7 +12,8 @@ datasource db {
 
 model Post {
   id            String    @default(cuid()) @id
-  title         String
+  title         String    @default("title")
+  imageLink     String?
   content       String?
   publishedAt   DateTime? 
   published     Boolean   @default(false)
@@ -35,10 +36,10 @@ model User {
 model Transaction {
   id            String              @default(cuid()) @id
   category      TransactionCategory @default(OTHERS)
-  vendor        String
-  amount        Decimal             @db.Decimal(10,2)
-  cashback      Decimal?            @db.Decimal(10,2)
-  carbon        Decimal?            @db.Decimal(10,2)
+  vendor        String              @default("vendor")
+  amount        Decimal             @default(0.0) @db.Decimal(10,2)
+  cashback      Decimal             @default(0.0) @db.Decimal(10,2)
+  carbon        Decimal             @default(0.0) @db.Decimal(10,2)
   timeStamp     DateTime            @default(now())
   user          User                @relation(fields: [userId], references: [id])
   userId        String
@@ -54,12 +55,12 @@ enum TransactionCategory {
 
 model Retailer {
   id            String    @default(cuid()) @id
-  name          String    @unique
+  name          String    @default("name") @unique
   imageURL      String?
   /// esgScore could just average the below 3 scores to display frontend  
-  planetScore   Decimal?   @db.Decimal(1,1)
-  peopleScore   Decimal?   @db.Decimal(1,1)
-  animalsScore  Decimal?   @db.Decimal(1,1)
+  planetScore   Decimal?   @db.Decimal(2,1)
+  peopleScore   Decimal?   @db.Decimal(2,1)
+  animalsScore  Decimal?   @db.Decimal(2,1)
   environment   String?
   labour        String?
   active        Boolean   @default(false)
