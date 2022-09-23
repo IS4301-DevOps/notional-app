@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import Carousel from '../components/landing/Carousel';
 import Layout from '../components/layout/Layout';
 import ActionPanel from '../components/landing/ActionPanel';
+import DashboardCard from '../components/landing/DashboardCard';
 
 const user = {
   name: 'Chelsea Hagon',
@@ -43,7 +44,7 @@ const announcements = [
 
 const Home: NextPage = () => {
   return (
-    <Layout title='LiveBetter | DBS Bank' user={user}>
+    <Layout title='LiveBetter | DBS Bank' heading="LiveBetter" user={user}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Profile</h1>
 
@@ -67,41 +68,9 @@ const Home: NextPage = () => {
 
           {/* Right column */}
           <div className='grid grid-cols-1 gap-4'>
-            {/* Announcements */}
+            {/* Dashboard Card */}
             <section aria-labelledby='announcements-title'>
-              <div className='overflow-hidden rounded-lg bg-white shadow'>
-                <div className='p-6'>
-                  <h2 className='text-base font-medium text-gray-900' id='announcements-title'>
-                    Dashboard
-                  </h2>
-                  <div className='mt-6 flow-root'>
-                    <ul role='list' className='-my-5 divide-y divide-gray-200'>
-                      {announcements.map(announcement => (
-                        <li key={announcement.id} className='py-5'>
-                          <div className='relative focus-within:ring-2 focus-within:ring-cyan-500'>
-                            <h3 className='text-sm font-semibold text-gray-800'>
-                              <a href={announcement.href} className='hover:underline focus:outline-none'>
-                                {/* Extend touch target to entire panel */}
-                                <span className='absolute inset-0' aria-hidden='true' />
-                                {announcement.title}
-                              </a>
-                            </h3>
-                            <p className='mt-1 text-sm text-gray-600 line-clamp-2'>{announcement.preview}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className='mt-6'>
-                    <a
-                      href='#'
-                      className='flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50'
-                    >
-                      View all
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <DashboardCard />
             </section>
           </div>
         </div>

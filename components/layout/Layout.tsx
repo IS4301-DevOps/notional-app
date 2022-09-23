@@ -2,11 +2,16 @@ import { Menu, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Fragment, ReactNode } from 'react';
 import Head from 'next/head';
-
-import classNames from '../../utils/classNames';
-import Footer from './Footer';
-import { User } from '../../interfaces';
+import Link from 'next/link';
 import { Text } from '@mantine/core';
+
+import Footer from './Footer';
+import Logo from '../common/Logo';
+import NotificationButton from '../landing/NotificationButton';
+import liveBetterLogo from '../../public/livebetter.svg';
+import classNames from '../../utils/classNames';
+import { User } from '../../interfaces';
+import Image from 'next/image';
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
@@ -23,41 +28,35 @@ const userNavigation = [
 
 type Props = {
   title?: string;
+  heading?: string;
   user?: User;
   children?: ReactNode;
 };
 //TODO: catch undefined user
-const Layout = ({ title = 'Default title', user, children }: Props) => {
+const Layout = ({ title = 'Default title', heading = 'Default heading', user, children }: Props) => {
   return (
-    <div className='min-h-full'>
+    <div className='bg-gray-100 min-h-full'>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <header>
-        <Popover as='header' className='bg-white shadow-md pb-24'>
+        <Popover as='header' className='bg-white shadow pb-24'>
           {({ open }) => (
             <>
               <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
                 <div className='relative flex flex-wrap items-center justify-center lg:justify-between'>
                   {/* Logo */}
                   <div className='absolute left-0 flex-shrink-0 py-5 lg:static'>
-                    <a href='#'>
-                      <span className='sr-only'>Your Company</span>
-                      <img className='h-8 w-auto' src='https://tailwindui.com/img/logos/mark.svg?color=gray&shade=600' alt='' />
-                    </a>
+                    <Link href='/'>
+                      <Logo />
+                    </Link>
                   </div>
 
                   {/* Right section on desktop */}
                   <div className='hidden lg:ml-4 lg:flex lg:items-center lg:py-5 lg:pr-0.5'>
-                    <button
-                      type='button'
-                      className='flex-shrink-0 rounded-full p-1 text-gray-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
-                    >
-                      <span className='sr-only'>View notifications</span>
-                      <BellIcon className='h-6 w-6' aria-hidden='true' />
-                    </button>
+                    <NotificationButton />
 
                     {/* Profile dropdown */}
                     <Menu as='div' className='relative ml-4 flex-shrink-0'>
@@ -94,7 +93,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                   <div className='w-full py-5 lg:border-t lg:border-white lg:border-opacity-20'>
                     <div className='lg:grid lg:grid-cols-3 lg:items-center lg:gap-8'>
                       {/* Left nav */}
-                      <div className='hidden lg:col-span-2 lg:block'>
+                      {/* <div className='hidden lg:col-span-2 lg:block'>
                         <nav className='flex space-x-4'>
                           {navigation.map(item => (
                             <a
@@ -110,19 +109,23 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                             </a>
                           ))}
                         </nav>
-                      </div>
+                      </div> */}
                       <div className='px-12 lg:px-0 text-center font-medium'>
-                        <div className='mx-auto w-full max-w-xs lg:max-w-md'>
-                          <Text>LiveBetter</Text>
+                        <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
+                          {/* <div className='absolute left-1/2 -ml-20 -top-0'>
+                            <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
+                          </div> */}
+                          <span>{heading}</span>
                         </div>
                       </div>
                     </div>
                   </div>
-
                   {/* Menu button */}
                   <div className='absolute right-0 flex-shrink-0 lg:hidden'>
+                    {/* Notification Button */}
+                    <NotificationButton />
                     {/* Mobile menu button */}
-                    <Popover.Button className='inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'>
+                    <Popover.Button className='inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-400 hover:text-gray-500 hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-gray-500'>
                       <span className='sr-only'>Open main menu</span>
                       {open ? (
                         <XMarkIcon className='block h-6 w-6' aria-hidden='true' />
@@ -164,13 +167,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                       <div className='divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5'>
                         <div className='pt-3 pb-2'>
                           <div className='flex items-center justify-between px-4'>
-                            <div>
-                              <img
-                                className='h-8 w-auto'
-                                src='https://tailwindui.com/img/logos/mark.svg?color=gray&shade=600'
-                                alt='Your Company'
-                              />
-                            </div>
+                            <Logo />
                             <div className='-mr-2'>
                               <Popover.Button className='inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500'>
                                 <span className='sr-only'>Close menu</span>
@@ -199,13 +196,7 @@ const Layout = ({ title = 'Default title', user, children }: Props) => {
                               <div className='truncate text-base font-medium text-gray-800'>{user.name}</div>
                               <div className='truncate text-sm font-medium text-gray-500'>{user.email}</div>
                             </div>
-                            <button
-                              type='button'
-                              className='ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
-                            >
-                              <span className='sr-only'>View notifications</span>
-                              <BellIcon className='h-6 w-6' aria-hidden='true' />
-                            </button>
+                            <NotificationButton />
                           </div>
                           <div className='mt-3 space-y-1 px-2'>
                             {userNavigation.map(item => (
