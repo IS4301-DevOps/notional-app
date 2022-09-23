@@ -11,20 +11,57 @@ datasource db {
 }
 
 model Post {
-  id        String     @default(cuid()) @id
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  String?
+  id            String    @default(cuid()) @id
+  title         String    @default("title")
+  imageLink     String?
+  content       String?
+  publishedAt   DateTime? 
+  published     Boolean   @default(false)
+  author        User?     @relation(fields: [authorId], references: [id])
+  authorId      String?
 }
 
 model User {
-  id            String       @default(cuid()) @id
+  id            String    @default(cuid()) @id
   name          String?
   email         String?   @unique
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  carbonTarget  Decimal   @db.Decimal(10,2)
   posts         Post[]
+  transactions  Transaction[]
   @@map(name: "users")
+}
+
+model Transaction {
+  id            String              @default(cuid()) @id
+  category      TransactionCategory @default(OTHERS)
+  vendor        String              @default("vendor")
+  amount        Decimal             @default(0.0) @db.Decimal(10,2)
+  cashback      Decimal             @default(0.0) @db.Decimal(10,2)
+  carbon        Decimal             @default(0.0) @db.Decimal(10,2)
+  timeStamp     DateTime            @default(now())
+  user          User                @relation(fields: [userId], references: [id])
+  userId        String
+}
+
+enum TransactionCategory {
+  GROCERIES
+  FOOD
+  TRANSPORT
+  BILL
+  OTHERS
+}
+
+model Retailer {
+  id            String    @default(cuid()) @id
+  name          String    @default("name") @unique
+  imageURL      String?
+  /// esgScore could just average the below 3 scores to display frontend  
+  planetScore   Decimal?   @db.Decimal(2,1)
+  peopleScore   Decimal?   @db.Decimal(2,1)
+  animalsScore  Decimal?   @db.Decimal(2,1)
+  environment   String?
+  labour        String?
+  active        Boolean   @default(false)
 }
