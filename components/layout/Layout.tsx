@@ -3,7 +3,6 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Fragment, ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Text } from '@mantine/core';
 
 import Footer from './Footer';
 import Logo from '../common/Logo';
@@ -63,7 +62,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                       <div>
                         <Menu.Button className='flex rounded-full bg-white text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100'>
                           <span className='sr-only'>Open user menu</span>
-                          <img className='h-8 w-8 rounded-full' src={user.imageUrl} alt='' />
+                          {/* <img className='h-8 w-8 rounded-full' src={user.imageUrl} alt='' /> */}
                         </Menu.Button>
                       </div>
                       <Transition
@@ -190,7 +189,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                         <div className='pt-4 pb-2'>
                           <div className='flex items-center px-5'>
                             <div className='flex-shrink-0'>
-                              <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' />
+                              {/* <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' /> */}
                             </div>
                             <div className='ml-3 min-w-0 flex-1'>
                               <div className='truncate text-base font-medium text-gray-800'>{user.name}</div>

@@ -1,6 +1,9 @@
 export type User = {
+  id: string;
   name: string;
   email: string;
-  role: string;
-  imageUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+  carbonTarget: number;
+  imageUrl?: string;
 };
