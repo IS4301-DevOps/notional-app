@@ -1,9 +1,19 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
 import 'tailwindcss/tailwind.css';
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import { MantineProvider } from '@mantine/core';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const queryClient = new QueryClient();
 
-export default MyApp
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        <Component {...pageProps} />
+      </MantineProvider>
+    </QueryClientProvider>
+  );
+};
+
+export default MyApp;

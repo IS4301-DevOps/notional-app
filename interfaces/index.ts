@@ -1,13 +1,9 @@
-export enum UserType {
-  normalUser,
-  admin,
-  superAdmin
-}
-
 export type User = {
   id: string;
-  username: string;
-  password: string;
+  name: string;
   email: string;
-  type: UserType;
+  createdAt: Date;
+  updatedAt: Date;
+  carbonTarget: number;
+  imageUrl?: string;
 };
