@@ -3,9 +3,9 @@ import React from 'react';
 import RingProgress from '../dashboard/RingProgress';
 
 const sections = [
-  { value: 40, color: 'cyan', tooltip: 'Fashion – 40 Gb' },
-  { value: 25, color: 'orange', tooltip: 'Food – 25 Gb' },
-  { value: 15, color: 'grape', tooltip: 'Gas – 15 Gb' },
+  { value: 40, color: 'cyan', tooltip: 'Fashion – 40 kg' },
+  { value: 25, color: 'orange', tooltip: 'Food – 25 kg' },
+  { value: 15, color: 'grape', tooltip: 'Gas – 15 kg' },
 ]
 
 const DashboardCard = () => {
