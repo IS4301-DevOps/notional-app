@@ -34,3 +34,4 @@ run `yarn add -D @prisma/client`
 - [NextJS](https://nextjs.org/docs/getting-started)
 - [ReactJS](https://reactjs.org/docs/getting-started.html)
 - [Prisma](https://www.prisma.io/docs/)
+- [React Query](https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/)
