@@ -13,11 +13,8 @@ import { User } from '../../interfaces';
 import Image from 'next/image';
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Profile', href: '#', current: false },
-  { name: 'Resources', href: '#', current: false },
-  { name: 'Company Directory', href: '#', current: false },
-  { name: 'Openings', href: '#', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'Dashboard', href: '/dashboard', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -31,6 +28,7 @@ type Props = {
   user?: User;
   children?: ReactNode;
 };
+
 //TODO: catch undefined user
 const Layout = ({ title = 'Default title', heading = 'Default heading', user, children }: Props) => {
   return (
@@ -45,16 +43,24 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
           {({ open }) => (
             <>
               <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-                <div className='relative flex flex-wrap items-center justify-center lg:justify-between'>
+                <div className='relative flex flex-wrap items-center justify-center py-5 lg:justify-between'>
                   {/* Logo */}
-                  <div className='absolute left-0 flex-shrink-0 py-5 lg:static'>
+                  <div className='absolute left-0 flex-shrink-0 lg:static'>
                     <Link href='/'>
                       <Logo />
                     </Link>
                   </div>
-
+                  {/* Middle section on desktop */}
+                  <div className='hidden px-12 lg:flex lg:items-center lg:px-0 text-center font-medium'>
+                    <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
+                      {/* <div className='absolute left-1/2 -ml-20 -top-0'>
+                            <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
+                          </div> */}
+                      <span>{heading}</span>
+                    </div>
+                  </div>
                   {/* Right section on desktop */}
-                  <div className='hidden lg:ml-4 lg:flex lg:items-center lg:py-5 lg:pr-0.5'>
+                  <div className='hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
                     <NotificationButton />
 
                     {/* Profile dropdown */}
@@ -62,7 +68,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                       <div>
                         <Menu.Button className='flex rounded-full bg-white text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100'>
                           <span className='sr-only'>Open user menu</span>
-                          {/* <img className='h-8 w-8 rounded-full' src={user.imageUrl} alt='' /> */}
+                          {/* <Image className='h-8 w-8 rounded-full' src={user.imageUrl} alt='' /> */}
                         </Menu.Button>
                       </div>
                       <Transition
@@ -75,12 +81,12 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                           {userNavigation.map(item => (
                             <Menu.Item key={item.name}>
                               {({ active }) => (
-                                <a
+                                <Link
                                   href={item.href}
                                   className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                 >
                                   {item.name}
-                                </a>
+                                </Link>
                               )}
                             </Menu.Item>
                           ))}
@@ -109,14 +115,15 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                           ))}
                         </nav>
                       </div> */}
-                      <div className='px-12 lg:px-0 text-center font-medium'>
-                        <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
-                          {/* <div className='absolute left-1/2 -ml-20 -top-0'>
+                    </div>
+                  </div>
+
+                  <div className='absolute flex-shrink-0 text-center font-medium lg:hidden'>
+                    <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
+                      {/* <div className='absolute left-1/2 -ml-20 -top-0'>
                             <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
                           </div> */}
-                          <span>{heading}</span>
-                        </div>
-                      </div>
+                      <span>{heading}</span>
                     </div>
                   </div>
                   {/* Menu button */}
@@ -176,13 +183,11 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                           </div>
                           <div className='mt-3 space-y-1 px-2'>
                             {navigation.map(item => (
-                              <a
-                                key={item.name}
-                                href={item.href}
-                                className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'
-                              >
-                                {item.name}
-                              </a>
+                              <Link key={item.name} href={item.href}>
+                                <p className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'>
+                                  {item.name}
+                                </p>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -199,13 +204,11 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                           </div>
                           <div className='mt-3 space-y-1 px-2'>
                             {userNavigation.map(item => (
-                              <a
-                                key={item.name}
-                                href={item.href}
-                                className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'
-                              >
-                                {item.name}
-                              </a>
+                              <Link key={item.name} href={item.href}>
+                                <p className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'>
+                                  {item.name}
+                                </p>
+                              </Link>
                             ))}
                           </div>
                         </div>

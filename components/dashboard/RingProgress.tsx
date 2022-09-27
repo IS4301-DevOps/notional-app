@@ -5,6 +5,7 @@ type Props = {
   label?: ReactNode;
   sections?: RingProgressProps['sections'];
 };
+
 const RingProgress = ({ label, sections }: Props) => {
   return (
     <Group position='center'>
