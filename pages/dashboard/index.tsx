@@ -1,26 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import React from 'react';
 import DashboardCard from '../../components/landing/DashboardCard';
 import Layout from '../../components/layout/Layout';
+import { User } from '../../interfaces';
 import { fetchUser } from '../../lib/clientApi';
 
-const user = {
-  name: 'Chelsea Hagon',
-  email: 'chelsea.hagon@example.com',
-  role: 'Human Resources Manager',
-  imageUrl:
-    'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-};
-
 const DashboardPage = () => {
-  const { isLoading, error, data, isFetching } = useQuery(['user'], fetchUser);
+  const { isLoading, error, data: user, isFetching } = useQuery<User, AxiosError>(['user'], fetchUser);
 
+  //TODO: add LoadingOverlay
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
-    <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={data.user}>
+    <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={user}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Dashboard</h1>
         {/* Main 3 column grid */}

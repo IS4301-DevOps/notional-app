@@ -5,19 +5,13 @@ import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import { useQuery } from '@tanstack/react-query';
 import { fetchUser } from '../lib/clientApi';
-import { User } from '../interfaces';
-import { AxiosError } from 'axios';
 
 const Home: NextPage = () => {
-  const { isLoading, error, data: user, isFetching } = useQuery<User, AxiosError>(['user'], fetchUser);
+  const { isLoading, error, data: user, isFetching } = useQuery(['user'], fetchUser);
 
   //TODO: add LoadingOverlay
   if (isLoading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
   }
 
   return (
