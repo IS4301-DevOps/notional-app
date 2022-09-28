@@ -24,7 +24,7 @@ const DashboardCard = () => {
             </p>
           </div>
           <Link href='/dashboard'>
-            <ChevronRightIcon className='h-4 w-4 flex-shrink-0 stroke-2 text-gray-400 hover:text-gray-500' />
+            <ChevronRightIcon className='h-4 w-4 flex-shrink-0 stroke-2 text-gray-400 hover:text-gray-500 hover:cursor-pointer' />
           </Link>
         </div>
         <div className='mt-6 flow-root'>

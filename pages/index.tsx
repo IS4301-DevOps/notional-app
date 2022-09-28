@@ -4,18 +4,19 @@ import Layout from '../components/layout/Layout';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import { useQuery } from '@tanstack/react-query';
-import { fetchUser } from '../lib/clientApi';
+import { fetchUser, getAllPosts } from '../lib/clientApi';
 
 const Home: NextPage = () => {
-  const { isLoading, error, data: user, isFetching } = useQuery(['user'], fetchUser);
+  const userQuery = useQuery(['user'], fetchUser);
+  const postsQuery = useQuery(['posts'], getAllPosts);
 
   //TODO: add LoadingOverlay
-  if (isLoading) {
+  if (userQuery.isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={user}>
+    <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Landing</h1>
 
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
               <WelcomeCard user={user} />
             </section> */}
             <section aria-labelledby='article-carousel'>
-              <Carousel />
+              <Carousel data={postsQuery.data}/>
             </section>
 
             {/* Actions panel */}
