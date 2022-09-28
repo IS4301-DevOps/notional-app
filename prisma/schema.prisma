@@ -13,7 +13,8 @@ datasource db {
 model Post {
   id          String    @id @default(cuid())
   title       String    @default("title")
-  imageLink   String?
+  image       String    @default("https://1000logos.net/wp-content/uploads/2021/05/DBS-Bank-logo.png")
+  category    String    @default("Environment")
   content     String?
   publishedAt DateTime?
   published   Boolean   @default(false)
