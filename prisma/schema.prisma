@@ -11,15 +11,21 @@ datasource db {
 }
 
 model Post {
-  id          String    @id @default(cuid())
-  title       String    @default("title")
-  image       String    @default("https://1000logos.net/wp-content/uploads/2021/05/DBS-Bank-logo.png")
-  category    String    @default("Environment")
+  id          String        @id @default(cuid())
+  title       String        @default("title")
+  image       String        @default("https://1000logos.net/wp-content/uploads/2021/05/DBS-Bank-logo.png")
+  category    PostCategory  @default(ENVIRONMENTAL)
   content     String?
   publishedAt DateTime?
-  published   Boolean   @default(false)
-  author      User?     @relation(fields: [authorId], references: [id])
+  published   Boolean       @default(false)
+  author      User?         @relation(fields: [authorId], references: [id])
   authorId    String?
+}
+
+enum PostCategory {
+  ENVIRONMENTAL
+  SOCIAL
+  GOVERNANCE
 }
 
 model User {
@@ -67,4 +73,10 @@ model Retailer {
   environment  String?
   labour       String?
   active       Boolean  @default(false)
+}
+
+model Tip {
+  id        String   @id @default(cuid())
+  message   String   @default("tip")
+  date      DateTime @unique @default(now())    
 }
