@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+
 import Carousel from '../components/landing/Carousel';
 import Layout from '../components/layout/Layout';
 import Loading from '../components/common/Loading';
@@ -6,14 +7,17 @@ import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import { useQuery } from '@tanstack/react-query';
 import { fetchUser, getAllPosts } from '../lib/clientApi';
+import { Post, User } from '@prisma/client';
+import { AxiosError } from 'axios';
 
 const Home: NextPage = () => {
-  const userQuery = useQuery(['user'], fetchUser);
-  const postsQuery = useQuery(['posts'], getAllPosts);
+  const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
+  const { carbonTarget } = userQuery.data;
+  const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
 
   //TODO: add LoadingOverlay
   if (userQuery.isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -43,7 +47,7 @@ const Home: NextPage = () => {
           <div className='grid grid-cols-1 gap-4'>
             {/* Dashboard Card */}
             <section aria-labelledby='announcements-title'>
-              <DashboardCard />
+              <DashboardCard carbonTarget={carbonTarget}/>
             </section>
           </div>
         </div>

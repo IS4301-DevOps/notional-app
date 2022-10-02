@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { Text } from '@mantine/core';
+import { Prisma } from '@prisma/client';
 import Link from 'next/link';
 import React from 'react';
 import RingProgress from '../dashboard/RingProgress';
@@ -10,7 +11,11 @@ const sections = [
   { value: 15, color: 'grape', tooltip: 'Gas – 15 kg' },
 ];
 
-const DashboardCard = () => {
+type Props = {
+  carbonTarget?: Prisma.Decimal;
+};
+
+const DashboardCard = ({ carbonTarget }: Props) => {
   return (
     <div className='overflow-hidden rounded-lg bg-white shadow'>
       <div className='p-6'>
@@ -30,9 +35,11 @@ const DashboardCard = () => {
         <div className='mt-6 flow-root'>
           <RingProgress
             label={
-              <Text size='xs' align='center' px='xs' sx={{ pointerEvents: 'none' }}>
-                300kg
-              </Text>
+              carbonTarget && (
+                <Text size='xs' align='center' px='xs' sx={{ pointerEvents: 'none' }}>
+                  {carbonTarget.toString()} kg
+                </Text>
+              )
             }
             sections={sections}
           />
