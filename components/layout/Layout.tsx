@@ -193,7 +193,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                         <div className='pt-4 pb-2'>
                           <div className='flex items-center px-5'>
                             <div className='flex-shrink-0'>
-                              {/* <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' /> */}
+                              <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' />
                             </div>
                             <div className='ml-3 min-w-0 flex-1'>
                               <div className='truncate text-base font-medium text-gray-800'>{user.name}</div>

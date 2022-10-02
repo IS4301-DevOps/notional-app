@@ -23,10 +23,9 @@ const sections = [
 
 const DashboardPage: NextPage = () => {
   const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
-  const { id: userId, carbonTarget } = userQuery.data;
   const transactionsQuery = useQuery<Transaction[], AxiosError>(['transactions'], () => fetchUserTransactions(userId), {
     //only fire if userId exists
-    enabled: !!userId,
+    enabled: !!userQuery.data?.id,
   });
 
   if (userQuery.isLoading || transactionsQuery.isLoading) {
@@ -36,6 +35,8 @@ const DashboardPage: NextPage = () => {
   if (userQuery.isError || transactionsQuery.isError) {
     return <div>Error: {userQuery.error.message}</div>;
   }
+
+  const { id: userId, carbonTarget } = userQuery.data;
 
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
