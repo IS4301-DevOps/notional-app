@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { findUser } from '../../../lib/server/user';
+import { findUser } from '../../../../lib/server/user';
 
 type Query = {
   id?: string;

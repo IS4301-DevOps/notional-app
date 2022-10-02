@@ -1,25 +1,33 @@
-import axios from "axios";
+import axios from 'axios';
 
 /*---------------------------------------------------------
-* User
-* --------------------------------------------------------*/
-export const fetchUser = async () => {
-  const { data } = await axios.get(`/api/users/cl849p21n0047x4gjt69x15s2`);
+ * User
+ * --------------------------------------------------------*/
+export const fetchUser = async (id: string) => {
+  const { data } = await axios.get(`/api/users/${id}`);
   return data;
 };
 
 /*---------------------------------------------------------
-* Post
-* --------------------------------------------------------*/
+ * Post
+ * --------------------------------------------------------*/
 export const getAllPosts = async () => {
   const { data } = await axios.get(`/api/posts`);
   return data;
 };
 
 /*---------------------------------------------------------
-* Tip
-* --------------------------------------------------------*/
+ * Tip
+ * --------------------------------------------------------*/
 export const getTodayTip = async () => {
   const { data } = await axios.get(`/api/tip/today`);
+  return data;
+};
+
+/*---------------------------------------------------------
+ * Transactions
+ * --------------------------------------------------------*/
+export const fetchUserTransactions = async (id: string) => {
+  const { data } = await axios.get(`/api/users/${id}/transactions`);
   return data;
 };

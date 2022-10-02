@@ -1,22 +1,27 @@
+import { useQuery } from '@tanstack/react-query';
+import { Post, Tip, User } from '@prisma/client';
+import { AxiosError } from 'axios';
 import { NextPage } from 'next';
+
 import Carousel from '../components/landing/Carousel';
 import Layout from '../components/layout/Layout';
 import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import TipCard from '../components/landing/TipCard';
-import { useQuery } from '@tanstack/react-query';
 import { fetchUser, getAllPosts, getTodayTip } from '../lib/clientApi';
 
 const Home: NextPage = () => {
-  const userQuery = useQuery(['user'], fetchUser);
-  const postsQuery = useQuery(['posts'], getAllPosts);
-  const tipQuery = useQuery(['tip'], getTodayTip);
-
+  const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
+  const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
+  const tipQuery = useQuery<Tip, AxiosError>(['tip'], getTodayTip);
+  
   //TODO: add LoadingOverlay
-  if (userQuery.isLoading) {
-    return <Loading />
+  if (userQuery.isLoading || postsQuery.isLoading || tipQuery.isLoading) {
+    return <Loading />;
   }
+
+  const { carbonTarget } = userQuery.data;
 
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
@@ -47,7 +52,7 @@ const Home: NextPage = () => {
           <div className='grid grid-cols-1 gap-4'>
             {/* Dashboard Card */}
             <section aria-labelledby='announcements-title'>
-              <DashboardCard />
+              <DashboardCard carbonTarget={carbonTarget}/>
             </section>
           </div>
         </div>

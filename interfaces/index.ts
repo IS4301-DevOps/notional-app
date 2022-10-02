@@ -1,3 +1,5 @@
+import { Transaction } from "@prisma/client";
+
 export type User = {
   id: string;
   name: string;
@@ -6,6 +8,7 @@ export type User = {
   updatedAt: Date;
   carbonTarget: number;
   imageUrl?: string;
+  transactions?: Transaction[];
 };
 
 export type Post = {
@@ -17,4 +20,4 @@ export type Post = {
   publishedAt?: Date;
   published: boolean;
   author?: User;
-}
+};

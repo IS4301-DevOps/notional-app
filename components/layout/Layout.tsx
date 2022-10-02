@@ -9,8 +9,8 @@ import Logo from '../common/Logo';
 import NotificationButton from '../landing/NotificationButton';
 import liveBetterLogo from '../../public/livebetter.svg';
 import classNames from '../../utils/classNames';
-import { User } from '../../interfaces';
 import Image from 'next/image';
+import { User } from '@prisma/client';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -29,7 +29,6 @@ type Props = {
   children?: ReactNode;
 };
 
-//TODO: catch undefined user
 const Layout = ({ title = 'Default title', heading = 'Default heading', user, children }: Props) => {
   return (
     <div className='bg-gray-100 min-h-full'>
@@ -194,7 +193,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                         <div className='pt-4 pb-2'>
                           <div className='flex items-center px-5'>
                             <div className='flex-shrink-0'>
-                              {/* <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' /> */}
+                              <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' />
                             </div>
                             <div className='ml-3 min-w-0 flex-1'>
                               <div className='truncate text-base font-medium text-gray-800'>{user.name}</div>
