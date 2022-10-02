@@ -5,15 +5,17 @@ import Layout from '../components/layout/Layout';
 import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
+import TipCard from '../components/landing/TipCard';
 import { useQuery } from '@tanstack/react-query';
-import { fetchUser, getAllPosts } from '../lib/clientApi';
 import { Post, User } from '@prisma/client';
 import { AxiosError } from 'axios';
+import { fetchUser, getAllPosts, getTodayTip } from '../lib/clientApi';
 
 const Home: NextPage = () => {
   const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
   const { carbonTarget } = userQuery.data;
   const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
+  const tipQuery = useQuery(['tip'], getTodayTip);
 
   //TODO: add LoadingOverlay
   if (userQuery.isLoading) {
@@ -33,10 +35,12 @@ const Home: NextPage = () => {
             {/* <section aria-labelledby='profile-overview-title'>
               <WelcomeCard user={user} />
             </section> */}
+            <section aria-labelledby='tip-card'>
+              <TipCard data={tipQuery.data} />
+            </section>
             <section aria-labelledby='article-carousel'>
               <Carousel data={postsQuery.data} />
             </section>
-
             {/* Actions panel */}
             <section aria-labelledby='quick-links-title'>
               <ActionPanel />
