@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Post, User } from '@prisma/client';
+import { Post, Tip, User } from '@prisma/client';
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
 
@@ -14,7 +14,7 @@ import { fetchUser, getAllPosts, getTodayTip } from '../lib/clientApi';
 const Home: NextPage = () => {
   const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
   const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
-  const tipQuery = useQuery(['tip'], getTodayTip);
+  const tipQuery = useQuery<Tip, AxiosError>(['tip'], getTodayTip);
   
   //TODO: add LoadingOverlay
   if (userQuery.isLoading || postsQuery.isLoading || tipQuery.isLoading) {
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
   }
 
   const { carbonTarget } = userQuery.data;
-  
+
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
