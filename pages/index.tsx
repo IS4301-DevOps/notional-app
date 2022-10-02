@@ -4,12 +4,14 @@ import Layout from '../components/layout/Layout';
 import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
+import TipCard from '../components/landing/TipCard';
 import { useQuery } from '@tanstack/react-query';
-import { fetchUser, getAllPosts } from '../lib/clientApi';
+import { fetchUser, getAllPosts, getTodayTip } from '../lib/clientApi';
 
 const Home: NextPage = () => {
   const userQuery = useQuery(['user'], fetchUser);
   const postsQuery = useQuery(['posts'], getAllPosts);
+  const tipQuery = useQuery(['tip'], getTodayTip);
 
   //TODO: add LoadingOverlay
   if (userQuery.isLoading) {
@@ -29,10 +31,12 @@ const Home: NextPage = () => {
             {/* <section aria-labelledby='profile-overview-title'>
               <WelcomeCard user={user} />
             </section> */}
+            <section aria-labelledby='tip-card'>
+              <TipCard data={tipQuery.data} />
+            </section>
             <section aria-labelledby='article-carousel'>
               <Carousel data={postsQuery.data} />
             </section>
-
             {/* Actions panel */}
             <section aria-labelledby='quick-links-title'>
               <ActionPanel />
