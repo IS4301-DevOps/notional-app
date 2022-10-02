@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Carousel from '../components/landing/Carousel';
 import Layout from '../components/layout/Layout';
+import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import { useQuery } from '@tanstack/react-query';
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
 
   //TODO: add LoadingOverlay
   if (userQuery.isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />
   }
 
   return (
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
               <WelcomeCard user={user} />
             </section> */}
             <section aria-labelledby='article-carousel'>
-              <Carousel data={postsQuery.data}/>
+              <Carousel data={postsQuery.data} />
             </section>
 
             {/* Actions panel */}
