@@ -1,5 +1,5 @@
 import { Menu, Popover, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Fragment, ReactNode } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -11,6 +11,7 @@ import liveBetterLogo from '../../public/livebetter.svg';
 import classNames from '../../utils/classNames';
 import Image from 'next/image';
 import { User } from '@prisma/client';
+import { useRouter } from 'next/router';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -30,6 +31,15 @@ type Props = {
 };
 
 const Layout = ({ title = 'Default title', heading = 'Default heading', user, children }: Props) => {
+  const router = useRouter();
+
+  const onBackClicked = () => {
+    if (router.pathname === '/') {
+      return;
+    }
+    router.back()
+  };
+
   return (
     <div className='bg-gray-100 min-h-full'>
       <Head>
@@ -43,11 +53,11 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
             <>
               <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
                 <div className='relative flex flex-wrap items-center justify-center py-5 lg:justify-between'>
-                  {/* Logo */}
+                  {/* Back Button */}
                   <div className='absolute left-0 flex-shrink-0 lg:static'>
-                    <Link href='/'>
-                      <Logo />
-                    </Link>
+                    <button type='button' onClick={onBackClicked}>
+                      <ArrowLeftIcon className='h-5 w-5' />
+                    </button>
                   </div>
                   {/* Middle section on desktop */}
                   <div className='hidden px-12 lg:flex lg:items-center lg:px-0 text-center font-medium'>
