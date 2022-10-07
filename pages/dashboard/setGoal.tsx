@@ -1,0 +1,89 @@
+import { useQuery } from '@tanstack/react-query';
+import { User } from '@prisma/client';
+import { AxiosError } from 'axios';
+import { NextPage } from 'next';
+import { useEffect, useState } from 'react';
+
+import Loading from '../../components/common/Loading';
+import Layout from '../../components/layout/Layout';
+import { fetchUser } from '../../lib/clientApi';
+
+const setGoalPage: NextPage = () => {
+    const [target, setTarget] = useState(100);
+    const onTargetChanged = (e) => setTarget(e.target.value);
+
+    const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
+
+    // TODO: Fetch userQuery eagerly for useEffect to work
+    /* useEffect(() => {
+        setTarget(userQuery.data.carbonTarget)
+    }, [userQuery.data.carbonTarget]) */
+
+    if (userQuery.isLoading) {
+        return <Loading />;
+    }
+
+    if (userQuery.isError) {
+        return <div>Error: {userQuery.error.message}</div>;
+    }
+    const { carbonTarget } = userQuery.data;
+
+    return (
+        <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
+            <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+                <h1 className='sr-only'>Dashboard</h1>
+                {/* Main 3 column grid */}
+                <div className='grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8'>
+                    {/* Right column */}
+                    <div className='grid grid-cols-1 gap-4'>
+                        {/* Temp section for until header issue is fixed */}
+                        <section>
+                            <p>.</p>
+                            <p>.</p>
+                            <p>.</p>
+                            <p>.</p>
+                        </section>
+                        <section aria-labelledby='Carbon-Range-Selector'>
+                            <div className='overflow-hidden rounded-lg bg-white shadow'>
+                                <div className='p-6'>
+                                    <div className='text-left'>
+                                        <h2 className='text-base font-bold text-gray-900' id='dashboard-title'>
+                                            Change Monthly Goal
+                                        </h2>
+                                        <p className='text-base font-medium text-gray-900' id='dashboard-title'>
+                                            I aim to reduce this amount of greenhouse gas:
+                                        </p>
+                                    </div>
+                                    <div className='mt-6 flow-root'>
+                                    </div>
+                                    <div className='text-center pb-5'>
+                                        <h2 className='text-5xl font-bold text-gray-900' id='dashboard-title'>
+                                            {target}
+                                        </h2>
+                                        <p className='text-lg'>kg CO₂</p>
+                                    </div>
+                                    <input
+                                        id="carbonTarget-range"
+                                        name="target"
+                                        type="range"
+                                        value={target}
+                                        onChange={onTargetChanged}
+                                        min="0"
+                                        max="1000"
+                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+                                <div className='text-center pt-10'>
+                                    <p className='text-xs font-medium text-gray-900' id='dashboard-title'>
+                                        Set a target for your monthly carbon emission savings and we will remind you how far off you are from your target and if your target is hit!
+                                    </p>
+                                </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </Layout>
+    );
+}
+
+export default setGoalPage;
