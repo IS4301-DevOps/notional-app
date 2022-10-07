@@ -34,7 +34,7 @@ model User {
   email        String?       @unique
   createdAt    DateTime      @default(now()) @map(name: "created_at")
   updatedAt    DateTime      @updatedAt @map(name: "updated_at")
-  carbonTarget Decimal       @db.Decimal(10, 2)
+  carbonTarget Int           @default(100)
   imageUrl     String?       
   posts        Post[]
   transactions Transaction[]
