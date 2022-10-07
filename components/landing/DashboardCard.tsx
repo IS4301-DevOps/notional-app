@@ -12,7 +12,7 @@ const sections = [
 ];
 
 type Props = {
-  carbonTarget?: Prisma.Decimal;
+  carbonTarget?: number;
 };
 
 const DashboardCard = ({ carbonTarget }: Props) => {
