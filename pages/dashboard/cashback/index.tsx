@@ -1,18 +1,19 @@
 import { Text } from '@mantine/core';
+import { Transaction, User } from '@prisma/client';
+import { useQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { NextPage } from 'next';
-import Link from 'next/link';
 
-import Loading from '../../components/common/Loading';
-import RingProgress from '../../components/dashboard/RingProgress';
-import Tabs from '../../components/dashboard/Tabs';
-import TransactionList from '../../components/dashboard/TransactionList';
-import Layout from '../../components/layout/Layout';
-import dayjs from 'dayjs';
-import { useTransactionsDateQuery, useUserQuery } from '../../hooks/queries';
+import Loading from '../../../components/common/Loading';
+import RingProgress from '../../../components/dashboard/RingProgress';
+import Tabs from '../../../components/dashboard/Tabs';
+import TransactionList from '../../../components/dashboard/TransactionList';
+import Layout from '../../../components/layout/Layout';
+import { fetchUser, fetchUserTransactions } from '../../../lib/clientApi';
 
 const tabs = [
-  { name: 'Greenhouse', href: '', current: true },
-  { name: 'Cashback', href: '/dashboard/cashback', current: false },
+  { name: 'Greenhouse', href: '/dashboard', current: false },
+  { name: 'Cashback', href: '', current: true },
 ];
 
 const sections = [
@@ -21,12 +22,13 @@ const sections = [
   { value: 15, color: 'grape', tooltip: 'Gas – 15 kg' },
 ];
 
-const DashboardPage: NextPage = () => {
-  const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
-  const curDate = dayjs();
-  const startDate = curDate.subtract(1, 'month').toDate();
-  const endDate = curDate.toDate();
-  const transactionsQuery = useTransactionsDateQuery(userQuery.data?.id, startDate, endDate);
+const DashboardCashbackPage: NextPage = () => {
+  const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
+  const transactionsQuery = useQuery<{ transactions: Transaction[] }, AxiosError>(['transactions'], () => fetchUserTransactions(userId), {
+    //only fire if userId exists
+    enabled: !!userQuery.data?.id,
+  });
+  console.log(transactionsQuery.data);
   if (userQuery.isLoading || transactionsQuery.isLoading) {
     return <Loading />;
   }
@@ -35,21 +37,13 @@ const DashboardPage: NextPage = () => {
     return <div>Error: {userQuery.error.message}</div>;
   }
 
-  const { carbonTarget } = userQuery.data;
+  const { id: userId, carbonTarget } = userQuery.data;
 
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Dashboard</h1>
-        <div className='flex justify-between items-center'>
-          <h2 className='text-md font-medium leading-6 text-gray-900'>Dashboard</h2>
-          <Link href='/transactions'>
-            <a className='text-sm underline text-green-600'>View all transactions</a>
-          </Link>
-        </div>
-        <div className='mt-6'>
-          <Tabs tabs={tabs} />
-        </div>
+        <Tabs tabs={tabs} />
         {/* Dashboard Card */}
         <div className='mt-6' aria-labelledby='dashboard-card'>
           <div className='overflow-hidden rounded-lg bg-white shadow'>
@@ -73,11 +67,7 @@ const DashboardPage: NextPage = () => {
               <section aria-labelledby='dashboard-breakdown'>
                 <h2 className='text-md font-medium leading-6 text-gray-900'>Breakdown</h2>
                 <div className='mt-6 flow-root'>
-                  {transactionsQuery.data?.length ? (
-                    <TransactionList data={transactionsQuery.data} value='carbon' />
-                  ) : (
-                    <p className='text-sm leading-6 text-gray-700'>Breakdown</p>
-                  )}
+                  <TransactionList data={transactionsQuery.data?.transactions} value='cashback' />
                 </div>
               </section>
             </div>
@@ -88,4 +78,4 @@ const DashboardPage: NextPage = () => {
   );
 };
 
-export default DashboardPage;
+export default DashboardCashbackPage;
