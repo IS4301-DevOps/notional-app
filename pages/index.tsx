@@ -52,7 +52,7 @@ const Home: NextPage = () => {
           {/* Right column */}
           <div className='grid grid-cols-1 gap-4'>
             {/* Dashboard Card */}
-            <section aria-labelledby='announcements-title'>
+            <section aria-labelledby='dashboard-card'>
               <DashboardCard carbonTarget={carbonTarget} />
             </section>
           </div>
