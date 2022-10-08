@@ -14,7 +14,8 @@ const TransactionsPage = () => {
   }
 
   if (userQuery.isError || transactionsQuery.isError) {
-    return <div>Error: {userQuery.error.message}</div>;
+    const errorMessage = userQuery.isError ? userQuery.error.message : transactionsQuery.error.message;
+    return <div>Error: {errorMessage}</div>;
   }
 
   return (

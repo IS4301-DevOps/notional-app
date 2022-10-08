@@ -1,6 +1,7 @@
 import { Transaction, User } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
+import { BreakdownByUser } from '../interfaces';
 import { fetchUser, fetchUserTransactions, fetchUserTransactionsByCategory, fetchUserTransactionsByDate } from '../lib/clientApi';
 
 export const useUserQuery = (userId: string) => {
@@ -22,8 +23,8 @@ export const useTransactionsQuery = (userId: string) => {
 };
 
 export const useTransactionsCategoryQuery = (userId: string, startDate: Date, endDate: Date) => {
-  return useQuery<Object[], AxiosError>(
-    ['transactions', userId],
+  return useQuery<BreakdownByUser[], AxiosError>(
+    ['breakdown', userId],
     () => fetchUserTransactionsByCategory(userId, startDate, endDate),
     {
       enabled: !!userId && !!startDate && !!endDate,

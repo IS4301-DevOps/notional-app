@@ -1,4 +1,4 @@
-import { Transaction } from "@prisma/client";
+import { Transaction, TransactionCategory } from "@prisma/client";
 
 export type User = {
   id: string;
@@ -20,4 +20,17 @@ export type Post = {
   publishedAt?: Date;
   published: boolean;
   author?: User;
+};
+
+type Breakdown = {
+  _sum: { carbon: string; cashback: string };
+  category: TransactionCategory;
+};
+
+export type BreakdownByUser = Breakdown & { userId: string };
+
+export type Tab = {
+  name: string;
+  href: string;
+  current: boolean;
 };

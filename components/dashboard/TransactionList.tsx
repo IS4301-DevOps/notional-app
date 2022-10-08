@@ -10,7 +10,9 @@ const TransactionList = ({ data = [], value }: Props) => {
   return (
     <ul role='list' className='divide-y divide-gray-200'>
       {data.map(item => (
-        <TransactionListItem key={item.id} item={item} value={value} />
+        <div key={item.id}>
+          <TransactionListItem item={item} value={value} />
+        </div>
       ))}
     </ul>
   );
