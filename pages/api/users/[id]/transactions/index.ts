@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { findUser } from '../../../../lib/server/user';
+import { findUserWithTransactions } from '../../../../../lib/server/user';
 
 type Query = {
   id?: string;
@@ -8,7 +8,16 @@ type Query = {
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { id }: Query = _req.query;
-    const transactions = await findUser({ id }, { transactions: true });
+    const { transactions } = await findUserWithTransactions(
+      { id },
+      {
+        transactions: {
+          orderBy: {
+            timeStamp: 'desc',
+          },
+        },
+      },
+    );
     console.log(transactions);
     res.status(200).json(transactions);
   } catch (err: any) {

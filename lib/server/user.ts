@@ -1,6 +1,10 @@
 import { Prisma, User } from '@prisma/client';
 import prisma from '../prisma';
 
+type TransactionsWithUser = Prisma.UserGetPayload<{
+  include: { transactions: true };
+}>;
+
 export const findUser = async (where: Partial<Prisma.UserWhereInput>, select?: Prisma.UserSelect) => {
   return (await prisma.user.findFirst({
     where,
@@ -13,6 +17,13 @@ export const findUniqueUser = async (where: Prisma.UserWhereUniqueInput, select?
     where,
     select,
   })) as User;
+};
+
+export const findUserWithTransactions = async (where: Partial<Prisma.UserWhereInput>, select?: Prisma.UserSelect) => {
+  return (await prisma.user.findFirst({
+    where,
+    select,
+  })) as TransactionsWithUser;
 };
 
 export const updateUser = async (where: Partial<Prisma.UserWhereUniqueInput>, data: Prisma.UserUpdateInput, select?: Prisma.UserSelect) => {

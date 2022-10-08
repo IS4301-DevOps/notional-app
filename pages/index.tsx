@@ -9,13 +9,14 @@ import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import TipCard from '../components/landing/TipCard';
-import { fetchUser, getAllPosts, getTodayTip } from '../lib/clientApi';
+import { getAllPosts, getTodayTip } from '../lib/clientApi';
+import { useUserQuery } from '../hooks/queries';
 
 const Home: NextPage = () => {
-  const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
+  const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
   const tipQuery = useQuery<Tip, AxiosError>(['tip'], getTodayTip);
-  
+
   //TODO: add LoadingOverlay
   if (userQuery.isLoading || postsQuery.isLoading || tipQuery.isLoading) {
     return <Loading />;
@@ -51,8 +52,8 @@ const Home: NextPage = () => {
           {/* Right column */}
           <div className='grid grid-cols-1 gap-4'>
             {/* Dashboard Card */}
-            <section aria-labelledby='announcements-title'>
-              <DashboardCard carbonTarget={carbonTarget}/>
+            <section aria-labelledby='dashboard-card'>
+              <DashboardCard carbonTarget={carbonTarget} />
             </section>
           </div>
         </div>
