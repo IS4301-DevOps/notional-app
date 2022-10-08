@@ -8,7 +8,7 @@ import Tabs from '../../components/dashboard/Tabs';
 import TransactionList from '../../components/dashboard/TransactionList';
 import Layout from '../../components/layout/Layout';
 import dayjs from 'dayjs';
-import { useTransactionsDateQuery, useUserQuery } from '../../hooks/queries';
+import { useTransactionsCategoryQuery, useTransactionsDateQuery, useUserQuery } from '../../hooks/queries';
 
 const tabs = [
   { name: 'Greenhouse', href: '', current: true },
@@ -27,6 +27,8 @@ const DashboardPage: NextPage = () => {
   const startDate = curDate.subtract(1, 'month').toDate();
   const endDate = curDate.toDate();
   const transactionsQuery = useTransactionsDateQuery(userQuery.data?.id, startDate, endDate);
+  const catQuery = useTransactionsCategoryQuery(userQuery.data?.id, startDate, endDate);
+
   if (userQuery.isLoading || transactionsQuery.isLoading) {
     return <Loading />;
   }
@@ -36,7 +38,7 @@ const DashboardPage: NextPage = () => {
   }
 
   const { carbonTarget } = userQuery.data;
-
+  console.log(catQuery.data);
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
