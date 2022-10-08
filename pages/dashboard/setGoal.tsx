@@ -8,7 +8,7 @@ import Loading from '../../components/common/Loading';
 import Layout from '../../components/layout/Layout';
 import { fetchUser, updateCarbonTarget } from '../../lib/clientApi';
 
-const setGoalPage: NextPage = () => {
+const SetGoalPage: NextPage = () => {
     const [target, setTarget] = useState(0);
     const [saved, setSaved] = useState(false);
     const onTargetChanged = (e) => setTarget(e.target.value)
@@ -102,4 +102,4 @@ const setGoalPage: NextPage = () => {
     );
 }
 
-export default setGoalPage;
+export default SetGoalPage;
