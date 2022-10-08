@@ -36,8 +36,17 @@ export const fetchUserTransactions = async (id: string) => {
   const { data } = await axios.get(`/api/users/${id}/transactions`);
   return data;
 };
+
 export const fetchUserTransactionsByDate = async (id: string, startDate: Date, endDate: Date) => {
   const { data } = await axios.post(`/api/users/${id}/transactions/dates`, {
+    startDate,
+    endDate,
+  });
+  return data;
+};
+
+export const fetchUserTransactionsByCategory = async (id: string, startDate: Date, endDate: Date) => {
+  const { data } = await axios.post(`/api/users/${id}/transactions/dates/category`, {
     startDate,
     endDate,
   });

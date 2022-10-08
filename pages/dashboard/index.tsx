@@ -1,14 +1,12 @@
 import { Text } from '@mantine/core';
 import { NextPage } from 'next';
-import Link from 'next/link';
 
 import Loading from '../../components/common/Loading';
 import RingProgress from '../../components/dashboard/RingProgress';
-import Tabs from '../../components/dashboard/Tabs';
-import TransactionList from '../../components/dashboard/TransactionList';
-import Layout from '../../components/layout/Layout';
 import dayjs from 'dayjs';
-import { useTransactionsDateQuery, useUserQuery } from '../../hooks/queries';
+import { useTransactionsCategoryQuery, useTransactionsDateQuery, useUserQuery } from '../../hooks/queries';
+import BreakdownList from '../../components/dashboard/BreakdownList';
+import DashboardLayout from '../../components/layout/DashboardLayout';
 
 const tabs = [
   { name: 'Greenhouse', href: '', current: true },
@@ -26,65 +24,44 @@ const DashboardPage: NextPage = () => {
   const curDate = dayjs();
   const startDate = curDate.subtract(1, 'month').toDate();
   const endDate = curDate.toDate();
-  const transactionsQuery = useTransactionsDateQuery(userQuery.data?.id, startDate, endDate);
-  if (userQuery.isLoading || transactionsQuery.isLoading) {
+  const catQuery = useTransactionsCategoryQuery(userQuery.data?.id, startDate, endDate);
+
+  if (userQuery.isLoading || catQuery.isLoading) {
     return <Loading />;
   }
 
-  if (userQuery.isError || transactionsQuery.isError) {
-    return <div>Error: {userQuery.error.message}</div>;
+  if (userQuery.isError || catQuery.isError) {
+    const errorMessage = userQuery.isError ? userQuery.error.message : catQuery.error.message;
+    return <div>Error: {errorMessage}</div>;
   }
 
   const { carbonTarget } = userQuery.data;
 
   return (
-    <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
-      <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <h1 className='sr-only'>Dashboard</h1>
-        <div className='flex justify-between items-center'>
-          <h2 className='text-md font-medium leading-6 text-gray-900'>Dashboard</h2>
-          <Link href='/transactions'>
-            <a className='text-sm underline text-green-600'>View all transactions</a>
-          </Link>
+    <DashboardLayout user={userQuery.data} tabs={tabs}>
+      <section aria-labelledby='dashboard-chart'>
+        <div className='mt-6 flow-root'>
+          <RingProgress
+            label={
+              <Text size='xs' align='center' px='xs' sx={{ pointerEvents: 'none' }}>
+                {carbonTarget.toString()} kg
+              </Text>
+            }
+            sections={sections}
+          />
         </div>
-        <div className='mt-6'>
-          <Tabs tabs={tabs} />
+      </section>
+      <section aria-labelledby='dashboard-breakdown'>
+        <h2 className='text-md font-medium leading-6 text-gray-900'>Breakdown</h2>
+        <div className='mt-6 flow-root'>
+          {catQuery.data?.length ? (
+            <BreakdownList data={catQuery.data} value='carbon' />
+          ) : (
+            <p className='text-sm leading-6 text-gray-700'>No transactions</p>
+          )}
         </div>
-        {/* Dashboard Card */}
-        <div className='mt-6' aria-labelledby='dashboard-card'>
-          <div className='overflow-hidden rounded-lg bg-white shadow'>
-            <div className='p-6'>
-              <div className='text-center'>
-                {/* TODO: Replace with month carousel */}
-                <h2 className='text-base font-medium text-gray-900' id='dashboard-title'>
-                  September
-                </h2>
-              </div>
-              <div className='mt-6 flow-root'>
-                <RingProgress
-                  label={
-                    <Text size='xs' align='center' px='xs' sx={{ pointerEvents: 'none' }}>
-                      {carbonTarget.toString()} kg
-                    </Text>
-                  }
-                  sections={sections}
-                />
-              </div>
-              <section aria-labelledby='dashboard-breakdown'>
-                <h2 className='text-md font-medium leading-6 text-gray-900'>Breakdown</h2>
-                <div className='mt-6 flow-root'>
-                  {transactionsQuery.data?.length ? (
-                    <TransactionList data={transactionsQuery.data} value='carbon' />
-                  ) : (
-                    <p className='text-sm leading-6 text-gray-700'>Breakdown</p>
-                  )}
-                </div>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Layout>
+      </section>
+    </DashboardLayout>
   );
 };
 
