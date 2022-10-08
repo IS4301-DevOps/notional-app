@@ -6,18 +6,24 @@ import { useEffect, useState } from 'react';
 
 import Loading from '../../components/common/Loading';
 import Layout from '../../components/layout/Layout';
-import { fetchUser } from '../../lib/clientApi';
+import { fetchUser, updateCarbonTarget } from '../../lib/clientApi';
 
 const setGoalPage: NextPage = () => {
-    const [target, setTarget] = useState(100);
-    const onTargetChanged = (e) => setTarget(e.target.value);
+    const [target, setTarget] = useState(0);
+    const [saved, setSaved] = useState(false);
+    const onTargetChanged = (e) => setTarget(e.target.value)
+    const onSaveClicked = () => {
+        updateCarbonTarget('cl849p21n0047x4gjt69x15s2', target);
+        setSaved(true);
+    }
 
     const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
 
-    // TODO: Fetch userQuery eagerly for useEffect to work
-    /* useEffect(() => {
-        setTarget(userQuery.data.carbonTarget)
-    }, [userQuery.data.carbonTarget]) */
+    useEffect(() => {
+        if (!userQuery.isLoading && !!userQuery.data) {
+            setTarget(userQuery.data.carbonTarget)
+        }
+    }, [userQuery.status, userQuery.data])
 
     if (userQuery.isLoading) {
         return <Loading />;
@@ -26,7 +32,6 @@ const setGoalPage: NextPage = () => {
     if (userQuery.isError) {
         return <div>Error: {userQuery.error.message}</div>;
     }
-    const { carbonTarget } = userQuery.data;
 
     return (
         <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
@@ -70,12 +75,23 @@ const setGoalPage: NextPage = () => {
                                         onChange={onTargetChanged}
                                         min="0"
                                         max="1000"
+                                        step="10"
                                         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
-                                <div className='text-center pt-10'>
-                                    <p className='text-xs font-medium text-gray-900' id='dashboard-title'>
-                                        Set a target for your monthly carbon emission savings and we will remind you how far off you are from your target and if your target is hit!
-                                    </p>
-                                </div>
+                                    <div className='text-center pt-4'>
+                                        <button
+                                            type="button"
+                                            onClick={onSaveClicked}
+                                            className="rounded-md border border-black bg-white px-3 py-2 transition ease delay-150 text-sm font-medium leading-4 text-black shadow-xl hover:bg-black hover:text-white hover:border-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                                        >
+                                            Save
+                                        </button>
+                                        {saved && <p className='text-green-500 text-sm font-bold pt-3'>
+                                            Carbon target has been saved successfully
+                                        </p>}
+                                        <p className='text-xs font-medium text-gray-900 pt-8' id='dashboard-title'>
+                                            Set a target for your monthly carbon emission savings and keep track of your progress to making the world a better place!
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </section>
