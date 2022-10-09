@@ -54,7 +54,7 @@ const DashboardCashbackPage: NextPage = () => {
       </section>
       <section aria-labelledby='dashboard-breakdown'>
         <h2 className='text-md font-medium leading-6 text-gray-900'>Breakdown</h2>
-        <div className='mt-6 flow-root'>
+        <div className='mt-3 flow-root'>
           {catQuery.data?.length ? (
             <BreakdownList data={catQuery.data} value='cashback' />
           ) : (
