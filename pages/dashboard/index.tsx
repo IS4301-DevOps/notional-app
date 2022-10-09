@@ -7,16 +7,11 @@ import RingProgress from '../../components/dashboard/RingProgress';
 import { useTransactionsCategoryQuery, useUserQuery } from '../../hooks/queries';
 import BreakdownList from '../../components/dashboard/BreakdownList';
 import DashboardLayout from '../../components/layout/DashboardLayout';
+import { CategoryColors } from '../../interfaces/enums';
 
 const tabs = [
   { name: 'Greenhouse', href: '', current: true },
   { name: 'Cashback', href: '/dashboard/cashback', current: false },
-];
-
-const sections = [
-  { value: 40, color: 'cyan', tooltip: 'Fashion – 40 kg' },
-  { value: 25, color: 'orange', tooltip: 'Food – 25 kg' },
-  { value: 15, color: 'grape', tooltip: 'Gas – 15 kg' },
 ];
 
 const DashboardPage: NextPage = () => {
@@ -37,6 +32,12 @@ const DashboardPage: NextPage = () => {
 
   const { carbonTarget } = userQuery.data;
 
+  const secs = catQuery.data.map(item => ({
+    value: (Number(item._sum.carbon) / carbonTarget) * 100,
+    color: CategoryColors[item.category],
+    tooltip: `${item.category} - ${item._sum.carbon} kg`,
+  }));
+  console.log(secs);
   return (
     <DashboardLayout user={userQuery.data} tabs={tabs}>
       <section aria-labelledby='dashboard-chart'>
@@ -49,7 +50,7 @@ const DashboardPage: NextPage = () => {
                 </Link>
               </div>
             }
-            sections={sections}
+            sections={secs}
           />
         </div>
       </section>

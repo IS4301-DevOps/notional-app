@@ -14,7 +14,10 @@ const TransactionListItem = ({ item, value }: Props) => {
       </span>
       <div className='flex justify-between w-full ml-3'>
         <p className='text-sm font-medium text-gray-900'>{item.vendor}</p>
-        <p className='text-sm text-gray-500'>{item[value].toString()} kg</p>
+        <p className='text-sm text-gray-500'>
+          {value === 'cashback' && '$'}
+          {item[value].toString()} {value === 'carbon' && 'kg'}
+        </p>
       </div>
     </li>
   );

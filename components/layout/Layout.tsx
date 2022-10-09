@@ -41,7 +41,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
   };
 
   return (
-    <div className='bg-gray-100 min-h-full'>
+    <div className='bg-gray-50 min-h-full'>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
