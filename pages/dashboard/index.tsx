@@ -37,7 +37,7 @@ const DashboardPage: NextPage = () => {
     color: CategoryColors[item.category],
     tooltip: `${item.category} - ${item._sum.carbon} kg`,
   }));
-  console.log(secs);
+
   return (
     <DashboardLayout user={userQuery.data} tabs={tabs}>
       <section aria-labelledby='dashboard-chart'>
