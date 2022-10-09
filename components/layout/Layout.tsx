@@ -37,7 +37,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
     if (router.pathname === '/') {
       return;
     }
-    router.back()
+    router.back();
   };
 
   return (

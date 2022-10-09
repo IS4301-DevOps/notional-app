@@ -8,7 +8,7 @@ import { useTransactionsQuery, useUserQuery } from '../../hooks/queries';
 const TransactionsPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const transactionsQuery = useTransactionsQuery(userQuery.data?.id);
-  
+
   if (userQuery.isLoading || transactionsQuery.isLoading) {
     return <Loading />;
   }
