@@ -43,13 +43,6 @@ const SetGoalPage: NextPage = () => {
         <div className='grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8'>
           {/* Right column */}
           <div className='grid grid-cols-1 gap-4'>
-            {/* Temp section for until header issue is fixed */}
-            <section>
-              <p>.</p>
-              <p>.</p>
-              <p>.</p>
-              <p>.</p>
-            </section>
             <section aria-labelledby='Carbon-Range-Selector'>
               <div className='overflow-hidden rounded-lg bg-white shadow'>
                 <div className='p-6'>
