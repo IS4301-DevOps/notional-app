@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { User } from '@prisma/client';
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
@@ -10,11 +10,13 @@ import { fetchUser, updateCarbonTarget } from '../../lib/clientApi';
 
 const SetGoalPage: NextPage = () => {
   const [target, setTarget] = useState(0);
-  const [saved, setSaved] = useState(false);
+  const mutation = useMutation((target: number) => {
+    return updateCarbonTarget('cl849p21n0047x4gjt69x15s2', target)
+  })
+
   const onTargetChanged = e => setTarget(e.target.value);
   const onSaveClicked = () => {
-    updateCarbonTarget('cl849p21n0047x4gjt69x15s2', target);
-    setSaved(true);
+    mutation.mutate(target)
   };
 
   const userQuery = useQuery<User, AxiosError>(['user'], () => fetchUser('cl849p21n0047x4gjt69x15s2'));
@@ -78,14 +80,31 @@ const SetGoalPage: NextPage = () => {
                     className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
                   />
                   <div className='text-center pt-4'>
-                    <button
-                      type='button'
-                      onClick={onSaveClicked}
-                      className='rounded-md border border-black bg-white px-3 py-2 transition ease delay-150 text-sm font-medium leading-4 text-black shadow-xl hover:bg-black hover:text-white hover:border-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
-                    >
-                      Save
-                    </button>
-                    {saved && <p className='text-green-500 text-sm font-bold pt-3'>Carbon target has been saved successfully</p>}
+
+                    {mutation.isLoading ? (
+                      <button
+                        type='button'
+                        disabled
+                        className='rounded-md border px-3 py-2 transition ease delay-150 text-sm font-medium leading-4 shadow-xl bg-black text-white border-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+                      >
+                        Saving...
+                      </button>
+                    ) : (
+                      <>
+                        {mutation.isError ? (
+                          <div>An error occurred</div>
+                        ) : null}
+                        <button
+                          type='button'
+                          onClick={onSaveClicked}
+                          className='rounded-md border border-black bg-white px-3 py-2 transition ease delay-150 text-sm font-medium leading-4 text-black shadow-xl hover:bg-black hover:text-white hover:border-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+                        >
+                          Save
+                        </button>
+                        {mutation.isSuccess ? <p className='text-green-500 text-sm font-bold pt-3'>Carbon target has been saved successfully</p> : null}
+                      </>
+                    )}
+
                     <p className='text-xs font-medium text-gray-900 pt-8' id='dashboard-title'>
                       Set a target for your monthly carbon emission savings and keep track of your progress to making the world a better
                       place!
