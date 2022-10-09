@@ -1,6 +1,6 @@
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ArrowLeftIcon, Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -12,6 +12,7 @@ import classNames from '../../utils/classNames';
 import Image from 'next/image';
 import { User } from '@prisma/client';
 import { useRouter } from 'next/router';
+import Notifications from '../common/Notifications';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -32,6 +33,9 @@ type Props = {
 
 const Layout = ({ title = 'Default title', heading = 'Default heading', user, children }: Props) => {
   const router = useRouter();
+  const [openNoti, setOpenNoti] = useState(false);
+
+  const onOpenNotiClicked = () => setOpenNoti(!openNoti);
 
   const onBackClicked = () => {
     if (router.pathname === '/') {
@@ -70,7 +74,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                   </div>
                   {/* Right section on desktop */}
                   <div className='hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
-                    <NotificationButton />
+                    <NotificationButton onOpenNotiClicked={onOpenNotiClicked} />
 
                     {/* Profile dropdown */}
                     <Menu as='div' className='relative ml-4 flex-shrink-0'>
@@ -109,21 +113,21 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                       {/* Left nav */}
                       {/* <div className='hidden lg:col-span-2 lg:block'>
                         <nav className='flex space-x-4'>
-                          {navigation.map(item => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className={classNames(
-                                item.current ? 'text-white' : 'text-gray-100',
-                                'text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10',
-                              )}
-                              aria-current={item.current ? 'page' : undefined}
+                        {navigation.map(item => (
+                          <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'text-white' : 'text-gray-100',
+                            'text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10',
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
                             >
-                              {item.name}
+                            {item.name}
                             </a>
-                          ))}
-                        </nav>
-                      </div> */}
+                            ))}
+                            </nav>
+                          </div> */}
                     </div>
                   </div>
 
@@ -138,7 +142,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                   {/* Menu button */}
                   <div className='absolute right-0 flex-shrink-0 lg:hidden'>
                     {/* Notification Button */}
-                    <NotificationButton />
+                    <NotificationButton onOpenNotiClicked={onOpenNotiClicked} />
                     {/* Mobile menu button */}
                     <Popover.Button className='inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-400 hover:text-gray-500 hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-gray-500'>
                       <span className='sr-only'>Open main menu</span>
@@ -152,6 +156,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                 </div>
               </div>
 
+              <Notifications openNoti={openNoti} setOpenNoti={setOpenNoti} />
               <Transition.Root as={Fragment}>
                 <div className='lg:hidden'>
                   <Transition.Child
@@ -209,7 +214,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                               <div className='truncate text-base font-medium text-gray-800'>{user.name}</div>
                               <div className='truncate text-sm font-medium text-gray-500'>{user.email}</div>
                             </div>
-                            <NotificationButton />
+                            <NotificationButton onOpenNotiClicked={onOpenNotiClicked} />
                           </div>
                           <div className='mt-3 space-y-1 px-2'>
                             {userNavigation.map(item => (
