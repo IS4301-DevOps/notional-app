@@ -41,18 +41,18 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
     if (router.pathname === '/') {
       return;
     }
-    router.back()
+    router.back();
   };
 
   return (
-    <div className='bg-gray-100 min-h-full'>
+    <div className='bg-gray-50 min-h-full'>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <header>
-        <Popover as='header' className='bg-white shadow pb-24'>
+        <Popover as='header' className='bg-white shadow mb-32'>
           {({ open }) => (
             <>
               <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
