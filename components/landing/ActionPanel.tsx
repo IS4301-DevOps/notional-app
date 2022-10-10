@@ -3,18 +3,15 @@ import Link from 'next/link';
 const actions = [
   {
     name: 'Cashback',
-    description: "It's not actually free we just price it into the products. Someone's paying for it, and it's not us.",
-    imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-delivery-light.svg',
+    imageSrc: 'https://img.icons8.com/color/480/000000/get-cash.png',
   },
   {
     name: 'Transactions',
-    description: 'Our AI chat widget is powered by a naive series of if/else statements. Guaranteed to irritate.',
-    imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-chat-light.svg',
+    imageSrc: 'https://img.icons8.com/color/480/000000/transaction.png',
   },
   {
     name: 'Recommend',
-    description: "Look how fast that cart is going. What does this mean for the actual experience? I don't know.",
-    imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-fast-checkout-light.svg',
+    imageSrc: 'https://img.icons8.com/color/480/000000/good-quality--v1.png',
   },
 ];
 
