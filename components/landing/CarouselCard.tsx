@@ -18,16 +18,14 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
     fontSize: 32,
     marginTop: theme.spacing.xs,
-    WebkitTextStroke: 0.5,
-    WebkitTextStrokeColor: 'black'
+    textShadow: '2px 2px 4px black'
   },
 
   category: {
     color: theme.white,
     fontWeight: 1000,
     textTransform: 'uppercase',
-    WebkitTextStroke: 0.3,
-    WebkitTextStrokeColor: 'black'
+    textShadow: '1px 1px 2px black'
   },
 }));
 
