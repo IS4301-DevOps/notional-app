@@ -21,8 +21,6 @@ const actions = [
 const ActionPanel = () => {
   const router = useRouter();
 
-  const handleClick = (href: string) => router.push(`/${href}`)
-
   return (
     <div className='overflow-hidden rounded-lg bg-white shadow'>
       <div className='mx-auto max-w-7xl py-12 sm:px-2 sm:py-32 lg:px-4'>
