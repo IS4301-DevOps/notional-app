@@ -4,6 +4,7 @@ import Layout from '../../components/layout/Layout';
 import LeaderboardList from '../../components/leaderboard/LeaderboardList';
 import { useUserQuery } from '../../hooks/queries';
 import LeaderboardTopRankings from '../../components/leaderboard/LeaderboardTopRankings';
+import { Icon } from '@iconify/react';
 
 const LeaderboardPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
@@ -22,18 +23,16 @@ const LeaderboardPage = () => {
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Leaderboard</h1>
         <h2 className='text-md font-bold leading-6 text-gray-900 mb-6'>Leaderboard</h2>
-
-        <div className='flex justify-evenly'>
+        <div className='flex justify-evenly mb-4'>
           <LeaderboardTopRankings />
         </div>
-
         <div>
-          <br></br>
           <div className='flex justify-between'>
             <strong>Rankings this month</strong>
-            <button className='text-sm font-semibold mr-2 text-gray-500'>View More {'＞'}</button>
+            <button className='text-sm font-semibold mr-2 text-gray-500'>
+              View More <Icon className='inline' icon='heroicons-outline:chevron-right' />
+            </button>
           </div>
-
           <div className='rounded shadow-lg mt-3 bg-[#B1D7B4] pt-4 pl-4 pr-4 pb-4'>
             <LeaderboardList />
           </div>
