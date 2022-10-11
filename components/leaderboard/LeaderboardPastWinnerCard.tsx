@@ -26,14 +26,14 @@ export default function LeaderboardPastWinnerCard(props) {
 
       <div className='translate-x-6'>
         <div>
-          <span className='relative z-10 mr-4'>
+          <span className='relative z-10 mr-4 ml-auto'>
             <Image alt='me' width='35' height='35' src='/badges/leaderboard-calendar.svg' />
           </span>
-          <span className='font-bold relative inline-flex items-center -translate-x-6 -translate-y-3 rounded-md bg-gray-100 px-2.5 py-0.5 text-sm text-gray-800'>
+          <span className='w-[70px] place-content-center font-bold relative inline-flex items-center -translate-x-6 -translate-y-3 rounded-md bg-gray-100 px-2.5 py-0.5 text-sm text-gray-800'>
             {props.person.date}
           </span>
         </div>
-        <div className='ml-4'>
+        <div className='ml-6'>
           <span className='relative z-10'>
             <Image alt='me' width='35' height='35' src='/badges/leaderboardtree.png' />
           </span>
