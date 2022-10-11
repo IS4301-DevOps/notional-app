@@ -63,18 +63,9 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                       <ArrowLeftIcon className='h-5 w-5' />
                     </button>
                   </div>
-                  {/* Middle section on desktop */}
-                  <div className='hidden px-12 lg:flex lg:items-center lg:px-0 text-center font-medium'>
-                    <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
-                      {/* <div className='absolute left-1/2 -ml-20 -top-0'>
-                            <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
-                          </div> */}
-                      <span>{heading}</span>
-                    </div>
-                  </div>
+
                   {/* Right section on desktop */}
                   <div className='hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
-                    <NotificationButton onOpenNotiClicked={onOpenNotiClicked} />
 
                     {/* Profile dropdown */}
                     <Menu as='div' className='relative ml-4 flex-shrink-0'>
@@ -110,33 +101,16 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
 
                   <div className='w-full py-5 lg:border-t lg:border-white lg:border-opacity-20'>
                     <div className='lg:grid lg:grid-cols-3 lg:items-center lg:gap-8'>
-                      {/* Left nav */}
-                      {/* <div className='hidden lg:col-span-2 lg:block'>
-                        <nav className='flex space-x-4'>
-                        {navigation.map(item => (
-                          <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current ? 'text-white' : 'text-gray-100',
-                            'text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10',
-                            )}
-                            aria-current={item.current ? 'page' : undefined}
-                            >
-                            {item.name}
-                            </a>
-                            ))}
-                            </nav>
-                          </div> */}
+
                     </div>
                   </div>
 
                   <div className='absolute flex-shrink-0 text-center font-medium lg:hidden'>
                     <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
-                      {/* <div className='absolute left-1/2 -ml-20 -top-0'>
-                            <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
-                          </div> */}
-                      <span>{heading}</span>
+                      <div className='absolute left-1/2 -ml-20'>
+                        <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
+                      </div>
+                      <p className='text-lg font-semibold pt-1'>{heading}</p>
                     </div>
                   </div>
                   {/* Menu button */}
