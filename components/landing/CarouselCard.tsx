@@ -18,13 +18,14 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
     fontSize: 32,
     marginTop: theme.spacing.xs,
+    textShadow: '2px 2px 4px black'
   },
 
   category: {
     color: theme.white,
-    opacity: 0.7,
-    fontWeight: 700,
+    fontWeight: 1000,
     textTransform: 'uppercase',
+    textShadow: '1px 1px 2px black'
   },
 }));
 
@@ -53,9 +54,6 @@ const CarouselCard = ({ image, title, category }: Props) => {
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
     </Paper>
   );
 }
