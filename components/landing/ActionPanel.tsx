@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 const actions = [
   {
@@ -10,6 +10,11 @@ const actions = [
     name: 'Transactions',
     href: 'transactions',
     imageSrc: 'https://img.icons8.com/color/480/000000/transaction.png',
+  },
+  {
+    name: 'Leaderboard',
+    href: 'leaderboard',
+    imageSrc: 'https://img.icons8.com/color/480/000000/leaderboard.png',
   },
   {
     name: 'Recommend',
@@ -30,7 +35,7 @@ const ActionPanel = () => {
               <div className='text-center hover:cursor-pointer sm:flex sm:text-left lg:block lg:text-center'>
                 <div className='sm:flex-shrink-0'>
                   <div className='flow-root'>
-                    <img className='mx-auto h-24 w-28' src={action.imageSrc} />
+                    <img className='mx-auto h-24 w-24' src={action.imageSrc} />
                   </div>
                 </div>
                 <div className='mt-3 sm:mt-0 sm:ml-3 lg:mt-3 lg:ml-0'>
