@@ -2,10 +2,7 @@ import React from 'react';
 import LeaderboardPastWinners from '../../components/leaderboard/LeaderboardPastWinners';
 import Loading from '../../components/common/Loading';
 import Layout from '../../components/layout/Layout';
-import LeaderboardList from '../../components/leaderboard/LeaderboardList';
 import { useUserQuery } from '../../hooks/queries';
-import LeaderboardTopRankings from '../../components/leaderboard/LeaderboardTopRankings';
-import { Icon } from '@iconify/react';
 
 export default function PastWinners() {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');

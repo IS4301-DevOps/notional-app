@@ -1,5 +1,7 @@
 import React from 'react';
 import LeaderboardPastWinnerCard from './LeaderboardPastWinnerCard';
+import Loading from '../../components/common/Loading';
+import { useUserQuery } from '../../hooks/queries';
 
 const people = [
   {

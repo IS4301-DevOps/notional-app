@@ -5,16 +5,25 @@ const actions = [
     name: 'Cashback',
     description: "It's not actually free we just price it into the products. Someone's paying for it, and it's not us.",
     imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-delivery-light.svg',
+    href: '/#',
   },
   {
     name: 'Transactions',
     description: 'Our AI chat widget is powered by a naive series of if/else statements. Guaranteed to irritate.',
     imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-chat-light.svg',
+    href: '/#',
+  },
+  {
+    name: 'Leaderboard',
+    description: 'Our AI chat widget is powered by a naive series of if/else statements. Guaranteed to irritate.',
+    imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-chat-light.svg',
+    href: '/leaderboard',
   },
   {
     name: 'Recommend',
     description: "Look how fast that cart is going. What does this mean for the actual experience? I don't know.",
     imageSrc: 'https://tailwindui.com/img/ecommerce/icons/icon-fast-checkout-light.svg',
+    href: '/#',
   },
 ];
 
@@ -24,7 +33,7 @@ const ActionPanel = () => {
       <div className='mx-auto max-w-7xl py-12 sm:px-2 sm:py-32 lg:px-4'>
         <div className='mx-auto grid max-w-2xl grid-cols-3 gap-y-10 gap-x-8 px-4 lg:max-w-none'>
           {actions.map(action => (
-            <Link key={action.name} href='#'>
+            <Link key={action.name} href={action.href}>
               <div className='text-center hover:cursor-pointer sm:flex sm:text-left lg:block lg:text-center'>
                 <div className='sm:flex-shrink-0'>
                   <div className='flow-root'>
