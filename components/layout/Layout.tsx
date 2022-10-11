@@ -105,12 +105,12 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                     </div>
                   </div>
 
-                  <div className='absolute flex-shrink-0 text-center font-medium lg:hidden'>
+                  <div className='absolute  flex-shrink-0 text-center font-medium lg:hidden'>
                     <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
                       <div className='absolute left-1/2 -ml-20'>
                         <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
                       </div>
-                      <p className='text-lg font-semibold pt-1'>{heading}</p>
+                      <p className='text-lg hover:cursor-pointer font-semibold pt-1' onClick={() => router.replace("/")}>{heading}</p>
                     </div>
                   </div>
                   {/* Menu button */}
