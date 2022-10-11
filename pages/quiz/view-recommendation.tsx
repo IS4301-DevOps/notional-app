@@ -20,8 +20,8 @@ export default function ViewRecommendation() {
     <>
       <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
         <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-          <h1 className='sr-only'>Levi's</h1>
-          <h2 className='text-md font-bold leading-6 text-gray-900 mb-2'>Levi's</h2>
+          <h1 className='sr-only'>Levi&lsquo;s</h1>
+          <h2 className='text-md font-bold leading-6 text-gray-900 mb-2'>Levi&lsquo;s</h2>
           <RecommendationDetails />
         </div>
       </Layout>
