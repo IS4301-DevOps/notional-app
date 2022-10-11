@@ -5,6 +5,7 @@ import LeaderboardList from '../../components/leaderboard/LeaderboardList';
 import { useUserQuery } from '../../hooks/queries';
 import LeaderboardTopRankings from '../../components/leaderboard/LeaderboardTopRankings';
 import { Icon } from '@iconify/react';
+import Link from 'next/link';
 
 const LeaderboardPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
@@ -21,8 +22,17 @@ const LeaderboardPage = () => {
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+        <div className='flex justify-between'>
+          <h2 className='text-md font-bold leading-6 text-gray-900 mb-6'>Leaderboard</h2>
+          <Link href='/leaderboard/past-winners'>
+            <button className='text-sm font-semibold mr-2 text-gray-500'>
+              Past Winners
+              <Icon className='inline' icon='heroicons-outline:chevron-right' />
+            </button>
+          </Link>
+        </div>
         <h1 className='sr-only'>Leaderboard</h1>
-        <h2 className='text-md font-bold leading-6 text-gray-900 mb-6'>Leaderboard</h2>
+
         <div className='flex justify-evenly mb-4'>
           <LeaderboardTopRankings />
         </div>
