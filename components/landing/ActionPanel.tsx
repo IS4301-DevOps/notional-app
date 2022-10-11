@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 const actions = [
   {
@@ -10,6 +10,11 @@ const actions = [
     name: 'Transactions',
     href: 'transactions',
     imageSrc: 'https://img.icons8.com/color/480/000000/transaction.png',
+  },
+  {
+    name: 'Leaderboard',
+    href: 'leaderboard',
+    imageSrc: 'https://img.icons8.com/color/480/000000/leaderboard.png',
   },
   {
     name: 'Recommend',
