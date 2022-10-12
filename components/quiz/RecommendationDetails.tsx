@@ -37,7 +37,7 @@ export default function RecommendationDetails() {
       {/* /People/ */}
       <div className='grid grid-cols-3 align-middle; text-center'>
         <div>
-          <p>Planet</p>
+          <p>People</p>
         </div>
         <div></div>
         <div></div>
@@ -61,7 +61,7 @@ export default function RecommendationDetails() {
       {/* /Animals/ */}
       <div className='grid grid-cols-3 align-middle; text-center'>
         <div>
-          <p>Planet</p>
+          <p>Animals</p>
         </div>
         <div></div>
         <div></div>
