@@ -64,6 +64,16 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                     </button>
                   </div>
 
+                  {/* Middle section on desktop */}
+                  <div className='hidden px-12 lg:flex lg:items-center lg:px-0 text-center font-medium'>
+                    <div className='relative mx-auto w-full max-w-xs lg:max-w-md'>
+                      {/* <div className='absolute left-1/2 -ml-20 -top-0'>
+                            <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
+                          </div> */}
+                      <span>{heading}</span>
+                    </div>
+                  </div>
+
                   {/* Right section on desktop */}
                   <div className='hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
 
