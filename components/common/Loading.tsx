@@ -11,7 +11,7 @@ const Loading = () => {
             <span className="flex items-center justify-center">
             </span>
             <span className="flex items-center justify-center">
-                <p className="font-sans text-2xl whitespace-pre-line relative font-semibold">LiveFresh</p>
+                <p className="font-sans text-2xl whitespace-pre-line relative font-semibold">LiveBetter</p>
             </span>
             <span className="flex items-center justify-center">
                 <div className="absolute top-1/2">

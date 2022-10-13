@@ -7,11 +7,6 @@ const actions = [
     imageSrc: 'https://img.icons8.com/color/480/000000/get-cash.png',
   },
   {
-    name: 'Transactions',
-    href: 'transactions',
-    imageSrc: 'https://img.icons8.com/color/480/000000/transaction.png',
-  },
-  {
     name: 'Leaderboard',
     href: 'leaderboard',
     imageSrc: 'https://img.icons8.com/color/480/000000/leaderboard.png',
