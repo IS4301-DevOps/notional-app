@@ -13,7 +13,7 @@ const BreakdownListItem = ({ item, value }: Props) => {
     <li className='flex py-4'>
       <span
         className={classNames(
-          'inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800',
+          ' min-w-max inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800',
           `text-${CatColorsTailwind[item.category]}-800`,
           `bg-${CatColorsTailwind[item.category]}-100`,
         )}
