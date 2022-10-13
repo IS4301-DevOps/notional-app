@@ -32,5 +32,7 @@ export const useCarbonBreakdown = (user: User) => {
     cashbackSections,
     totalCarbon: _.round(totalCarbon, 1),
     totalCashback: _.round(totalCashback, 2),
+    isLoading: catQuery.isLoading,
+    isError: catQuery.isError,
   };
 };

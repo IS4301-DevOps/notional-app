@@ -16,13 +16,13 @@ const tabs = [
 
 const DashboardPage: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
-  const { breakdownByUser, carbonSections, totalCarbon } = useCarbonBreakdown(userQuery.data);
+  const { breakdownByUser, carbonSections, totalCarbon, isLoading, isError } = useCarbonBreakdown(userQuery.data);
 
-  if (userQuery.isLoading) {
+  if (userQuery.isLoading || isLoading) {
     return <Loading />;
   }
 
-  if (userQuery.isError) {
+  if (userQuery.isError || isError) {
     const errorMessage = userQuery.error.message;
     return <div>Error: {errorMessage}</div>;
   }

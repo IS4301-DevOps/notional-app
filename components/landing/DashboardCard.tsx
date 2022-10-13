@@ -10,7 +10,7 @@ type Props = {
   totals?: number[];
 };
 
-const DashboardCard = ({ carbonTarget, sections, totals }: Props) => {
+const DashboardCard = ({ sections, totals }: Props) => {
   return (
     <div className='overflow-hidden rounded-lg bg-white shadow'>
       <div className='p-6'>
@@ -27,7 +27,7 @@ const DashboardCard = ({ carbonTarget, sections, totals }: Props) => {
             <ChevronRightIcon className='h-4 w-4 flex-shrink-0 stroke-2 text-gray-400 hover:text-gray-500 hover:cursor-pointer' />
           </Link>
         </div>
-        <div className='mt-6 flex justify-around'>
+        <div className='mt-3 flex flex-col justify-around text-center sm:flex-row'>
           <div className='flex flex-col'>
             <RingProgress
               label={
@@ -39,7 +39,7 @@ const DashboardCard = ({ carbonTarget, sections, totals }: Props) => {
               }
               sections={sections[0]}
             />
-            <p className='mx-auto text-sm text-gray-900'>Total Carbon Emitted</p>
+            <p className='text-sm text-gray-900'>Total Carbon Emitted</p>
           </div>
           <div className='flex flex-col'>
             <RingProgress
@@ -52,7 +52,7 @@ const DashboardCard = ({ carbonTarget, sections, totals }: Props) => {
               }
               sections={sections[1]}
             />
-            <p className='mx-auto text-sm text-gray-900'>Total Cashback Earned</p>
+            <p className='text-sm text-gray-900'>Total Cashback Earned</p>
           </div>
         </div>
       </div>

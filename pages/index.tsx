@@ -17,14 +17,17 @@ const Home: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
   const tipQuery = useQuery<Tip, AxiosError>(['tip'], getTodayTip);
-  const { carbonSections, cashbackSections, totalCarbon, totalCashback } = useCarbonBreakdown(userQuery.data);
+  const { carbonSections, cashbackSections, totalCarbon, totalCashback, isLoading, isError } = useCarbonBreakdown(userQuery.data);
 
   //TODO: add LoadingOverlay
-  if (userQuery.isLoading || postsQuery.isLoading || tipQuery.isLoading) {
+  if (userQuery.isLoading || postsQuery.isLoading || tipQuery.isLoading || isLoading) {
     return <Loading />;
   }
 
-  const { carbonTarget } = userQuery.data;
+  if (userQuery.isError || isError) {
+    const errorMessage = userQuery.error.message;
+    return <div>Error: {errorMessage}</div>;
+  }
 
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
@@ -51,7 +54,7 @@ const Home: NextPage = () => {
           <div className='grid grid-cols-1 gap-4'>
             {/* Dashboard Card */}
             <section aria-labelledby='dashboard-card'>
-              <DashboardCard carbonTarget={carbonTarget} sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]}/>
+              <DashboardCard sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]} />
             </section>
           </div>
         </div>
