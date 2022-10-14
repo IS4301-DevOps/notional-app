@@ -4,7 +4,12 @@ import Link from 'next/link';
 
 export default function LeaderboardCard(props) {
   return (
-    <Link href='/leaderboard/badges-collection'>
+    <Link
+      href={{
+        pathname: '/leaderboard/badges-collection',
+        query: { rank: props.person.ranking },
+      }}
+    >
       <div
         className={`relative flex items-center space-x-3 rounded-lg border border-gray-300 drop-shadow-md ${
           props.index === 0 ? 'bg-[#F7F6DC]' : 'bg-white'
