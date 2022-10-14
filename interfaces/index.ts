@@ -1,3 +1,4 @@
+import { DefaultMantineColor } from "@mantine/core";
 import { Transaction, TransactionCategory } from "@prisma/client";
 
 export type User = {
@@ -34,3 +35,9 @@ export type Tab = {
   href: string;
   current: boolean;
 };
+
+export type RingProgressSection = {
+  value: number;
+  color: DefaultMantineColor;
+  tooltip?: React.ReactNode;
+}

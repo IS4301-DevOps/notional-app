@@ -11,18 +11,23 @@ import DashboardCard from '../components/landing/DashboardCard';
 import TipCard from '../components/landing/TipCard';
 import { getAllPosts, getTodayTip } from '../lib/clientApi';
 import { useUserQuery } from '../hooks/queries';
+import { useCarbonBreakdown } from '../hooks/dashboard';
 
 const Home: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
   const tipQuery = useQuery<Tip, AxiosError>(['tip'], getTodayTip);
+  const { carbonSections, cashbackSections, totalCarbon, totalCashback, isLoading, isError } = useCarbonBreakdown(userQuery.data);
 
   //TODO: add LoadingOverlay
-  if (userQuery.isLoading || postsQuery.isLoading || tipQuery.isLoading) {
+  if (userQuery.isLoading || postsQuery.isLoading || tipQuery.isLoading || isLoading) {
     return <Loading />;
   }
 
-  const { carbonTarget } = userQuery.data;
+  if (userQuery.isError || isError) {
+    const errorMessage = userQuery.error.message;
+    return <div>Error: {errorMessage}</div>;
+  }
 
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
@@ -33,10 +38,6 @@ const Home: NextPage = () => {
         <div className='grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8'>
           {/* Left column */}
           <div className='grid grid-cols-1 gap-4 lg:col-span-2'>
-            {/* Welcome panel */}
-            {/* <section aria-labelledby='profile-overview-title'>
-              <WelcomeCard user={user} />
-            </section> */}
             <section aria-labelledby='tip-card'>
               <TipCard data={tipQuery.data} />
             </section>
@@ -53,7 +54,7 @@ const Home: NextPage = () => {
           <div className='grid grid-cols-1 gap-4'>
             {/* Dashboard Card */}
             <section aria-labelledby='dashboard-card'>
-              <DashboardCard carbonTarget={carbonTarget} />
+              <DashboardCard sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]} />
             </section>
           </div>
         </div>

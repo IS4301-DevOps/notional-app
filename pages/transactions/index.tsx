@@ -32,16 +32,22 @@ const TransactionsPage = () => {
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Transactions</h1>
         <h2 className='text-md font-medium leading-6 text-gray-900'>Transactions</h2>
-        {!_.isEmpty(transactions) ? (
-          Object.entries(transactions).map(item => (
-            <div key={item[0]} className='mt-3'>
-              <p className='text-sm font-bold leading-6 text-gray-900'>{item[0]}</p>
-              <TransactionList data={item[1]} value='cashback' />
+        <section className='mt-6' aria-labelledby='dashboard-card'>
+          <div className='overflow-hidden rounded-lg bg-white shadow'>
+            <div className='px-6 py-3'>
+              {!_.isEmpty(transactions) ? (
+                Object.entries(transactions).map(item => (
+                  <div key={item[0]} className='mt-3'>
+                    <p className='sticky top-0 text-sm font-bold leading-6 text-gray-900'>{item[0]}</p>
+                    <TransactionList data={item[1]} value='cashback' />
+                  </div>
+                ))
+              ) : (
+                <p className='text-sm leading-6 text-gray-700'>No transactions</p>
+              )}
             </div>
-          ))
-        ) : (
-          <p className='text-sm leading-6 text-gray-700'>No transactions</p>
-        )}
+          </div>
+        </section>
       </div>
     </Layout>
   );

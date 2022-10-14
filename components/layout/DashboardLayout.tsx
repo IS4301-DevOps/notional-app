@@ -19,7 +19,7 @@ const DashboardLayout = ({ user, tabs, children }: Props) => {
         <div className='flex justify-between items-center'>
           <h2 className='text-md font-medium leading-6 text-gray-900'>Dashboard</h2>
           <Link href='/transactions'>
-            <a className='text-sm underline text-green-600'>View all transactions</a>
+            <a className='text-sm underline text-green-600'>View All Transactions</a>
           </Link>
         </div>
         <div className='mt-6'>

@@ -6,36 +6,26 @@ import Loading from '../../../components/common/Loading';
 import BreakdownList from '../../../components/dashboard/BreakdownList';
 import RingProgress from '../../../components/dashboard/RingProgress';
 import DashboardLayout from '../../../components/layout/DashboardLayout';
-import { useTransactionsCategoryQuery, useUserQuery } from '../../../hooks/queries';
+import { useCarbonBreakdown } from '../../../hooks/dashboard';
+import { useUserQuery } from '../../../hooks/queries';
 
 const tabs = [
   { name: 'Greenhouse', href: '/dashboard', current: false },
   { name: 'Cashback', href: '', current: true },
 ];
 
-const sections = [
-  { value: 40, color: 'cyan', tooltip: 'Fashion – 40 kg' },
-  { value: 25, color: 'orange', tooltip: 'Food – 25 kg' },
-  { value: 15, color: 'grape', tooltip: 'Gas – 15 kg' },
-];
-
 const DashboardCashbackPage: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
-  const curDate = dayjs();
-  const startDate = curDate.subtract(1, 'month').toDate();
-  const endDate = curDate.toDate();
-  const catQuery = useTransactionsCategoryQuery(userQuery.data?.id, startDate, endDate);
+  const { breakdownByUser, cashbackSections, totalCashback, isLoading, isError } = useCarbonBreakdown(userQuery.data);
 
-  if (userQuery.isLoading || catQuery.isLoading) {
+  if (userQuery.isLoading || isLoading) {
     return <Loading />;
   }
 
-  if (userQuery.isError || catQuery.isError) {
-    const errorMessage = userQuery.isError ? userQuery.error.message : catQuery.error.message;
+  if (userQuery.isError || isError) {
+    const errorMessage = userQuery.error.message;
     return <div>Error: {errorMessage}</div>;
   }
-
-  const { carbonTarget } = userQuery.data;
 
   return (
     <DashboardLayout user={userQuery.data} tabs={tabs}>
@@ -43,20 +33,19 @@ const DashboardCashbackPage: NextPage = () => {
         <div className='mt-6 flow-root'>
           <RingProgress
             label={
-              <Text size='xs' align='center' px='xs' sx={{ pointerEvents: 'none' }}>
-                {/* Replace with total cashback */}
-                {carbonTarget.toString()} kg
-              </Text>
+              <div className='flex items-center justify-center'>
+                <p className='text-sm font-medium mx-auto hover:underline'>${totalCashback}</p>
+              </div>
             }
-            sections={sections}
+            sections={cashbackSections}
           />
         </div>
       </section>
       <section aria-labelledby='dashboard-breakdown'>
         <h2 className='text-md font-medium leading-6 text-gray-900'>Breakdown</h2>
         <div className='mt-3 flow-root'>
-          {catQuery.data?.length ? (
-            <BreakdownList data={catQuery.data} value='cashback' />
+          {breakdownByUser?.length ? (
+            <BreakdownList data={breakdownByUser} value='cashback' />
           ) : (
             <p className='text-sm leading-6 text-gray-700'>No transactions</p>
           )}

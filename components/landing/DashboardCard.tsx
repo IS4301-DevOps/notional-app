@@ -1,21 +1,16 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import { Text } from '@mantine/core';
-import { Prisma } from '@prisma/client';
 import Link from 'next/link';
 import React from 'react';
+import { RingProgressSection } from '../../interfaces';
 import RingProgress from '../dashboard/RingProgress';
-
-const sections = [
-  { value: 40, color: 'cyan', tooltip: 'Fashion – 40 kg' },
-  { value: 25, color: 'orange', tooltip: 'Food – 25 kg' },
-  { value: 15, color: 'grape', tooltip: 'Gas – 15 kg' },
-];
 
 type Props = {
   carbonTarget?: number;
+  sections?: RingProgressSection[][];
+  totals?: number[];
 };
 
-const DashboardCard = ({ carbonTarget }: Props) => {
+const DashboardCard = ({ sections, totals }: Props) => {
   return (
     <div className='overflow-hidden rounded-lg bg-white shadow'>
       <div className='p-6'>
@@ -25,24 +20,40 @@ const DashboardCard = ({ carbonTarget }: Props) => {
               Dashboard
             </h2>
             <p className='text-base font-medium text-gray-600' id='dashboard-subtitle'>
-              Estimated from your DBS purchases
+              Estimated from your DBS purchases this month.
             </p>
           </div>
           <Link href='/dashboard'>
             <ChevronRightIcon className='h-4 w-4 flex-shrink-0 stroke-2 text-gray-400 hover:text-gray-500 hover:cursor-pointer' />
           </Link>
         </div>
-        <div className='mt-6 flow-root'>
-          <RingProgress
-            label={
-              carbonTarget && (
-                <Text size='xs' align='center' px='xs' sx={{ pointerEvents: 'none' }}>
-                  {carbonTarget.toString()} kg
-                </Text>
-              )
-            }
-            sections={sections}
-          />
+        <div className='mt-3 flex flex-col justify-around text-center sm:flex-row'>
+          <div className='flex flex-col'>
+            <RingProgress
+              label={
+                <div className='flex items-center justify-center'>
+                  <Link href='/dashboard/set-goal'>
+                    <a className='text-sm font-medium mx-auto hover:underline'>{totals[0]} kg</a>
+                  </Link>
+                </div>
+              }
+              sections={sections[0]}
+            />
+            <p className='text-sm text-gray-900'>Total Carbon Emitted</p>
+          </div>
+          <div className='flex flex-col'>
+            <RingProgress
+              label={
+                <div className='flex items-center justify-center'>
+                  <Link href='/dashboard/set-goal'>
+                    <a className='text-sm font-medium mx-auto hover:underline'>${totals[1]}</a>
+                  </Link>
+                </div>
+              }
+              sections={sections[1]}
+            />
+            <p className='text-sm text-gray-900'>Total Cashback Earned</p>
+          </div>
         </div>
       </div>
     </div>

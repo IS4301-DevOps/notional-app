@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const actions = [
@@ -27,10 +28,12 @@ const ActionPanel = () => {
         <div className='mx-auto grid max-w-2xl grid-cols-3 gap-y-10 gap-x-8 px-4 lg:max-w-none'>
           {actions.map(action => (
             <div key={action.name} onClick={() => router.push(`/${action.href}`)}>
-              <div className='text-center hover:cursor-pointer sm:flex sm:text-left lg:block lg:text-center'>
-                <div className='sm:flex-shrink-0'>
+              <div className='text-center hover:cursor-pointer flex flex-col'>
+                <div className='flex-shrink-0'>
                   <div className='flow-root'>
-                    <img className='mx-auto h-24 w-24' src={action.imageSrc} />
+                    <div className='mx-auto h-24 w-24'>
+                      <Image src={action.imageSrc} width={100} height={100} alt='action' />
+                    </div>
                   </div>
                 </div>
                 <div className='mt-3 sm:mt-0 sm:ml-3 lg:mt-3 lg:ml-0'>
