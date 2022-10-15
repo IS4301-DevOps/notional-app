@@ -25,7 +25,7 @@ const getContainerComponent = (currentState: CONTAINER_STATE, handleButtonClick:
   }
 }
 
-const quiz = () => {
+const QuizPage = () => {
   const navigate = useRouter();
   const handleButtonClick = () => {
     console.log("Container state: " + containerState);
@@ -66,12 +66,10 @@ const quiz = () => {
       <RecommendationQuizContainer>
         {containerComponent}    
       </RecommendationQuizContainer>
-        {/* {containerComponent}
-      </RecommendationQuizContainer> */}
 
 
     </Layout>
   )
 }
 
-export default quiz
+export default QuizPage
