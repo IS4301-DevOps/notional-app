@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import classes from "./quiz.module.css";
-import * as QUIZ_CONSTANTS from "./constants";
+import * as QUIZ_CONSTANTS from "../../constants";
 import Layout from '../../components/layout/Layout';
 import { useUserQuery } from '../../hooks/queries';
 import Loading from '../../components/common/Loading';
 import RecommendationQuizHeader from '../../components/quiz/RecommendationQuizHeader';
 import RecommendationDetails from '../../components/quiz/RecommendationDetails';
 import RecommendationQuizContainer from '../../components/quiz/RecommendationQuizContainer';
-import { CONTAINER_STATE } from './constants/quiz';
+import { CONTAINER_STATE } from '../../constants/quiz';
 import QuizBrief from './quiz-brief';
 import { QuizQuestionPanel } from './quiz-questions';
 import { useRouter } from 'next/router';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Circle } from './Steps';
-import classes from './QuizOption.module.css';
+import classes from '../../styles/components/quiz/QuizOption.module.css';
 
 interface IQuizOption {
   option: string;

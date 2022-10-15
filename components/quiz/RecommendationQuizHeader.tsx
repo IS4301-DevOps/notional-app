@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import React from 'react'
-import classes from './RecommendationQuizHeader.module.css';
+import classes from '../../styles/components/quiz/RecommendationQuizHeader.module.css';
 
 interface HeaderProps {
   title: string;
 }
 
 /**
- * Reusbale component for Header
+ * Reusable component for Header
  */
 const RecommendationQuizHeader = ({title}: HeaderProps) => {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { CONTAINER_STATE } from '../../pages/quiz/constants/quiz';
-import classes from './QuizButton.module.css';
+import { CONTAINER_STATE } from '../../constants/quiz';
+import classes from '../../styles/components/quiz/QuizButton.module.css';
 
 interface IQuizButtonProps {
   state: CONTAINER_STATE

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
-import classes from './InformationRow.module.css';
+import classes from '../../styles/components/quiz/InformationRow.module.css';
 
 export interface IInformationRow {
   index: number;

@@ -1,4 +1,4 @@
-import { IInformationRow } from "../../../components/quiz/InformationRow";
+import { IInformationRow } from "../components/quiz/InformationRow";
 
 export const TITLE = "Recommendation Quiz";
 export const BRIEF_TITLE = "Brief explanation about how it works";

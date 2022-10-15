@@ -1,9 +1,9 @@
 import React from 'react'
-import * as QUIZ_CONSTANTS from "./constants";
-import classes from "./quiz.module.css";
-import { InfoRowContents as infoRows, PromptContents as promptContents } from './constants/';
+import * as QUIZ_CONSTANTS from "../../constants";
+import classes from "../../styles/pages/quiz/Quiz.module.css";
+import { InfoRowContents as infoRows, PromptContents as promptContents } from '../../constants';
 import InformationRow from '../../components/quiz/InformationRow';
-import { CONTAINER_STATE } from './constants/quiz';
+import { CONTAINER_STATE } from '../../constants/quiz';
 import QuizButton from '../../components/quiz/QuizButton';
 
 interface IQuizBrief {
