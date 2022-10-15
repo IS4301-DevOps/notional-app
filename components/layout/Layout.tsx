@@ -45,7 +45,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
   };
 
   return (
-    <div className='bg-gray-50 min-h-full'>
+    <div className='bg-gray-50 min-h-screen'>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
@@ -219,7 +219,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
           )}
         </Popover>
       </header>
-      <main className='-mt-24 pb-8'>{children}</main>
+      <main className='-mt-24 pb-8 flex flex-col'>{children}</main>
       <footer>
         <Footer />
       </footer>

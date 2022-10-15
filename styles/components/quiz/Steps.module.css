@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container hr {
+  margin-top: 1rem;
+  width: 100%;
+  height: 3px;
+  border: 0px;
+  transition: background 0.6s ease-in-out;
+}
+
+
+.steps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+  width: 100%;
+  margin: 0rem auto;
+  color: white;
+}
+
+.circle {
+  position: relative;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  background-color: #c4c4c4; /* From figma */
+  padding: 1.5vh;
+  color: white;
+}
+
+.circle strong {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 0.9em;
+  color: "#D4D4D4";
+}

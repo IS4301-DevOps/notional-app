@@ -14,7 +14,7 @@ const actions = [
   },
   {
     name: 'Recommend',
-    href: '#',
+    href: 'quiz',
     imageSrc: 'https://img.icons8.com/color/480/000000/good-quality--v1.png',
   },
 ];
