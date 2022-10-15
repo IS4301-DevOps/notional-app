@@ -2,9 +2,13 @@ import React from 'react';
 import Loading from '../../components/common/Loading';
 import { useUserQuery } from '../../hooks/queries';
 import Layout from '../../components/layout/Layout';
-import Image from 'next/image';
+import Badges from '../../components/leaderboard/BadgesCollection';
+import { useRouter } from 'next/router';
 
 export default function BadgesCollection() {
+  const router = useRouter();
+  const rank = Number(router.query.rank);
+
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
 
   if (userQuery.isLoading) {
@@ -16,6 +20,78 @@ export default function BadgesCollection() {
     return <div>Error: {errorMessage}</div>;
   }
 
+  const jun_hong = [
+    'carbon_10',
+    'carbon_50',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'sparkly_trees_25',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+  ];
+
+  const brayden = [
+    'carbon_10',
+    'carbon_50',
+    'carbon_100',
+    'climate_positive_3',
+    'climate_positive_6',
+    'locked_climate_positive',
+    'sparkly_trees_25',
+    'sparkly_trees_150',
+    'locked_climate_positive',
+    'trees_planted_100',
+    'trees_planted_1k',
+    'trees_planted_5k',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+  ];
+
+  const eunice = [
+    'carbon_10',
+    'carbon_50',
+    'carbon_100',
+    'climate_positive_3',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'sparkly_trees_25',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'trees_planted_100',
+    'trees_planted_1k',
+    'trees_planted_5k',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+  ];
+
+  const simran = [
+    'carbon_10',
+    'carbon_50',
+    'carbon_100',
+    'climate_positive_3',
+    'climate_positive_6',
+    'climate_positive_12',
+    'sparkly_trees_25',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'trees_planted_100',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+  ];
+
   return (
     <>
       <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
@@ -24,69 +100,10 @@ export default function BadgesCollection() {
             <div className='flex justify-between'>
               <strong>Badges Collection</strong>
             </div>
-            <div className='rounded shadow-lg mt-3 bg-[#efe6e6] pt-4 pl-4 pr-4 pb-4'>
-              <div className='grid grid-cols-3 gap-y-4 text-center'>
-                {/* row one */}
-
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/carbon_10.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/carbon_50.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/carbon_1k.svg`} />
-                </div>
-
-                {/* row two */}
-
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/climate_positive_3.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/locked_climate_positive.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/locked_climate_positive.svg`} />
-                </div>
-
-                {/* row three */}
-
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/sparkly_trees_25.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/sparkly_trees_150.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/locked_climate_positive.svg`} />
-                </div>
-
-                {/* row four */}
-
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/trees_planted_100.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/trees_planted_500.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/trees_planted_1k.svg`} />
-                </div>
-
-                {/* row five */}
-
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/locked_climate_positive.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/locked_climate_positive.svg`} />
-                </div>
-                <div>
-                  <Image alt='me' width='100' height='100' src={`/badges/locked_climate_positive.svg`} />
-                </div>
-              </div>
-            </div>
+            {rank == 7 && <Badges list={jun_hong} />}
+            {rank == 1 && <Badges list={brayden} />}
+            {rank == 2 && <Badges list={eunice} />}
+            {rank == 3 && <Badges list={simran} />}
           </div>
         </div>
       </Layout>
