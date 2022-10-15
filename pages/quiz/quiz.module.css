@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.header > h1 {
+  font-weight: 800;
+  font-size: calc(1rem + 0.5vw);
+}
+
+.brief {
+  margin-top: 2.5rem;
+  font-size: calc(0.8rem + 0.5vw);
+}
+
+.brief > h1 {
+  font-size: calc(1rem + 0.5vw);
+  font-weight: 800;
+}

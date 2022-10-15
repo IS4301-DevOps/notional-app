@@ -1,0 +1,1 @@
+export { TITLE, BRIEF_PROMPT, BRIEF_TITLE } from './quiz';
