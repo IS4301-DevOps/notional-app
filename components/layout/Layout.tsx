@@ -48,7 +48,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
   const handleRouteToHome = () => router.replace('/');
 
   return (
-    <div className='bg-gray-50 min-h-full'>
+    <div className='bg-gray-50 min-h-screen'>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
