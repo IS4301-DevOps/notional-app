@@ -1,6 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
-import { Post, Tip, User } from '@prisma/client';
-import { AxiosError } from 'axios';
 import { NextPage } from 'next';
 
 import Carousel from '../components/landing/Carousel';
@@ -9,14 +6,13 @@ import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import TipCard from '../components/landing/TipCard';
-import { getAllPosts, getTodayTip } from '../lib/clientApi';
-import { useUserQuery } from '../hooks/queries';
+import { usePostsQuery, useTipQuery, useUserQuery } from '../hooks/queries';
 import { useCarbonBreakdown } from '../hooks/dashboard';
 
 const Home: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
-  const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
-  const tipQuery = useQuery<Tip, AxiosError>(['tip'], getTodayTip);
+  const postsQuery = usePostsQuery();
+  const tipQuery = useTipQuery();
   const { carbonSections, cashbackSections, totalCarbon, totalCashback, isLoading, isError } = useCarbonBreakdown(userQuery.data);
 
   //TODO: add LoadingOverlay

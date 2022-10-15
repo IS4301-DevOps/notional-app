@@ -44,6 +44,8 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
     router.back();
   };
 
+  const handleRouteToHome = () => router.replace('/');
+
   return (
     <div className='bg-gray-50 min-h-full'>
       <Head>
@@ -76,7 +78,6 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
 
                   {/* Right section on desktop */}
                   <div className='hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
-
                     {/* Profile dropdown */}
                     <Menu as='div' className='relative ml-4 flex-shrink-0'>
                       <div>
@@ -110,9 +111,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                   </div>
 
                   <div className='w-full py-5 lg:border-t lg:border-white lg:border-opacity-20'>
-                    <div className='lg:grid lg:grid-cols-3 lg:items-center lg:gap-8'>
-
-                    </div>
+                    <div className='lg:grid lg:grid-cols-3 lg:items-center lg:gap-8'></div>
                   </div>
 
                   <div className='absolute  flex-shrink-0 text-center font-medium lg:hidden'>
@@ -120,7 +119,9 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                       <div className='absolute left-1/2 -ml-20'>
                         <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
                       </div>
-                      <p className='text-lg hover:cursor-pointer font-semibold pt-1' onClick={() => router.replace("/")}>{heading}</p>
+                      <p className='text-lg hover:cursor-pointer font-semibold pt-1' onClick={handleRouteToHome}>
+                        {heading}
+                      </p>
                     </div>
                   </div>
                   {/* Menu button */}
