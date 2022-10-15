@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NextButton } from '../../components/quiz/NextButton';
 import PreviousButton from '../../components/quiz/PreviousButton';
 import QuizButton from '../../components/quiz/QuizButton';
+import Steps from '../../components/quiz/Steps';
 import { CONTAINER_STATE } from './constants/quiz'
 import classes from './quiz.module.css';
 
@@ -20,6 +21,10 @@ export const QuizQuestionPanel = ({
   return (
     <div className={classes['questions']}>
       {/* Steps */}
+      <Steps
+        count={5}
+        currentStep={pageNumber}
+      />
       {/* Question */}
       <div className={classes['bottom-nav']}>
         <PreviousButton pageNumber={pageNumber}

@@ -1,0 +1,27 @@
+.steps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+  margin: 0rem auto;
+  color: white;
+}
+
+.circle {
+  position: relative;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  background-color: #c4c4c4; /* From figma */
+  padding: 1.5vh;
+}
+
+.circle strong {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 0.9em;
+  color: "#D4D4D4";
+}

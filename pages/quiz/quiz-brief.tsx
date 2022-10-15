@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import * as QUIZ_CONSTANTS from "./constants";
 import classes from "./quiz.module.css";
 import { InfoRowContents as infoRows, PromptContents as promptContents } from './constants/';
