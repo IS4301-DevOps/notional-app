@@ -4,7 +4,7 @@ import PreviousButton from '../../components/quiz/PreviousButton';
 import QuizButton from '../../components/quiz/QuizButton';
 import Steps from '../../components/quiz/Steps';
 import { CONTAINER_STATE } from '../../constants/quiz'
-import classes from './quiz.module.css';
+import classes from '../../styles/pages/quiz/Quiz.module.css';
 import { QuizQuestions as quizQuestions } from "../../constants";
 import QuizOption from '../../components/quiz/QuizOption';
 import quiz from '.';

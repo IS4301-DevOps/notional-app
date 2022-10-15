@@ -57,20 +57,25 @@
   margin-left: -1.3em;
 }
 
-.bottom-nav {
+.questions > .bottom-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: auto;
 }
 
 .questions {
+  display: flex;
+  flex-direction: column;
   transition: opacity 1s ease-in-out;
+  height: 70vh;
   -webkit-animation: fadein 0.5s; 
   -moz-animation: fadein 0.5s; 
   -ms-animation: fadein 0.5s; 
   -o-animation: fadein 0.5s; 
   animation: fadein 0.5s;
 }
+
 
 .questions > * + * {
   margin-top: 1.5rem;

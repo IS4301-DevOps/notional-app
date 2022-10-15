@@ -1,6 +1,6 @@
 import { ColorInput } from "@mantine/core";
 import React, { useMemo } from "react";
-import classes from "./Steps.module.css";
+import classes from "../../styles/components/quiz/Steps.module.css";
 
 interface CircleProps {
   option: string,

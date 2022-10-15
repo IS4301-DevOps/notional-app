@@ -8,6 +8,7 @@
   padding: 1.5rem 1rem;
   position: relative;
   margin: 0rem 0.7rem;
+  min-height: 70vh;
   -webkit-animation: fadein 0.5s; 
   -moz-animation: fadein 0.5s; 
   -ms-animation: fadein 0.5s; 
