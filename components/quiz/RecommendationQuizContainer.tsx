@@ -49,23 +49,7 @@ const RecommendationQuizContainer = ({children}) => {
       <div className={classes['robot']}>
         <Image alt='Green Robot' width={'68'} height={'66'} src={`/quiz/green_robot.svg`}/>
       </div>
-
       {children}
-
-      {/* <div className={classes['bottom-nav']}>
-        {containerState === CONTAINER_STATE.QUIZ &&
-        <PreviousButton
-          pageNumber={pageNumber}
-          onClickHandler={(e) => setPageNumber(pageNumber - 1)}
-        />
-        }
-        {containerState === CONTAINER_STATE.QUIZ &&
-        <NextButton
-          pageNumber={pageNumber}
-          onClickHandler={(e) => setPageNumber(pageNumber + 1)}
-        />
-        }
-      </div> */}
     </section>
   )
 }

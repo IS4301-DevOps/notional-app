@@ -10,6 +10,7 @@ import RecommendationQuizContainer from '../../components/quiz/RecommendationQui
 import { CONTAINER_STATE } from './constants/quiz';
 import QuizBrief from './quiz-brief';
 import { QuizQuestionPanel } from './quiz-questions';
+import { useRouter } from 'next/router';
 
 const getContainerComponent = (currentState: CONTAINER_STATE, handleButtonClick: () => void): JSX.Element => {
   switch (currentState) {
@@ -25,14 +26,15 @@ const getContainerComponent = (currentState: CONTAINER_STATE, handleButtonClick:
 }
 
 const quiz = () => {
+  const navigate = useRouter();
   const handleButtonClick = () => {
-    console.log("handling button");
+    console.log("Container state: " + containerState);
     switch (containerState) {
       case CONTAINER_STATE.BRIEF:
         setContainerState(containerState + 1);
         break;
       case CONTAINER_STATE.QUIZ:
-        //!! Navigate to completion stage
+        navigate.push(`/quiz/recommendations`)
         break;
       default:
         break;
@@ -40,12 +42,9 @@ const quiz = () => {
   }
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const [containerState, setContainerState] = useState<CONTAINER_STATE>(CONTAINER_STATE.BRIEF);
-  const [pageNumber, setPageNumber] = useState<number>(1);
   const containerComponent:JSX.Element = useMemo(() => getContainerComponent(containerState, handleButtonClick), [containerState]);
 
 
-  // const [containerState, setContainerState] = useState<CONTAINER_STATE>(CONTAINER_STATE.BRIEF);
-  // const containerComponent:JSX.Element = useMemo(() => getContainerComponent(containerState), [containerState]);
 
   if (userQuery.isLoading) {
     return <Loading />;

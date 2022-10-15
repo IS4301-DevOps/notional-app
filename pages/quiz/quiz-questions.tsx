@@ -25,10 +25,16 @@ export const QuizQuestionPanel = ({
   handleButtonClick
 }: IQuizQuestionPanelProps) => {
 
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    console.log("revent defaul");
+    handleButtonClick();
+  }
+
   const [pageNumber, setPageNumber] = useState<number>(1);
 
   return (
-    <div className={classes['questions']}>
+    <form className={classes['questions']}>
       {/* Steps */}
       <Steps
         count={5}
@@ -39,6 +45,7 @@ export const QuizQuestionPanel = ({
       {/* Options */}
       {quizQuestions[pageNumber - 1].options.map((text, index) =>
         <QuizOption
+          key={index}
           option={intToChar(index)}
           text={text}
         />
@@ -47,15 +54,17 @@ export const QuizQuestionPanel = ({
         <PreviousButton pageNumber={pageNumber}
           onClickHandler={(e) => setPageNumber(pageNumber - 1)}
         />
+        {pageNumber === 5 &&
         <QuizButton
           state={containerState}
-          onClickHandler={() => handleButtonClick()}
+          onClickHandler={(e) => handleSubmitForm(e)}
         />
+        }
         <NextButton
           pageNumber={pageNumber}
           onClickHandler={(e) => setPageNumber(pageNumber + 1)}
         />
       </div>
-    </div>
+    </form>
   )
 }

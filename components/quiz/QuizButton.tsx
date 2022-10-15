@@ -4,7 +4,7 @@ import classes from './QuizButton.module.css';
 
 interface IQuizButtonProps {
   state: CONTAINER_STATE
-  onClickHandler: () => void;
+  onClickHandler: (e) => void;
 }
 
 const QuizButton = ({
@@ -17,7 +17,7 @@ const QuizButton = ({
     <button
       className={classes['quiz-button']}
       type={state === CONTAINER_STATE.BRIEF ? 'button' : 'submit'}
-      onClick={() => onClickHandler()}
+      onClick={(e) => onClickHandler(e)}
     >
       {state === CONTAINER_STATE.BRIEF ? 'Begin!' : 'Submit'}
     </button>

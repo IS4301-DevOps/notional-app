@@ -48,7 +48,7 @@ const Steps: React.FC<StepsProps> = ({ count, currentStep, style }) => {
       background: linearGradient,
       backgroundImage: linearGradient
     };
-    console.log(lineStyle);
+    //console.log(lineStyle);
 
     return lineStyle;
   }
