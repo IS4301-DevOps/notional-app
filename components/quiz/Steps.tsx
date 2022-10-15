@@ -3,11 +3,11 @@ import React, { useMemo } from "react";
 import classes from "./Steps.module.css";
 
 interface CircleProps {
-  number: number,
+  option: string,
   color: string,
 }
 
-const Circle: React.FC<CircleProps> = ({number, color}) => {
+export const Circle: React.FC<CircleProps> = ({option, color}) => {
 
   const circleStyle: React.CSSProperties = {
     backgroundColor: color,
@@ -15,7 +15,7 @@ const Circle: React.FC<CircleProps> = ({number, color}) => {
   }
   return (
     <a className={classes["circle"]} style={circleStyle}>
-      <strong>{number}</strong>
+      <strong>{option}</strong>
     </a>
   );
 };
@@ -58,7 +58,7 @@ const Steps: React.FC<StepsProps> = ({ count, currentStep, style }) => {
   for (let i = 1; i < count + 1; i++) {
     const color = i === currentStep ? '#7FB77E' : '#D4D4D4';
     circles.push(
-      <Circle key={i} number={i} color={color}/>
+      <Circle key={i} option={`${i}`} color={color}/>
     );
   }
 

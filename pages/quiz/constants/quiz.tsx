@@ -48,3 +48,55 @@ export const PromptContents: IPromptContent[] = [
     prompt: "Tap on the card to find out more about the company and actions they have taken!"
   },
 ]
+
+interface IQuizQuestion {
+  question: string;
+  options: string[] 
+}
+
+export const QuizQuestions: IQuizQuestion[] = [
+  {
+    question: "What are the aspects of ESG (Environmental , Social, Governance) you would like to consider?",
+    options: [
+      "Environmental",
+      "Social",
+      "Governance"
+    ]
+  },
+  {
+    question: "You selected Environmental. What Environmental factors matters to you?",
+    options: [
+      "Climate change and carbon emissions",
+      "Air and water pollution",
+      "Biodiversity",
+      "Energy efficiency",
+      "Water management"
+    ]
+  },
+  {
+    question: "You selected Social. What Social factors matters to you?",
+    options: [
+      "Working Conditions",
+      "Local communities",
+      "Empoyee relations and diversity",
+      "Conflict",
+      "Health and safety"
+    ]
+  },
+  {
+    question: "What Fashion Categories are you interested in?",
+    options: [
+      "Luxury",
+      "Casual",
+      "Sportswear",
+    ]
+  },
+  {
+    question: "Region",
+    options: [
+      "Local",
+      "International",
+      "Worldwide",
+    ]
+  }
+]

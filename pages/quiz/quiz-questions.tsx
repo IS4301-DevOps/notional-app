@@ -5,10 +5,19 @@ import QuizButton from '../../components/quiz/QuizButton';
 import Steps from '../../components/quiz/Steps';
 import { CONTAINER_STATE } from './constants/quiz'
 import classes from './quiz.module.css';
+import { QuizQuestions as quizQuestions } from "./constants";
+import QuizOption from '../../components/quiz/QuizOption';
+import quiz from '.';
 
 interface IQuizQuestionPanelProps {
   containerState: CONTAINER_STATE,
   handleButtonClick: () => void
+}
+
+const intToChar = (int: number) => {
+  const code = 'A'.charCodeAt(0);
+
+  return String.fromCharCode(code + int);
 }
 
 export const QuizQuestionPanel = ({
@@ -26,6 +35,14 @@ export const QuizQuestionPanel = ({
         currentStep={pageNumber}
       />
       {/* Question */}
+      <h2>{quizQuestions[pageNumber - 1].question}</h2>
+      {/* Options */}
+      {quizQuestions[pageNumber - 1].options.map((text, index) =>
+        <QuizOption
+          option={intToChar(index)}
+          text={text}
+        />
+      )} 
       <div className={classes['bottom-nav']}>
         <PreviousButton pageNumber={pageNumber}
           onClickHandler={(e) => setPageNumber(pageNumber - 1)}
