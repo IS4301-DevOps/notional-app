@@ -31,9 +31,9 @@ const Home: NextPage = () => {
         <h1 className='sr-only'>Landing</h1>
 
         {/* Main 3 column grid */}
-        <div className='grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8'>
+        <div className='container mx-auto sm:px-6 lg:px-8 space-y-4'>
           {/* Left column */}
-          <div className='grid grid-cols-1 gap-4 lg:col-span-2'>
+          {/* <div className='grid grid-cols-1 gap-4 lg:col-span-2'> */}
             <section aria-labelledby='tip-card'>
               <TipCard data={tipQuery.data} />
             </section>
@@ -44,15 +44,15 @@ const Home: NextPage = () => {
             <section aria-labelledby='quick-links-title'>
               <ActionPanel />
             </section>
-          </div>
+          {/* </div> */}
 
           {/* Right column */}
-          <div className='grid grid-cols-1 gap-4'>
+          {/* <div className='grid grid-cols-1 gap-4'> */}
             {/* Dashboard Card */}
             <section aria-labelledby='dashboard-card'>
               <DashboardCard sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]} />
             </section>
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </Layout>
