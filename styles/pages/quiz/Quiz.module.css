@@ -41,6 +41,7 @@
 
 .brief > section > * + * {
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .brief li {
@@ -64,11 +65,12 @@
   margin-top: auto;
 }
 
+
 .questions {
   display: flex;
   flex-direction: column;
   transition: opacity 1s ease-in-out;
-  height: 70vh;
+  min-height: 70vh;
   -webkit-animation: fadein 0.5s; 
   -moz-animation: fadein 0.5s; 
   -ms-animation: fadein 0.5s; 

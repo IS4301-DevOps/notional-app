@@ -44,10 +44,10 @@ const QuizBrief = ({
           )}
         </ul>
       </section>
-      <QuizButton
-        state={containerState}
-        onClickHandler={handleButtonClick}
-      />
+        <QuizButton
+          state={containerState}
+          onClickHandler={handleButtonClick}
+        />
     </div>
   )
 }

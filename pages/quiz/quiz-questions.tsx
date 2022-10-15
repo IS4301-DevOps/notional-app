@@ -68,3 +68,5 @@ export const QuizQuestionPanel = ({
     </form>
   )
 }
+
+export default QuizQuestionPanel

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import * as QUIZ_CONSTANTS from "../../constants";
 import Layout from '../../components/layout/Layout';
 import { useUserQuery } from '../../hooks/queries';
