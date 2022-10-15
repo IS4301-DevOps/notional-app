@@ -14,9 +14,45 @@
 .brief {
   margin-top: 2.5rem;
   font-size: calc(0.8rem + 0.5vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.brief > h1 {
+.brief > * + * {
+  margin-top: 1.5rem;
+}
+
+
+.brief h2 {
+  font-weight: 700;
+}
+
+.brief h1 {
   font-size: calc(1rem + 0.5vw);
   font-weight: 800;
+}
+
+.brief > section > * + * {
+  margin-top: 1rem;
+}
+
+.brief li {
+  display: list-item;
+  margin-left: 1.2rem;
+}
+
+.brief ul li::before {
+  content: "\2022";
+  color:#333333;
+  width: 1em;
+  padding-right: 12px;
+  font-weight: bold;
+  margin-left: -1.3em;
+}
+
+.bottom-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

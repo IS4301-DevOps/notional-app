@@ -1,0 +1,27 @@
+.info-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.textual-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.info-row > * + * {
+  margin-left: 0.5rem;
+}
+
+.textual-content h2 {
+  font-weight: 600;
+}
+
+.textual-content span {
+  color: #999999;
+  font-weight: 500;
+  line-height: 0.8rem;
+}
