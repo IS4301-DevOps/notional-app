@@ -1,4 +1,5 @@
-import React from "react";
+import { ColorInput } from "@mantine/core";
+import React, { useMemo } from "react";
 import classes from "./Steps.module.css";
 
 interface CircleProps {
@@ -26,19 +27,48 @@ interface StepsProps {
 }
 
 const Steps: React.FC<StepsProps> = ({ count, currentStep, style }) => {
+  const getHandleStyle = () => {
+    //Dynamically generate linear gradient
+    const interval = 20;
+    let currPercentage = 0;
+    let linearGradient = "linear-gradient(to right,"
+    for (let i = 1; i <=5; i++) {
+      const colourCode = i === currentStep ? "#7FB77E" : "#D4D4D4";
+      linearGradient += " " + colourCode + " " + Math.round(currPercentage) + "%,";
+      currPercentage += interval;
+      linearGradient += " " + colourCode + " " + Math.round(currPercentage) + "%";
+      if (i !== 5) {
+        linearGradient += ",";
+      } else {
+        linearGradient += ")"
+      }
+    }
+
+    const lineStyle: React.CSSProperties = {
+      background: linearGradient,
+      backgroundImage: linearGradient
+    };
+    console.log(lineStyle);
+
+    return lineStyle;
+  }
   let circles: JSX.Element[] = [];
+  const lineStyle = useMemo<React.CSSProperties>(() => getHandleStyle(), [currentStep])
 
-
-  for (var i = 1; i < count + 1; i++) {
+  for (let i = 1; i < count + 1; i++) {
     const color = i === currentStep ? '#7FB77E' : '#D4D4D4';
     circles.push(
       <Circle key={i} number={i} color={color}/>
     );
   }
 
+
   return (
-    <div style={style} className={classes["steps"]}>
-      {circles}
+    <div className={classes['container']}>
+      <div style={style} className={classes["steps"]}>
+        {circles}
+      </div>
+      <hr style={lineStyle}/>
     </div>
   );
 };
