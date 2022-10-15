@@ -42,7 +42,7 @@ const QuizPage = () => {
   }
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const [containerState, setContainerState] = useState<CONTAINER_STATE>(CONTAINER_STATE.BRIEF);
-  const containerComponent:JSX.Element = useMemo(() => getContainerComponent(containerState, handleButtonClick), [containerState]);
+  const containerComponent:JSX.Element = useMemo(() => getContainerComponent(containerState, handleButtonClick), [containerState, handleButtonClick]);
 
 
 

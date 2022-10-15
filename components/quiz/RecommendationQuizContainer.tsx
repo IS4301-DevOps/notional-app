@@ -25,22 +25,6 @@ interface ContainerProps {
 // }
 
 const RecommendationQuizContainer = ({children}) => {
-  // const [containerState, setContainerState] = useState<CONTAINER_STATE>(CONTAINER_STATE.BRIEF);
-  // const [pageNumber, setPageNumber] = useState<number>(1);
-  // const containerComponent:JSX.Element = useMemo(() => getContainerComponent(containerState, handleButtonClick), [containerState]);
-
-  // const handleButtonClick = () => {
-  //   switch (containerState) {
-  //     case CONTAINER_STATE.BRIEF:
-  //       setContainerState(containerState + 1);
-  //       break;
-  //     case CONTAINER_STATE.QUIZ:
-  //       //!! Navigate to completion stage
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
 
   return (
 
