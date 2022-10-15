@@ -32,7 +32,7 @@ const TransactionsPage = () => {
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Transactions</h1>
         <h2 className='text-md font-medium leading-6 text-gray-900'>Transactions</h2>
-        <section className='mt-6' aria-labelledby='dashboard-card'>
+        <section className='mt-6' aria-labelledby='transactions-list'>
           <div className='overflow-hidden rounded-lg bg-white shadow'>
             <div className='px-6 py-3'>
               {!_.isEmpty(transactions) ? (
