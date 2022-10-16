@@ -1,29 +1,12 @@
 import { Dispatch, Fragment, SetStateAction, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { notiData } from '../../constants/notifications';
 
 interface Props {
     openNoti: boolean;
     setOpenNoti: Dispatch<SetStateAction<boolean>>
 }
-
-const notiData = [
-    {
-        id: 1,
-        message: 'Not sure what to put as notifications here though',
-        date: '13 Oct 2022 15:21'
-    },
-    {
-        id: 2,
-        message: 'I should probably put some proper info here instead of all these texts',
-        date: '07 Oct 2022 20:10'
-    },
-    {
-        id: 3,
-        message: 'Some very long notifications here like seriously super very long, maybe some grandmother story or some notifications that the banks actually want to tell the user a story for 10 years idk, just something very long. This is still not long enough so lets make it longer and see how it goes lets gooooooooooooo',
-        date: '01 Oct 2022 11:41'
-    },
-]
 
 const Notifications = ({ openNoti, setOpenNoti }: Props) => {
     return (
@@ -75,11 +58,12 @@ const Notifications = ({ openNoti, setOpenNoti }: Props) => {
                                             {notiData.map((data) => (
                                                 <li key={data.id}>
                                                     <div className="group relative flex items-center py-4 px-5">
-                                                        <div className="-m-1 block flex-1 p-1">
-                                                            <div className="absolute inset-0 group-hover:bg-gray-50" aria-hidden="true" />
+                                                        <div className="-m-1 block flex-1 p-1 hover:cursor-pointer">
+                                                            <TrashIcon className="h-5 w-5 float-right text-gray-400" />
+                                                            <div className="absolute inset-0" aria-hidden="true" />
                                                             <div className="relative flex min-w-0 flex-1 items-center">
                                                                 <div className="ml-4">
-                                                                    <p className="text-ellipsis text-sm font-medium text-gray-900">{data.message}</p>
+                                                                    <p className="text-ellipsis text-sm font-medium pr-2 text-gray-900">{data.message}</p>
                                                                     <p className="text-clip text-xs font-thin text-gray-900 pt-5">{data.date}</p>
                                                                 </div>
                                                             </div>
