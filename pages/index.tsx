@@ -1,6 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
-import { Post, Tip, User } from '@prisma/client';
-import { AxiosError } from 'axios';
 import { NextPage } from 'next';
 
 import Carousel from '../components/landing/Carousel';
@@ -9,14 +6,13 @@ import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import TipCard from '../components/landing/TipCard';
-import { getAllPosts, getTodayTip } from '../lib/clientApi';
-import { useUserQuery } from '../hooks/queries';
+import { usePostsQuery, useTipQuery, useUserQuery } from '../hooks/queries';
 import { useCarbonBreakdown } from '../hooks/dashboard';
 
 const Home: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
-  const postsQuery = useQuery<Post[], AxiosError>(['posts'], getAllPosts);
-  const tipQuery = useQuery<Tip, AxiosError>(['tip'], getTodayTip);
+  const postsQuery = usePostsQuery();
+  const tipQuery = useTipQuery();
   const { carbonSections, cashbackSections, totalCarbon, totalCashback, isLoading, isError } = useCarbonBreakdown(userQuery.data);
 
   //TODO: add LoadingOverlay
@@ -35,9 +31,9 @@ const Home: NextPage = () => {
         <h1 className='sr-only'>Landing</h1>
 
         {/* Main 3 column grid */}
-        <div className='grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8'>
+        <div className='container mx-auto sm:px-6 lg:px-8 space-y-4'>
           {/* Left column */}
-          <div className='grid grid-cols-1 gap-4 lg:col-span-2'>
+          {/* <div className='grid grid-cols-1 gap-4 lg:col-span-2'> */}
             <section aria-labelledby='tip-card'>
               <TipCard data={tipQuery.data} />
             </section>
@@ -48,15 +44,15 @@ const Home: NextPage = () => {
             <section aria-labelledby='quick-links-title'>
               <ActionPanel />
             </section>
-          </div>
+          {/* </div> */}
 
           {/* Right column */}
-          <div className='grid grid-cols-1 gap-4'>
+          {/* <div className='grid grid-cols-1 gap-4'> */}
             {/* Dashboard Card */}
             <section aria-labelledby='dashboard-card'>
               <DashboardCard sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]} />
             </section>
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </Layout>

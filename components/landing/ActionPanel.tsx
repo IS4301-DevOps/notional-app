@@ -14,7 +14,7 @@ const actions = [
   },
   {
     name: 'Recommend',
-    href: 'quiz',
+    href: 'recommend',
     imageSrc: 'https://img.icons8.com/color/480/000000/good-quality--v1.png',
   },
 ];
@@ -29,12 +29,10 @@ const ActionPanel = () => {
           {actions.map(action => (
             <div key={action.name} onClick={() => router.push(`/${action.href}`)}>
               <div className='text-center hover:cursor-pointer flex flex-col'>
-                <div className='flex-shrink-0'>
-                  <div className='flow-root'>
-                    <div className='mx-auto h-24 w-24'>
-                      <Image src={action.imageSrc} width={100} height={100} alt='action' />
+                <div className='flex-shrink-0 flow-root'>
+                    <div className='mx-auto'>
+                      <Image src={action.imageSrc} width={80} height={80} alt='action' />
                     </div>
-                  </div>
                 </div>
                 <div className='mt-3 sm:mt-0 sm:ml-3 lg:mt-3 lg:ml-0'>
                   <h3 className='text-base font-semibold text-gray-900'>{action.name}</h3>

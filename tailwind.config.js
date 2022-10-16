@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 const colors = require('tailwindcss/colors');
 module.exports = {
@@ -7,17 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        sky: colors.sky,
-        teal: colors.teal,
-        cyan: colors.cyan,
-        rose: colors.rose,
         primary: colors.green,
         secondary: colors.lime,
         accent: colors.orange,
       },
-      fontFamily: {
-        'serif': ['Poppins', ...defaultTheme.fontFamily.serif]
-      }
+    },
+    fontFamily: {
+      poppins: ['Poppins', 'sans'],
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],

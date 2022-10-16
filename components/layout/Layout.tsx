@@ -1,5 +1,5 @@
 import { Menu, Popover, Transition } from '@headlessui/react';
-import { ArrowLeftIcon, Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Fragment, ReactNode, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -17,6 +17,7 @@ import Notifications from '../common/Notifications';
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Dashboard', href: '/dashboard', current: false },
+  { name: 'Leaderboard', href: '/dashboard', current: false },
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -44,6 +45,8 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
     router.back();
   };
 
+  const handleRouteToHome = () => router.replace('/');
+
   return (
     <div className='bg-gray-50 min-h-screen'>
       <Head>
@@ -52,14 +55,14 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <header>
-        <Popover as='header' className='bg-white shadow mb-32'>
+        <Popover as='header' className='bg-white shadow'>
           {({ open }) => (
             <>
               <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
                 <div className='relative flex flex-wrap items-center justify-center py-5 lg:justify-between'>
                   {/* Back Button */}
                   <div className='absolute left-0 flex-shrink-0 lg:static'>
-                    <button type='button' onClick={onBackClicked}>
+                    <button type='button' onClick={onBackClicked} className='ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'>
                       <ArrowLeftIcon className='h-5 w-5' />
                     </button>
                   </div>
@@ -76,7 +79,6 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
 
                   {/* Right section on desktop */}
                   <div className='hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5'>
-
                     {/* Profile dropdown */}
                     <Menu as='div' className='relative ml-4 flex-shrink-0'>
                       <div>
@@ -110,9 +112,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                   </div>
 
                   <div className='w-full py-5 lg:border-t lg:border-white lg:border-opacity-20'>
-                    <div className='lg:grid lg:grid-cols-3 lg:items-center lg:gap-8'>
-
-                    </div>
+                    <div className='lg:grid lg:grid-cols-3 lg:items-center lg:gap-8'></div>
                   </div>
 
                   <div className='absolute  flex-shrink-0 text-center font-medium lg:hidden'>
@@ -120,7 +120,9 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                       <div className='absolute left-1/2 -ml-20'>
                         <Image src={liveBetterLogo} height={32} width={32} alt='livebetter-logo' />
                       </div>
-                      <p className='text-lg hover:cursor-pointer font-semibold pt-1' onClick={() => router.replace("/")}>{heading}</p>
+                      <p className='text-lg hover:cursor-pointer font-semibold pt-1' onClick={handleRouteToHome}>
+                        {heading}
+                      </p>
                     </div>
                   </div>
                   {/* Menu button */}
@@ -141,6 +143,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
               </div>
 
               <Notifications openNoti={openNoti} setOpenNoti={setOpenNoti} />
+
               <Transition.Root as={Fragment}>
                 <div className='lg:hidden'>
                   <Transition.Child
@@ -192,7 +195,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                         <div className='pt-4 pb-2'>
                           <div className='flex items-center px-5'>
                             <div className='flex-shrink-0'>
-                              <img className='h-10 w-10 rounded-full' src={user.imageUrl} alt='' />
+                              <Image className='rounded-full' src={user.imageUrl} alt='' height={50} width={50} />
                             </div>
                             <div className='ml-3 min-w-0 flex-1'>
                               <div className='truncate text-base font-medium text-gray-800'>{user.name}</div>
@@ -219,7 +222,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
           )}
         </Popover>
       </header>
-      <main className='-mt-24 pb-8 flex flex-col'>{children}</main>
+      <main className='mt-8 pb-8'>{children}</main>
       <footer>
         <Footer />
       </footer>

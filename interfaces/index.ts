@@ -1,5 +1,5 @@
-import { DefaultMantineColor } from "@mantine/core";
-import { Transaction, TransactionCategory } from "@prisma/client";
+import { DefaultMantineColor } from '@mantine/core';
+import { Transaction, TransactionCategory } from '@prisma/client';
 
 export type User = {
   id: string;
@@ -40,4 +40,10 @@ export type RingProgressSection = {
   value: number;
   color: DefaultMantineColor;
   tooltip?: React.ReactNode;
-}
+};
+
+export type CompanyRating = {
+  company: string;
+  logo: string;
+  rating: number;
+};
