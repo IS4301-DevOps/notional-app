@@ -6,8 +6,10 @@ import { useTransactionsCategoryQuery } from './queries';
 
 export const useCarbonBreakdown = (user: User) => {
   const curDate = dayjs();
-  const startDate = curDate.subtract(1, 'month').toDate();
-  const endDate = curDate.toDate();
+  /* This is temporary!! Need to change before presentation as the data in db is current to the presentation date */
+  const startDate = curDate.toDate(); 
+  const endDate = curDate.add(1, 'month').toDate();
+  
   const catQuery = useTransactionsCategoryQuery(user?.id, startDate, endDate);
 
   const breakdownByUser = catQuery.data;
