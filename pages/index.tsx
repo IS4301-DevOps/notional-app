@@ -29,30 +29,23 @@ const Home: NextPage = () => {
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
         <h1 className='sr-only'>Landing</h1>
-
-        {/* Main 3 column grid */}
         <div className='container mx-auto sm:px-6 lg:px-8 space-y-4'>
-          {/* Left column */}
-          {/* <div className='grid grid-cols-1 gap-4 lg:col-span-2'> */}
-            <section aria-labelledby='tip-card'>
-              <TipCard data={tipQuery.data} />
-            </section>
-            <section aria-labelledby='article-carousel'>
-              <Carousel data={postsQuery.data} />
-            </section>
-            {/* Actions panel */}
-            <section aria-labelledby='quick-links-title'>
-              <ActionPanel />
-            </section>
-          {/* </div> */}
-
-          {/* Right column */}
-          {/* <div className='grid grid-cols-1 gap-4'> */}
-            {/* Dashboard Card */}
-            <section aria-labelledby='dashboard-card'>
-              <DashboardCard sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]} />
-            </section>
-          {/* </div> */}
+          {/* Tip section */}
+          <section aria-labelledby='tip-card'>
+            <TipCard data={tipQuery.data} />
+          </section>
+          {/* Article carousel */}
+          <section aria-labelledby='article-carousel'>
+            <Carousel data={postsQuery.data} />
+          </section>
+          {/* Actions panel */}
+          <section aria-labelledby='quick-links-title'>
+            <ActionPanel />
+          </section>
+          {/* Dashboard Card */}
+          <section aria-labelledby='dashboard-card'>
+            <DashboardCard sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]} />
+          </section>
         </div>
       </div>
     </Layout>

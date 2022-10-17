@@ -1,6 +1,7 @@
-import { BarsArrowDownIcon, BarsArrowUpIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { BarsArrowDownIcon, BarsArrowUpIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+
 import Loading from '../../components/common/Loading';
 import Layout from '../../components/layout/Layout';
 import RatingList from '../../components/recommend/RatingList';
@@ -11,6 +12,7 @@ import nike from '../../public/logos/nike-logo.svg';
 import deckersOutdoor from '../../public/logos/deckers-outdoor-logo.svg';
 import adidas from '../../public/logos/adidas-logo.svg';
 import { sortRatings } from '../../utils/helpers';
+import SearchBar from '../../components/recommend/SearchBar';
 
 const SORT_DEFAULT = 'desc';
 
@@ -52,31 +54,18 @@ const Recommend = () => {
           <h2 className='text-md font-medium leading-6 text-gray-900'>Top ESG Companies</h2>
           <section className='mt-6 max-h-full overflow-auto' aria-labelledby='transactions-list'>
             <div className='flex flex-1 items-center justify-center lg:ml-6 lg:justify-end'>
-              <div className='w-full max-w-lg lg:max-w-xs'>
-                <label htmlFor='search' className='sr-only'>
-                  Search
-                </label>
-                <div className='relative'>
-                  <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-                    <MagnifyingGlassIcon className='h-5 w-5 text-gray-400' aria-hidden='true' />
-                  </div>
-                  <input
-                    id='search'
-                    name='search'
-                    className='block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm'
-                    placeholder='Search'
-                    type='search'
-                  />
-                </div>
-              </div>
+              <SearchBar />
               <button onClick={handleSort} className='ml-3 h-6 w-6 rounded-full text-gray-400 hover:text-gray-500'>
                 {sortBy === 'asc' ? <BarsArrowDownIcon /> : <BarsArrowUpIcon />}
               </button>
             </div>
             <div className='py-3'>
               {ratings.length ? (
-                <div className='mt-3'>
+                <div className='mt-3 bg-white rounded-lg shadow'>
+                  <div className='py-3 px-6'>
+
                   <RatingList data={data} />
+                  </div>
                 </div>
               ) : (
                 <p className='text-sm leading-6 text-gray-700'>No rankings</p>
