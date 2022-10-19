@@ -38,7 +38,7 @@ const SetGoalPage: NextPage = () => {
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <h1 className='sr-only'>Dashboard</h1>
+        <h1 className='sr-only'>Set Target</h1>
         {/* Main 3 column grid */}
         <div className='grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8'>
           {/* Right column */}
@@ -47,16 +47,16 @@ const SetGoalPage: NextPage = () => {
               <div className='overflow-hidden rounded-lg bg-white shadow'>
                 <div className='p-6'>
                   <div className='text-left'>
-                    <h2 className='text-base font-bold text-gray-900' id='dashboard-title'>
+                    <h2 className='text-base font-bold text-gray-900'>
                       Change Monthly Goal
                     </h2>
-                    <p className='text-base font-medium text-gray-900' id='dashboard-title'>
+                    <p className='text-base font-medium text-gray-900'>
                       I aim to reduce this amount of greenhouse gas:
                     </p>
                   </div>
                   <div className='mt-6 flow-root'></div>
                   <div className='text-center pb-5'>
-                    <h2 className='text-5xl font-bold text-gray-900' id='dashboard-title'>
+                    <h2 className='text-5xl font-bold text-gray-900'>
                       {target}
                     </h2>
                     <p className='text-lg'>kg CO₂</p>
@@ -98,7 +98,7 @@ const SetGoalPage: NextPage = () => {
                       </>
                     )}
 
-                    <p className='text-xs font-medium text-gray-900 pt-8' id='dashboard-title'>
+                    <p className='text-xs font-medium text-gray-900 pt-8'>
                       Set a target for your monthly carbon emission savings and keep track of your progress to making the world a better
                       place!
                     </p>
