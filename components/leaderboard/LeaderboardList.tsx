@@ -38,6 +38,33 @@ const people = [
     treesPlanted: '1223',
     color: '#FFC090',
   },
+  {
+    name: 'David',
+    badges: ['carbon_100', 'climate_positive_6'],
+    imageUrl:
+      'https://images.unsplash.com/profile-1602788303253-d8e1b652c4c9image?dpr=1&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
+    ranking: '4',
+    treesPlanted: '1132',
+    color: '#FFFF',
+  },
+  {
+    name: 'Jamie',
+    badges: ['carbon_100', 'sparkly_trees_25'],
+    imageUrl:
+      'https://images.unsplash.com/profile-fb-1617439910-9ab0cf41c860.jpg?dpr=1&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
+    ranking: '5',
+    treesPlanted: '1067',
+    color: '#FFFF',
+  },
+  {
+    name: 'Bob',
+    badges: ['carbon_50', 'climate_positive_3'],
+    imageUrl:
+      'https://images.unsplash.com/profile-1584566982645-74be0a12137eimage?dpr=1&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
+    ranking: '6',
+    treesPlanted: '957',
+    color: '#FFFF',
+  },
 
   // More people...
 ];
