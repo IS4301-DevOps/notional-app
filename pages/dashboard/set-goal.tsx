@@ -48,10 +48,10 @@ const SetGoalPage: NextPage = () => {
                 <div className='p-6'>
                   <div className='text-left'>
                     <h2 className='text-base font-bold text-gray-900'>
-                      Change Monthly Goal
+                      Change Monthly Limit Goal
                     </h2>
                     <p className='text-base font-medium text-gray-900'>
-                      I aim to reduce this amount of greenhouse gas:
+                      I aim to stay at or below this amount of carbon emission:
                     </p>
                   </div>
                   <div className='mt-6 flow-root'></div>
@@ -99,8 +99,10 @@ const SetGoalPage: NextPage = () => {
                     )}
 
                     <p className='text-xs font-medium text-gray-900 pt-8'>
-                      Set a target for your monthly carbon emission savings and keep track of your progress to making the world a better
-                      place!
+                      Set a limit for your monthly carbon footprint and keep track of your usage to make the world a better place!
+                    </p>
+                    <p className='text-xs font-medium text-gray-900'>
+                      We will notify you once you are nearing your carbon emission limit, or if you have exceeded it.
                     </p>
                   </div>
                 </div>
