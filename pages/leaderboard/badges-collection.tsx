@@ -20,7 +20,7 @@ export default function BadgesCollection() {
     return <div>Error: {errorMessage}</div>;
   }
 
-  const jun_hong = [
+  const steven = [
     'carbon_10',
     'carbon_50',
     'locked_climate_positive',
@@ -100,7 +100,7 @@ export default function BadgesCollection() {
             <div className='flex justify-between'>
               <strong>Badges Collection</strong>
             </div>
-            {rank == 7 && <Badges list={jun_hong} />}
+            {rank == 7 && <Badges list={steven} />}
             {rank == 1 && <Badges list={brayden} />}
             {rank == 2 && <Badges list={eunice} />}
             {rank == 3 && <Badges list={simran} />}

@@ -3,7 +3,7 @@ import LeaderboardCard from './LeaderboardCard';
 
 const people = [
   {
-    name: 'Chen Jun Hong (Me)',
+    name: 'Steven Lim (Me)',
     badges: ['carbon_50', 'sparkly_trees_25'],
     imageUrl:
       'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
