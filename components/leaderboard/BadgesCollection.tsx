@@ -4,7 +4,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/24/outline';
 
 export default function BadgesCollection(props) {
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className='rounded shadow-lg mt-3 bg-[#efe6e6] pt-4 pl-4 pr-4 pb-4'>
@@ -17,7 +17,9 @@ export default function BadgesCollection(props) {
               <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
                 {/*header*/}
                 <div className='flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t'>
-                  <h3 className='text-2xl font-semibold'>Offset 10kg of CO2</h3>
+                  <h3 className='text-2xl font-semibold'>
+                    Offset 10kg of CO<sub>2</sub>
+                  </h3>
                   <button
                     className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
                     onClick={() => setShowModal(false)}
@@ -30,8 +32,11 @@ export default function BadgesCollection(props) {
                 <Image alt='me' width='100' height='100' src={`/badges/carbon_10.svg`} />
                 <div className='relative p-6 pt-0 flex-auto'>
                   <p className='my-4 text-slate-500 text-lg leading-relaxed'>
-                    Awesome job! You&apos;ve managed to offset <strong>10kg worth of CO2</strong> and played a huge role in reducing the
-                    carbon footprint for the earth!
+                    Awesome job! You&apos;ve managed to offset{' '}
+                    <strong>
+                      10kg worth of CO<sub>2</sub>
+                    </strong>{' '}
+                    and played a huge role in reducing the carbon footprint for the earth!
                   </p>
                 </div>
                 {/*footer*/}
