@@ -9,7 +9,7 @@ const actions = [
   },
   {
     name: 'Rewards',
-    href: 'dashboard/cashback',
+    href: 'rewards',
     imageSrc: 'https://img.icons8.com/color/120/000000/gift.png',
   },
   {
