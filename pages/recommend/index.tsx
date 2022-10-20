@@ -1,6 +1,6 @@
 import { BarsArrowDownIcon, BarsArrowUpIcon } from '@heroicons/react/24/outline';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import _ from 'lodash';
 
 import Loading from '../../components/common/Loading';
 import Layout from '../../components/layout/Layout';
@@ -13,6 +13,7 @@ import deckersOutdoor from '../../public/logos/deckers-outdoor-logo.svg';
 import adidas from '../../public/logos/adidas-logo.svg';
 import { sortRatings } from '../../utils/helpers';
 import SearchBar from '../../components/recommend/SearchBar';
+import QuizCard from '../../components/recommend/QuizCard';
 
 const SORT_DEFAULT = 'desc';
 
@@ -25,18 +26,34 @@ const ratings = [
 ];
 
 const Recommend = () => {
-  const router = useRouter();
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const [sortBy, setSortBy] = useState(SORT_DEFAULT);
+  const [search, setSearch] = useState('');
   const [data, setData] = useState(sortRatings(ratings, SORT_DEFAULT));
 
-  const handleRouteToQuiz = () => router.push('/quiz');
+  let filteredData = data;
+
+  if (search !== '') {
+    filteredData = data.filter(({ company }) => company.toLowerCase().includes(search.toLowerCase()));
+  }
 
   const handleSort = () => {
     const sortMethod = sortBy === 'desc' ? 'asc' : 'desc';
-    setData(sortRatings(ratings, sortMethod));
+    setData(sortRatings(filteredData, sortMethod));
     setSortBy(sortMethod);
   };
+
+  const handleSearchChanged = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(evt.target.value);
+  };
+
+  const debouncedSearch = useMemo(() => _.debounce(handleSearchChanged, 300), []);
+
+  useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
 
   if (userQuery.isLoading) {
     return <Loading />;
@@ -54,36 +71,28 @@ const Recommend = () => {
           <h2 className='text-md font-medium leading-6 text-gray-900'>Top ESG Companies</h2>
           <section className='mt-6 max-h-full overflow-auto' aria-labelledby='transactions-list'>
             <div className='flex flex-1 items-center justify-center lg:ml-6 lg:justify-end'>
-              <SearchBar />
+              <SearchBar inputTextInnerProps={{ onChange: debouncedSearch }} />
               <button onClick={handleSort} className='ml-3 h-6 w-6 rounded-full text-gray-400 hover:text-gray-500'>
                 {sortBy === 'asc' ? <BarsArrowDownIcon /> : <BarsArrowUpIcon />}
               </button>
             </div>
             <div className='py-3'>
-              {ratings.length ? (
-                <div className='mt-3 bg-white rounded-lg shadow'>
+              <div className='mt-3 bg-white rounded-lg shadow'>
+                {filteredData.length ? (
                   <div className='py-3 px-6'>
-
-                  <RatingList data={data} />
+                    <RatingList data={filteredData} />
                   </div>
-                </div>
-              ) : (
-                <p className='text-sm leading-6 text-gray-700'>No rankings</p>
-              )}
+                ) : (
+                  <div className='py-3 px-6'>
+                    <p className='text-sm font-medium leading-6 text-gray-700'>No rankings</p>
+                  </div>
+                )}
+              </div>
             </div>
           </section>
           <section aria-labelledby='start-quiz'>
             <div className='sticky bottom-0'>
-              <div className='rounded-lg bg-orange-100 px-4 py-2 sm:px-6 text-center space-y-2'>
-                <h3 className='text-sm font-semibold leading-6 text-gray-900'>Want more personalised recommendations?</h3>
-                <button
-                  type='button'
-                  onClick={handleRouteToQuiz}
-                  className='inline-flex items-center rounded-md border border-green-600 bg-white px-3 py-2 text-sm font-semibold leading-4 text-green-600 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
-                >
-                  Take Recommendation Quiz
-                </button>
-              </div>
+              <QuizCard />
             </div>
           </section>
         </div>
