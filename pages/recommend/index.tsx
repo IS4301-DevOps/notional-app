@@ -14,6 +14,7 @@ import adidas from '../../public/logos/adidas-logo.svg';
 import { sortRatings } from '../../utils/helpers';
 import SearchBar from '../../components/recommend/SearchBar';
 import QuizCard from '../../components/recommend/QuizCard';
+import { useDebounceSearch } from '../../hooks';
 
 const SORT_DEFAULT = 'desc';
 
@@ -28,7 +29,7 @@ const ratings = [
 const Recommend = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const [sortBy, setSortBy] = useState(SORT_DEFAULT);
-  const [search, setSearch] = useState('');
+  const { search, debouncedSearch } = useDebounceSearch();
 
   let filteredData = ratings;
 
@@ -42,18 +43,6 @@ const Recommend = () => {
     const sortMethod = sortBy === 'desc' ? 'asc' : 'desc';
     setSortBy(sortMethod);
   };
-
-  const handleSearchChanged = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(evt.target.value);
-  };
-
-  const debouncedSearch = useMemo(() => _.debounce(handleSearchChanged, 300), []);
-
-  useEffect(() => {
-    return () => {
-      debouncedSearch.cancel();
-    };
-  }, [debouncedSearch]);
 
   if (userQuery.isLoading) {
     return <Loading />;
