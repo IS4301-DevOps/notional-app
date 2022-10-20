@@ -47,3 +47,11 @@ export type CompanyRating = {
   logo: string;
   rating: number;
 };
+
+export type Reward = {
+  id: number;
+  name: string;
+  company: string;
+  logo: string;
+  points: number;
+};

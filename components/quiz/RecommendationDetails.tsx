@@ -23,7 +23,7 @@ export default function RecommendationDetails() {
         <div>
           <Image
             layout='fixed'
-            width='140px'
+            width='100px'
             height='30px'
             src='/recommendation-results/view-recommendation/PlanetProgressBar.svg'
             alt=''
@@ -47,7 +47,7 @@ export default function RecommendationDetails() {
         <div>
           <Image
             layout='fixed'
-            width='140px'
+            width='100px'
             height='30px'
             src='/recommendation-results/view-recommendation/PeopleProgressBar.svg'
             alt=''
@@ -71,7 +71,7 @@ export default function RecommendationDetails() {
         <div>
           <Image
             layout='fixed'
-            width='140px'
+            width='100px'
             height='30px'
             src='/recommendation-results/view-recommendation/AnimalsProgressBar.svg'
             alt=''
@@ -100,6 +100,16 @@ export default function RecommendationDetails() {
         <ul className='list-disc ml-8 mt-2 mb-4'>
           <li>Implements gender equality and empowerment initiatives in its supply chain.</li>
           <li>Discloses policies to protect suppliers in its supply chain from the impact of COVID-19 but not workers.</li>
+        </ul>
+      </div>
+      <div className='h-[6px] bg-gray-100'></div>
+      <div>
+        <h2 className='text-[#0FAC74] font-semibold mt-4'>ANIMAL</h2>
+        <ul className='list-disc ml-8 mt-2 mb-4'>
+          <li>It has a formal animal welfare policy aligned with Five Freedoms.</li>
+          <li>It has a policy to source wool from non-mulesed sheep.</li>
+          <li>It does not use fur, angora, exotic animal hair or exotic animal skin.</li>
+          <li>It traces some animal products to the first stage of production.</li>
         </ul>
       </div>
     </div>

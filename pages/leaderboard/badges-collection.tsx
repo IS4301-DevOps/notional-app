@@ -20,7 +20,7 @@ export default function BadgesCollection() {
     return <div>Error: {errorMessage}</div>;
   }
 
-  const jun_hong = [
+  const steven = [
     'carbon_10',
     'carbon_50',
     'locked_climate_positive',
@@ -92,6 +92,60 @@ export default function BadgesCollection() {
     'locked_climate_positive',
   ];
 
+  const david = [
+    'carbon_10',
+    'carbon_50',
+    'carbon_100',
+    'climate_positive_3',
+    'climate_positive_6',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+  ];
+
+  const jamie = [
+    'carbon_10',
+    'carbon_50',
+    'carbon_100',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'sparkly_trees_25',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+  ];
+
+  const bob = [
+    'carbon_10',
+    'carbon_50',
+    'locked_climate_positive',
+    'climate_positive_3',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+    'locked_climate_positive',
+  ];
+
   return (
     <>
       <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
@@ -100,10 +154,13 @@ export default function BadgesCollection() {
             <div className='flex justify-between'>
               <strong>Badges Collection</strong>
             </div>
-            {rank == 7 && <Badges list={jun_hong} />}
+            {rank == 7 && <Badges list={steven} />}
             {rank == 1 && <Badges list={brayden} />}
             {rank == 2 && <Badges list={eunice} />}
             {rank == 3 && <Badges list={simran} />}
+            {rank == 4 && <Badges list={david} />}
+            {rank == 5 && <Badges list={jamie} />}
+            {rank == 6 && <Badges list={bob} />}
           </div>
         </div>
       </Layout>
