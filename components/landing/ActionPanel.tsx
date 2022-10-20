@@ -3,19 +3,19 @@ import { useRouter } from 'next/router';
 
 const actions = [
   {
-    name: 'Cashback',
-    href: 'dashboard/cashback',
-    imageSrc: 'https://img.icons8.com/color/480/000000/get-cash.png',
+    name: 'Recommend',
+    href: 'recommend',
+    imageSrc: 'https://img.icons8.com/color/120/000000/good-quality--v1.png',
+  },
+  {
+    name: 'Rewards',
+    href: 'rewards',
+    imageSrc: 'https://img.icons8.com/color/120/000000/gift.png',
   },
   {
     name: 'Leaderboard',
     href: 'leaderboard',
-    imageSrc: 'https://img.icons8.com/color/480/000000/leaderboard.png',
-  },
-  {
-    name: 'Recommend',
-    href: 'recommend',
-    imageSrc: 'https://img.icons8.com/color/480/000000/good-quality--v1.png',
+    imageSrc: 'https://img.icons8.com/color/120/000000/leaderboard.png',
   },
 ];
 
