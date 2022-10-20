@@ -29,17 +29,17 @@ const Recommend = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
   const [sortBy, setSortBy] = useState(SORT_DEFAULT);
   const [search, setSearch] = useState('');
-  const [data, setData] = useState(sortRatings(ratings, SORT_DEFAULT));
 
-  let filteredData = data;
+  let filteredData = ratings;
 
   if (search !== '') {
-    filteredData = data.filter(({ company }) => company.toLowerCase().includes(search.toLowerCase()));
+    filteredData = ratings.filter(({ company }) => company.toLowerCase().includes(search.toLowerCase()));
   }
+
+  filteredData = sortRatings(filteredData, sortBy);
 
   const handleSort = () => {
     const sortMethod = sortBy === 'desc' ? 'asc' : 'desc';
-    setData(sortRatings(filteredData, sortMethod));
     setSortBy(sortMethod);
   };
 
