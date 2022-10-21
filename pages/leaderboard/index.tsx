@@ -37,11 +37,8 @@ const LeaderboardPage = () => {
           <LeaderboardTopRankings />
         </div>
         <div>
-          <div className='flex justify-between'>
+          <div>
             <strong>Rankings this month</strong>
-            <button className='text-sm font-semibold mr-2 text-gray-500'>
-              View More <Icon className='inline' icon='heroicons-outline:chevron-right' />
-            </button>
           </div>
           <div className='rounded shadow-lg mt-3 bg-[#B1D7B4] pt-4 pl-4 pr-4 pb-4'>
             <LeaderboardList />

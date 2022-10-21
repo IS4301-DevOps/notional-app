@@ -1,4 +1,5 @@
 import { createStyles, Paper, Text, Title } from '@mantine/core';
+import Link from 'next/link';
 
 const useStyles = createStyles(theme => ({
   card: {
@@ -9,6 +10,7 @@ const useStyles = createStyles(theme => ({
     alignItems: 'flex-start',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    cursor: 'pointer',
   },
 
   title: {
@@ -30,25 +32,33 @@ const useStyles = createStyles(theme => ({
 }));
 
 type Props = {
+  id: string;
   image: string;
   title: string;
   category: string;
 };
 
-const CarouselCard = ({ image, title, category }: Props) => {
+const CarouselCard = ({ id, image, title, category }: Props) => {
   const { classes } = useStyles();
 
   return (
-    <Paper shadow='md' p='xl' radius='md' sx={{ backgroundImage: `url(${image})` }} className={classes.card}>
-      <div>
-        <Text className={classes.category} size='xs'>
-          {category}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-    </Paper>
+    <Link
+      href={{
+        pathname: '/article',
+        query: { id: id},
+      }}
+    >
+      <Paper shadow='md' p='xl' radius='md' sx={{ backgroundImage: `url(${image})` }} className={classes.card}>
+        <div>
+          <Text className={classes.category} size='xs'>
+            {category}
+          </Text>
+          <Title order={3} className={classes.title}>
+            {title}
+          </Title>
+        </div>
+      </Paper>
+    </Link>
   );
 };
 

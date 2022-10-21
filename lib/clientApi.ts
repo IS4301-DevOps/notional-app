@@ -17,7 +17,12 @@ export const updateCarbonTarget = async (id: string, target: number) => {
  * Post
  * --------------------------------------------------------*/
 export const getAllPosts = async () => {
-  const { data } = await axios.get(`/api/posts`);
+  const { data } = await axios.get(`/api/post/all`);
+  return data;
+};
+
+export const getPostById = async (id: string) => {
+  const { data } = await axios.get(`/api/post`, { params: { id: id } });
   return data;
 };
 
