@@ -32,13 +32,13 @@ export default function Article() {
         <>
             <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
                 <div className='mx-auto'>
+                    <h2 className='text-2xl font-bold text-gray-900 pl-6 pb-1 pr-6'>
+                        {article.title}
+                    </h2>
                     <div className='overflow-hidden rounded-lg bg-white shadow m-1'>
                         <h1 className='sr-only'>Article: {article.title}</h1>
-                        <div className='p-2'>
+                        <div className='p-5'>
                             <div className='text-left'>
-                                <h2 className='text-2xl font-bold text-gray-900 pb-3'>
-                                    {article.title}
-                                </h2>
                                 <img src={article.image} />
                             </div>
                             <p className='text-xs pt-3 pb-2 uppercase'>published {dayjs(article.publishedAt).format('D MMM YYYY, h:mm A')} sgt</p>
