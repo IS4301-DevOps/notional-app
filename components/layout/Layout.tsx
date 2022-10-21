@@ -11,6 +11,9 @@ import { User } from '@prisma/client';
 import { useRouter } from 'next/router';
 import Notifications from '../common/Notifications';
 import NavMenu from '../common/NavMenu';
+import InfoModalButton from '../landing/InfoModalButton';
+import InfoModal from '../common/InfoModal';
+import classes from "../../styles/components/layout/Layout.module.css";
 
 type Props = {
   title?: string;
@@ -22,6 +25,7 @@ type Props = {
 const Layout = ({ title = 'Default title', heading = 'Default heading', user, children }: Props) => {
   const router = useRouter();
   const [openNoti, setOpenNoti] = useState(false);
+  const [infoModalOpened, setInfoModalOpened] = useState<boolean>(false);
 
   const onOpenNotiClicked = () => setOpenNoti(!openNoti);
 
@@ -42,7 +46,7 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <header>
-        <Popover as='header' className='bg-white shadow'>
+        <Popover as='header' className='bg-white shadow fixed w-screen top-0 z-10'>
           {({ open }) => (
             <>
               <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
@@ -100,6 +104,10 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
                   </div>
                   {/* Menu button */}
                   <div className='absolute right-0 flex-shrink-0 lg:hidden'>
+                    {/* Modal Button */}
+                    <InfoModalButton 
+                      onClickHandler={setInfoModalOpened}
+                    />
                     {/* Notification Button */}
                     <NotificationButton onOpenNotiClicked={onOpenNotiClicked} />
                     {/* Mobile menu button */}
@@ -116,12 +124,16 @@ const Layout = ({ title = 'Default title', heading = 'Default heading', user, ch
               </div>
 
               <Notifications openNoti={openNoti} setOpenNoti={setOpenNoti} />
+              <InfoModal
+                isOpen={infoModalOpened}
+                setIsOpen={setInfoModalOpened}
+              />
               <NavMenu user={user} />
             </>
           )}
         </Popover>
       </header>
-      <main className='mt-8 pb-8'>{children}</main>
+      <main className={`${classes['landing-main']} mt-8 pb-8`}>{children}</main>
       <footer>
         <Footer />
       </footer>
