@@ -31,6 +31,8 @@ export const useCarbonBreakdown = (user: User) => {
       }))
     : [];
 
+  const exceededLimit = totalCarbon > user.carbonTarget
+
   return {
     breakdownByUser,
     carbonSections,
@@ -39,5 +41,6 @@ export const useCarbonBreakdown = (user: User) => {
     totalCashback: _.round(totalCashback, 2),
     isLoading: catQuery.isLoading,
     isError: catQuery.isError,
+    exceededLimit
   };
 };

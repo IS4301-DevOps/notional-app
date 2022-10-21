@@ -8,6 +8,7 @@ import { useUserQuery } from '../../hooks/queries';
 import BreakdownList from '../../components/dashboard/BreakdownList';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import { useCarbonBreakdown } from '../../hooks/dashboard';
+import GoalCard from '../../components/dashboard/GoalCard';
 
 const tabs = [
   { name: 'Greenhouse', href: '', current: true },
@@ -16,7 +17,7 @@ const tabs = [
 
 const DashboardPage: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
-  const { breakdownByUser, carbonSections, totalCarbon, isLoading, isError } = useCarbonBreakdown(userQuery.data);
+  const { breakdownByUser, carbonSections, totalCarbon, isLoading, isError, exceededLimit } = useCarbonBreakdown(userQuery.data);
 
   if (userQuery.isLoading || isLoading) {
     return <Loading />;
@@ -28,7 +29,7 @@ const DashboardPage: NextPage = () => {
   }
 
   return (
-    <DashboardLayout user={userQuery.data} tabs={tabs}>
+    <DashboardLayout user={userQuery.data} tabs={tabs} exceededLimit={exceededLimit}>
       <section aria-labelledby='dashboard-chart'>
         <div className='mt-6 flow-root'>
           <RingProgress
@@ -53,6 +54,7 @@ const DashboardPage: NextPage = () => {
           )}
         </div>
       </section>
+      
     </DashboardLayout>
   );
 };

@@ -16,7 +16,7 @@ const tabs = [
 
 const DashboardCashbackPage: NextPage = () => {
   const userQuery = useUserQuery('cl849p21n0047x4gjt69x15s2');
-  const { breakdownByUser, cashbackSections, totalCashback, isLoading, isError } = useCarbonBreakdown(userQuery.data);
+  const { breakdownByUser, cashbackSections, totalCashback, isLoading, isError, exceededLimit } = useCarbonBreakdown(userQuery.data);
 
   if (userQuery.isLoading || isLoading) {
     return <Loading />;
@@ -28,7 +28,7 @@ const DashboardCashbackPage: NextPage = () => {
   }
 
   return (
-    <DashboardLayout user={userQuery.data} tabs={tabs}>
+    <DashboardLayout user={userQuery.data} tabs={tabs} exceededLimit={exceededLimit}>
       <section aria-labelledby='dashboard-chart'>
         <div className='mt-6 flow-root'>
           <RingProgress
