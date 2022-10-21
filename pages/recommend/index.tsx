@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import { BarsArrowDownIcon, BarsArrowUpIcon } from '@heroicons/react/24/outline';
-import React, { useEffect, useMemo, useState } from 'react';
 import _ from 'lodash';
 
 import Loading from '../../components/common/Loading';
@@ -52,6 +52,7 @@ const Recommend = () => {
     const errorMessage = userQuery.error.message;
     return <div>Error: {errorMessage}</div>;
   }
+  
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
       <div className='container mx-auto sm:px-6 lg:px-8'>
