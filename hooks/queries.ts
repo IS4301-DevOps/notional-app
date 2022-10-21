@@ -8,6 +8,7 @@ import {
   fetchUserTransactionsByCategory,
   fetchUserTransactionsByDate,
   getAllPosts,
+  getPostById,
   getTodayTip,
 } from '../lib/clientApi';
 
@@ -37,6 +38,10 @@ export const useTransactionsCategoryQuery = (userId: string, startDate: Date, en
 
 export const usePostsQuery = () => {
   return useQuery<Post[], AxiosError>(['posts'], getAllPosts);
+};
+
+export const usePostQuery = (postId: string) => {
+  return useQuery<Post, AxiosError>(['post', postId], () => getPostById(postId));
 };
 
 export const useTipQuery = () => {
