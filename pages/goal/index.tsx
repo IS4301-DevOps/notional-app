@@ -27,8 +27,8 @@ const GoalSetting = () => {
 
   const progressCardText =
     totalCarbon > carbonTarget
-      ? 'You have exceeded your goal this month.\nTry again next month.'
-      : 'You have not exceeded your goal this month.\nKeep up the good work!';
+      ? 'You have exceeded your carbon limit this month.\nTry again next month.'
+      : 'You have not exceeded your carbon limit this month.\nKeep up the good work!';
 
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
