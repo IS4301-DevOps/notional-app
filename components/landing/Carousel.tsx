@@ -20,6 +20,7 @@ const useStyles = createStyles((_theme, _params, getRef) => ({
 }));
 
 type CarouselData = {
+  id: string;
   image: string;
   title: string;
   category: string;
