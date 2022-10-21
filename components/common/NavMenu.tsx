@@ -11,6 +11,7 @@ const navigation = [
     { name: 'Dashboard', href: '/dashboard'},
     { name: 'Leaderboard', href: '/leaderboard'},
     { name: 'Rewards', href: '/rewards'},
+    { name: 'Goals', href: '/goal'},
     { name: 'Recommendations', href: '/recommend'},
 ];
 
