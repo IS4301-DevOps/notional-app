@@ -1,0 +1,15 @@
+.leaderboard-info-container > * + *  {
+  margin-top: 1rem;
+}
+
+.leaderboard-info-container h3 {
+  font-weight: 800;
+  text-align: center;
+}
+
+.company-tier-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}

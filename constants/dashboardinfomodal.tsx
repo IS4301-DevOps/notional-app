@@ -1,10 +1,10 @@
-export interface IDashboardTier {
+export interface IPointsTier {
   name: string,
   points: number,
   description: string,
 }
 
-export const DashboardTiers: IDashboardTier[] = [
+export const DashboardTiers: IPointsTier[] = [
   {
     name: 'Tier One',
     points: 350,

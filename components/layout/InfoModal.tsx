@@ -5,6 +5,7 @@ import classes from '../../styles/components/layout/InfoModal.module.css';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import LandingInfoModal from './LandingInfoModal';
 import DashboardInfoModal from './DashboardInfoModal';
+import LeaderboardInfoModal from './LeaderboardInfoModal';
 
 interface InfoModalProps {
   isOpen: boolean;
@@ -20,6 +21,9 @@ const getModalContent = (pathName: string) => {
     case '/dashboard':
       return <DashboardInfoModal/>
       break;
+    case '/leaderboard':
+      return <LeaderboardInfoModal/>
+      break;
     default:
       break;
   }
@@ -32,6 +36,9 @@ const getModalTitle = (pathName: string) => {
       break;
     case '/dashboard':
       return "Dashboard";
+      break;
+    case '/leaderboard':
+      return "Leaderboard";
       break;
     default:
       break;
