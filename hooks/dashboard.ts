@@ -31,7 +31,7 @@ export const useCarbonBreakdown = (user: User) => {
       }))
     : [];
 
-  const exceededLimit = totalCarbon > user.carbonTarget
+  const exceededLimit = totalCarbon > user?.carbonTarget
 
   return {
     breakdownByUser,

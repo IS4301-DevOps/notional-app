@@ -1,5 +1,3 @@
-import { Text } from '@mantine/core';
-import dayjs from 'dayjs';
 import { NextPage } from 'next';
 
 import Loading from '../../../components/common/Loading';

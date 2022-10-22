@@ -8,7 +8,6 @@ import { useUserQuery } from '../../hooks/queries';
 import BreakdownList from '../../components/dashboard/BreakdownList';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import { useCarbonBreakdown } from '../../hooks/dashboard';
-import GoalCard from '../../components/dashboard/GoalCard';
 
 const tabs = [
   { name: 'Greenhouse', href: '', current: true },
