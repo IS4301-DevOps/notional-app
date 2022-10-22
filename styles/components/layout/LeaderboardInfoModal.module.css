@@ -4,12 +4,41 @@
 
 .leaderboard-info-container h3 {
   font-weight: 800;
+}
+
+.leaderboard-info-container > h3 {
   text-align: center;
 }
 
-.company-tier-row {
+.leaderboard-info-container {
+  padding: 0.5rem;
+  overflow-y: scroll;
+  
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #DDDEDF;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0px 16px 50px -24px rgba(75, 78, 83, 0.4);
+}
+
+.card-container > * + * {
+  margin-top: 1rem;
+}
+
+.title {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-start;
 }
+
+.title h3 {
+  margin-left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+}
+

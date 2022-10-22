@@ -1,40 +1,50 @@
-import React from 'react'
-import classes from '../../styles/components/layout/LeaderboardInfoModal.module.css';
-import { ICompanyTier, CompanyTiers } from '../../constants/leaderboardinfomodal';
 import Image from 'next/image';
-import { TransactionTiers } from '../../constants/leaderboardinfomodal';
+import React from 'react'
 import { IPointsTier } from '../../constants/dashboardinfomodal';
+import { ILeaderBoardCard } from '../../constants/leaderboardinfomodal';
+import classes from "../../styles/components/layout/LeaderboardInfoModal.module.css";
 import { generatePointsTierComponent } from './DashboardInfoModal';
+import { LeaderboardCards } from '../../constants/leaderboardinfomodal';
 
-const generateCompanyTierComponent = (tier: ICompanyTier, index: number) => {
+interface CardComponentProps extends ILeaderBoardCard {
+  index: number
+}
+
+const LeaderboardCardComponent = ({
+  title,
+  iconUrl,
+  tierList,
+  index
+}:CardComponentProps) => {
   return (
-    <div key={index} className={classes['company-tier-row']}>
-      <Image
-        src={tier.imageUrl}
-        alt={"Image of " + tier.label}
-      />
-      <p>{tier.label} - {tier.description}</p>
+    <div key={index} className={classes['card-container']}>
+      <div className={classes['title']}>
+        <Image src={iconUrl} alt={"Image of globe"}/>
+        <h3>{title}</h3>
+      </div>
+      {
+        tierList.map((tier,index) =>
+        generatePointsTierComponent(tier,index)
+        )
+      }
     </div>
   )
 }
 
-
 const LeaderboardInfoModal = () => {
   return (
     <div className={classes['leaderboard-info-container']}>
-      <h3>Make green purchases and enjoy green rewards!</h3>
-      <h3>Company ESG Rating Tier List</h3>
-      {/* Leaders, Averages, Laggards */}
+      {/* Main Title */}
+      <h3>Earn LiveBetter points from making ESG-friendly decisions and use them to redeem rewards!</h3>
       {
-        CompanyTiers.map((tier, index) =>
-          generateCompanyTierComponent(tier, index)
-        )
-      }
-      <h3>Transactions LiveBetter Points Tier List (Monthly)</h3>
-      {/* Tiers */}
-      {
-        TransactionTiers.map((tier, index) =>
-          generatePointsTierComponent(tier, index, 59, 54)
+        LeaderboardCards.map((card, index) => 
+        <LeaderboardCardComponent
+          index={index}
+          key={index}
+          title={card.title}
+          iconUrl={card.iconUrl}
+          tierList={card.tierList}
+        />
         )
       }
     </div>
