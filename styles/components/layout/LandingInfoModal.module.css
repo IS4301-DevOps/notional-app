@@ -1,0 +1,15 @@
+.landing-modal-container > * + *  {
+  margin-top: 2rem;
+}
+
+.textual-content {
+  font-weight: 600;
+  text-align: center;
+}
+
+.landing-carousel button[type=button] {
+  background-color: #7FB77E;
+  height: 13px;  
+  width: 13px;
+  border-radius: 50%;
+}

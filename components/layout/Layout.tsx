@@ -11,8 +11,8 @@ import { User } from '@prisma/client';
 import { useRouter } from 'next/router';
 import Notifications from '../common/Notifications';
 import NavMenu from '../common/NavMenu';
-import InfoModalButton from '../landing/InfoModalButton';
-import InfoModal from '../common/InfoModal';
+import InfoModalButton from './InfoModalButton';
+import InfoModal from './InfoModal';
 import classes from "../../styles/components/layout/Layout.module.css";
 
 type Props = {
