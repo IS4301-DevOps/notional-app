@@ -32,10 +32,12 @@ const ESGRationaleContent = () => {
   return (
     <div className={classes['landing-modal-container']}>
       <Image src={esg2} alt='ESG Information'/>
+      <h3>Why is it important?</h3>
       <h3>Simply put, the world needs us to do this.</h3>
       <p className={classes['textual-content']}>
       We are living among grave environmental and sustainability challenges such as climate change and inequality. It is therefore imperative we live in way that tackles these issues – including holding businesses accountable for their actions and supporting those that seek to create a better world.
       </p>
+      <h3>Scroll to the next frame to see what we offer.</h3>
     </div>
   )
 }
