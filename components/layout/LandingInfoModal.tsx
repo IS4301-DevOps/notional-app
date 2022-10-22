@@ -3,7 +3,13 @@ import { head } from 'lodash';
 import Image from 'next/image'
 import { useState } from 'react'
 import esg from "../../public/landing/esg-info.svg";
+import esg2 from "../../public/landing/esg-info-2-no-bg.svg";
+import dashboard from "../../public/landing/dashboard-image.svg"
+import transactions from "../../public/landing/track-transaction-image.svg"
+import leaderboard from "../../public/landing/leaderboard-image.svg"
+import recommendation from "../../public/landing/recommendation-image.svg"
 import classes from "../../styles/components/layout/LandingInfoModal.module.css";
+import TwoFeatureContent from './TwoFeatureContent';
 
 interface LandingProps {
 
@@ -22,23 +28,37 @@ const ESGOverviewContent = () => {
   )
 }
 
+const ESGRationaleContent = () => {
+  return (
+    <div className={classes['landing-modal-container']}>
+      <Image src={esg2} alt='ESG Information'/>
+      <h3>Simply put, the world needs us to do this.</h3>
+      <p className={classes['textual-content']}>
+      We are living among grave environmental and sustainability challenges such as climate change and inequality. It is therefore imperative we live in way that tackles these issues – including holding businesses accountable for their actions and supporting those that seek to create a better world.
+      </p>
+    </div>
+  )
+}
+
+
+
 const LandingInfoModal = ({
 
 }: LandingProps) => {
 
-  const [pageNumber, setPageNumber] = useState<number>(1);
   return (
     <Carousel
     withControls={false}
     withIndicators={true}
     slidesToScroll={1}
-    slideSize={'100%'}
-    align='center'
     height={'100%'}
-    sx={{flex: 1, maxWidth: '100%'}}
+    sx={{flex: 1}}
+    style={{
+      width: '100%'
+    }}
     styles={{
       indicators: {
-        bottom: '20%'
+        bottom: '12%'
       },
       indicator: {
         backgroundColor: 'black',
@@ -47,17 +67,31 @@ const LandingInfoModal = ({
     }}
     className={classes['landing-carousel']}
     >
-      <Carousel.Slide>
+      <Carousel.Slide >
         <ESGOverviewContent/>
       </Carousel.Slide>
-      <Carousel.Slide>
-        <ESGOverviewContent/>
+      <Carousel.Slide >
+        <ESGRationaleContent/>
       </Carousel.Slide>
-      <Carousel.Slide>
-        <ESGOverviewContent/>
+      <Carousel.Slide >
+        <TwoFeatureContent
+          firstFeatureName={'Dashboard'}
+          firstFeatureImage={dashboard}
+          firstFeatureDescription={'Track your carbon emissions with us.'}
+          secondFeatureName={'Track Transactions'}
+          secondFeatureImage={transactions}
+          secondFeatureDescription={'Track your cashbacks earned from transactions.'}
+        />
       </Carousel.Slide>
-      <Carousel.Slide>
-        <ESGOverviewContent/>
+      <Carousel.Slide >
+        <TwoFeatureContent
+          firstFeatureName={'Leaderboard'}
+          firstFeatureImage={leaderboard}
+          firstFeatureDescription={'See how your efforts stand up to with others!'}
+          secondFeatureName={'Recommendation'}
+          secondFeatureImage={recommendation}
+          secondFeatureDescription={'Take our quiz and get recommendations for purchases!'}
+        />
       </Carousel.Slide>
     </Carousel>
   )

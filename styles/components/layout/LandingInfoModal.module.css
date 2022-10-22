@@ -1,5 +1,5 @@
 .landing-modal-container > * + *  {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .textual-content {
@@ -13,3 +13,12 @@
   width: 13px;
   border-radius: 50%;
 }
+
+.landing-modal-container {
+  text-align: center;
+}
+
+.landing-modal-container h3 {
+  font-weight: 800;
+}
+
