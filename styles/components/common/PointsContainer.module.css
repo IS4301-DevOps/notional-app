@@ -1,0 +1,29 @@
+.grey-container {
+  margin-left: 5px;
+  border-radius: 5px;  
+  background-color: #F9F9F9;
+  font-weight: 800;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  position: relative;
+  border: 1px solid #DDDEDF;
+}
+
+.grey-container span {
+  margin-left: 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tree-icon {
+  position: absolute;
+  left: -33%;
+  top: calc(0% - 6px);
+}

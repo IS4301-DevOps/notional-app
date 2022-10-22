@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import classes from '../../styles/components/layout/InfoModal.module.css';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import LandingInfoModal from './LandingInfoModal';
+import DashboardInfoModal from './DashboardInfoModal';
 
 interface InfoModalProps {
   isOpen: boolean;
@@ -16,6 +17,9 @@ const getModalContent = (pathName: string) => {
     case '/':
       return <LandingInfoModal/>
       break;
+    case '/dashboard':
+      return <DashboardInfoModal/>
+      break;
     default:
       break;
   }
@@ -26,7 +30,9 @@ const getModalTitle = (pathName: string) => {
     case "/":
       return "What is ESG?" 
       break;
-  
+    case '/dashboard':
+      return "Dashboard";
+      break;
     default:
       break;
   }
