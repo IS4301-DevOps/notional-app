@@ -27,15 +27,20 @@ export const CompanyTiers: ICompanyTier[] = [
 ]
 
 
+
 export const TransactionTiers: IPointsTier[] = [
   {
     name: 'Tier One',
     points: 400,
-    description: '70% of transactions from Leaders/Averages'
+    description: '70% of transactions from Leaders/Averages',
+    treeHeight: 59,
+    treeWidth: 52,
   },
   {
     name: 'Tier Two',
     points: 250,
-    description: '50% of transactions from Leaders/Averages'
+    description: '50% of transactions from Leaders/Averages',
+    treeHeight: 59,
+    treeWidth: 52,
   },
 ]

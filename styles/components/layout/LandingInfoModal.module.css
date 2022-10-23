@@ -14,6 +14,10 @@
   border-radius: 50%;
 }
 
+.landing-carousel {
+  width: 100%;
+}
+
 .landing-modal-container {
   text-align: center;
 }

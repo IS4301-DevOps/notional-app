@@ -24,7 +24,7 @@ const LeaderboardCardComponent = ({
       </div>
       {
         tierList.map((tier,index) =>
-        generatePointsTierComponent(tier,index)
+        generatePointsTierComponent(tier,index, tier.treeHeight, tier.treeWidth)
         )
       }
     </div>

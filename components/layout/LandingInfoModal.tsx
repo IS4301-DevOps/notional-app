@@ -1,7 +1,6 @@
 import { Carousel } from '@mantine/carousel';
-import { head } from 'lodash';
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import esg from "../../public/landing/esg-info.svg";
 import esg2 from "../../public/landing/esg-info-2-no-bg.svg";
 import dashboard from "../../public/landing/dashboard-image.svg"
@@ -48,34 +47,44 @@ const LandingInfoModal = ({
 
 }: LandingProps) => {
 
+  const ref = useRef(null);
+  const anotherRef = useRef(null);
+
+  // const [width, setWidth] = useState<string>("41px");
+
+  useEffect(() => {
+    // console.log(ref.current.offsetWidth);
+    // console.log(anotherRef.current.offsetWidth);
+    // console.log(anotherRef.current.offsetWidth);
+    // setWidth(anotherRef.current.offsetWidth + "px");
+  }, [])
+  
+
   return (
     <Carousel
+    ref={ref}
     withControls={false}
     withIndicators={true}
-    slidesToScroll={1}
+    slideSize={'100%'}
     height={'100%'}
-    sx={{flex: 1}}
-    style={{
-      width: '100%'
+    slidesToScroll={1}
+    sx={{
+      flex: 1,
     }}
     styles={{
       indicators: {
         bottom: '12%'
       },
-      indicator: {
-        backgroundColor: 'black',
-        height: '10vh',
-      }
     }}
     className={classes['landing-carousel']}
     >
-      <Carousel.Slide >
+      <Carousel.Slide ref={anotherRef}>
         <ESGOverviewContent/>
       </Carousel.Slide>
-      <Carousel.Slide >
+      <Carousel.Slide>
         <ESGRationaleContent/>
       </Carousel.Slide>
-      <Carousel.Slide >
+      <Carousel.Slide>
         <TwoFeatureContent
           firstFeatureName={'Dashboard'}
           firstFeatureImage={dashboard}
