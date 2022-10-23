@@ -2,6 +2,8 @@ export interface IPointsTier {
   name: string,
   points: number,
   description: string,
+  treeHeight?:number,
+  treeWidth?:number,
 }
 
 export const DashboardTiers: IPointsTier[] = [

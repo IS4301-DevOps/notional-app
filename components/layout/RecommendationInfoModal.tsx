@@ -33,7 +33,7 @@ const RecommendationInfoModal = () => {
       {/* Tiers */}
       {
         TransactionTiers.map((tier, index) =>
-          generatePointsTierComponent(tier, index, 59, 54)
+          generatePointsTierComponent(tier, index, tier.treeHeight, tier.treeWidth)
         )
       }
     </div>
