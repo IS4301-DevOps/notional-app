@@ -56,6 +56,7 @@ const Steps: React.FC<StepsProps> = ({ count, currentStep, style }) => {
   const lineStyle = useMemo<React.CSSProperties>(() => getHandleStyle(), [currentStep, getHandleStyle])
 
   for (let i = 1; i < count + 1; i++) {
+
     const color = i === currentStep ? '#7FB77E' : '#D4D4D4';
     circles.push(
       <Circle key={i} option={`${i}`} color={color}/>

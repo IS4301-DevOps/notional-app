@@ -1,0 +1,19 @@
+.recommendation-info-container > * + *  {
+  margin-top: 1rem;
+}
+
+.recommendation-info-container h3 {
+  font-weight: 800;
+  text-align: center;
+}
+
+.recommendation-info-container {
+  padding: 0.5rem;
+}
+
+.company-tier-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}

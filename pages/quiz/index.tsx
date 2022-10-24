@@ -9,6 +9,7 @@ import { CONTAINER_STATE } from '../../constants/quiz';
 import QuizBrief from './quiz-brief';
 import { QuizQuestionPanel } from './quiz-questions';
 import { useRouter } from 'next/router';
+import classes from "../../styles/components/quiz/QuizPage.module.css";
 
 const getContainerComponent = (currentState: CONTAINER_STATE, handleButtonClick: () => void): JSX.Element => {
   switch (currentState) {
@@ -52,11 +53,13 @@ const QuizPage = () => {
 
   return (
     <Layout title='Livebetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
+      <div className={classes['quiz-container']}>
       {/* Header */}
       <RecommendationQuizHeader title={QUIZ_CONSTANTS.TITLE} />
 
       {/* Container */}
       <RecommendationQuizContainer>{containerComponent}</RecommendationQuizContainer>
+      </div>
     </Layout>
   );
 };
