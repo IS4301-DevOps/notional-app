@@ -47,8 +47,8 @@ const SetGoalPage: NextPage = () => {
               <div className='overflow-hidden rounded-lg bg-white shadow'>
                 <div className='p-6'>
                   <div className='text-left'>
-                    <h2 className='text-base font-bold text-gray-900'>Change Monthly Goal</h2>
-                    <p className='text-base font-medium text-gray-900'>I aim to reduce this amount of greenhouse gas:</p>
+                    <h2 className='text-base font-bold text-gray-900'>Change Monthly Targetted Limit</h2>
+                    <p className='text-base font-medium text-gray-900'>I aim to stay at or below this amount of carbon emission:</p>
                   </div>
                   <div className='mt-6 flow-root'></div>
                   <div className='text-center pb-5'>
@@ -86,14 +86,16 @@ const SetGoalPage: NextPage = () => {
                           Save
                         </button>
                         {mutation.isSuccess ? (
-                          <p className='text-green-500 text-sm font-bold pt-3'>Carbon target has been saved successfully</p>
+                          <p className='text-green-500 text-sm font-bold pt-3'>Carbon limit has been updated successfully</p>
                         ) : null}
                       </>
                     )}
 
                     <p className='text-xs font-medium text-gray-900 pt-8'>
-                      Set a target for your monthly carbon emission savings and keep track of your progress to making the world a better
-                      place!
+                      Set a limit for your monthly carbon footprint and keep track of your usage to make the world a better place!
+                    </p>
+                    <p className='text-xs font-medium text-gray-900'>
+                      We will notify you once you are nearing your carbon emission limit, or if you have exceeded it.
                     </p>
                   </div>
                 </div>

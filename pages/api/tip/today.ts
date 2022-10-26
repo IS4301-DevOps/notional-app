@@ -8,7 +8,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
     if (tip === null) {
       tip = {
         id: "1",
-        message: "Use less water today",
+        message: "Avoid single-use plastics when you can.",
         date: new Date()
       }
       res.status(200).json(tip);
