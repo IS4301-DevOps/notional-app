@@ -63,7 +63,7 @@ const GoalSetting = () => {
                 label={
                   <div className='flex flex-col items-center justify-center'>
                     <p className='text-sm text-primary font-xs mx-auto'>
-                      {totalCarbon} / {carbonTarget}kg 
+                      {totalCarbon} / {carbonTarget} kg 
                     </p>
                     <p className='text-sm text-primary font-xs font-semibold mx-auto'>
                       CO<sub>2</sub>
