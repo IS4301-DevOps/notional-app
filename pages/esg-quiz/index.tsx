@@ -27,7 +27,7 @@ export default function Knowledge() {
       <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={userQuery.data}>
         <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
           <div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between mb-5'>
               <strong>ESG Quiz</strong>
             </div>
             <Quiz

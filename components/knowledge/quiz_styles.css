@@ -1,6 +1,9 @@
 .react-quiz-container {
-  margin: 20px;
-  width: 315px;
+  padding: 20px;
+  width: 100%;
+  background: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .react-quiz-container .startQuizWrapper {
