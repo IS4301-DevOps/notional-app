@@ -30,7 +30,7 @@ const people = [
 
 export default function LeaderboardTopRankings() {
   return (
-    <div className='flex'>
+    <div className='flex justify-center space-x-8'>
       {people.map((person, index) => (
         <LeaderboardVerticalCard key={index} index={index} person={person} />
       ))}
