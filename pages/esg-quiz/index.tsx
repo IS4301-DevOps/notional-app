@@ -28,7 +28,7 @@ export default function Knowledge() {
         <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
           <div>
             <div className='flex justify-between'>
-              <strong>Knowledge</strong>
+              <strong>ESG Quiz</strong>
             </div>
             <Quiz
               quiz={quiz}
