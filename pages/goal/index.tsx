@@ -66,7 +66,7 @@ const GoalSetting = () => {
                       {totalCarbon} / {carbonTarget} 
                     </p>
                     <p className='text-sm text-primary font-xs font-semibold mx-auto'>
-                     kg CO<sub>2</sub>e
+                     kg CO<sub>2</sub>
                     </p>
                   </div>
                 }
