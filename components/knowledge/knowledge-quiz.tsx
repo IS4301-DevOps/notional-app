@@ -20,14 +20,15 @@ const quiz = {
       segment: segment.basic,
     },
     {
-      question: 'What are the existing features of LiveBetter?',
+      question: 'What are some existing features of LiveBetter?',
       questionType: 'text',
       answerSelectionType: 'multiple',
-      answers: ['Invest Better', 'Save Better', 'Give Better', 'Offset Better', 'Travel Better', 'Track Better'],
-      correctAnswer: [1, 3, 4, 6],
+      answers: ['Save Better', 'Give Better', 'Travel Better', 'Track Better'],
+      correctAnswer: [2, 4],
       messageForCorrectAnswer: 'Correct answer. Good job.',
       messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
       point: '3',
+      segment: segment.medium,
     },
 
     {
