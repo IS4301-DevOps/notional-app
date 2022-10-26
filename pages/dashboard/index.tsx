@@ -10,7 +10,7 @@ import DashboardLayout from '../../components/layout/DashboardLayout';
 import { useCarbonBreakdown } from '../../hooks/dashboard';
 
 const tabs = [
-  { name: 'Greenhouse', href: '', current: true },
+  { name: 'Carbon Emission', href: '', current: true },
   { name: 'Cashback', href: '/dashboard/cashback', current: false },
 ];
 
