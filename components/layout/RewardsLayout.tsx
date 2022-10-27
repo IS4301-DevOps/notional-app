@@ -5,7 +5,7 @@ import Layout from './Layout';
 
 const tabs = [
   { name: 'Available', href: '/rewards', current: false },
-  { name: 'Redeemed', href: '/rewards/redeemed', current: false },
+  { name: 'Redeem', href: '/rewards/redeem', current: false },
 ];
 
 type Props = {
