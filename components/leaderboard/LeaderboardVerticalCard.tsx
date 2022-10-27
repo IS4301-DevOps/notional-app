@@ -28,7 +28,7 @@ export default function LeaderboardVerticalCard(props: Props) {
       </div>
       <div className='mt-2 inline-flex justify-center font-bold rounded-md bg-gray-100 text-sm text-gray-800'>{props.person.name}</div>
       <div className='mt-2 relative flex justify-center items-center'>
-        <div className='absolute -top-1 -left-2 z-10'>
+        <div className='absolute -top-1 -left-2 z-0'>
           <Image alt='tree-icon' width='30' height='30' src='/badges/leaderboardtree.png' />
         </div>
         <span className='inline-flex justify-center px-2 font-bold rounded-md bg-gray-100 text-sm text-gray-800'>
