@@ -10,7 +10,7 @@ import { useCarbonBreakdown } from '../../../hooks/dashboard';
 import { useUserQuery } from '../../../hooks/queries';
 
 const tabs = [
-  { name: 'Greenhouse', href: '/dashboard', current: false },
+  { name: 'Carbon Emission', href: '/dashboard', current: false },
   { name: 'Cashback', href: '', current: true },
 ];
 

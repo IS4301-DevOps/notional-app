@@ -38,7 +38,7 @@ const GoalSetting = () => {
           <div className='flex justify-between items-center'>
             <h2 className='text-md font-medium leading-6 text-gray-900'>Goal Setting</h2>
             <Link href='goal/set-goal'>
-              <a className='text-sm underline text-primary'>Change Monthly Goals</a>
+              <a className='text-sm underline text-primary'>Change Monthly Limit</a>
             </Link>
           </div>
           <section className='mt-6 max-h-full overflow-auto' aria-labelledby='badges-this-month'>
@@ -55,7 +55,7 @@ const GoalSetting = () => {
           </section>
           <section className='mt-6 max-h-full overflow-auto' aria-labelledby='goal-progress'>
             <h2 className='text-sm font-semibold leading-6 text-gray-500'>
-              Amount of CO<sub>2</sub>e reduced
+              Amount of Carbon Emission
             </h2>
             <div className='mt-3'>
               <RingProgress
@@ -63,10 +63,10 @@ const GoalSetting = () => {
                 label={
                   <div className='flex flex-col items-center justify-center'>
                     <p className='text-sm text-primary font-xs mx-auto'>
-                      {totalCarbon} kg / {carbonTarget} kg
+                      {totalCarbon} / {carbonTarget} kg 
                     </p>
                     <p className='text-sm text-primary font-xs font-semibold mx-auto'>
-                      CO<sub>2</sub>e
+                      CO<sub>2</sub>
                     </p>
                   </div>
                 }
