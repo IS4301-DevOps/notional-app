@@ -11,7 +11,7 @@ export const fetchUser = async (id: string) => {
 export const updateCarbonTarget = async (id: string, target: number) => {
   const { data } = await axios.post(`/api/users/${id}/${target}`);
   return data;
-}
+};
 
 /*---------------------------------------------------------
  * Post
