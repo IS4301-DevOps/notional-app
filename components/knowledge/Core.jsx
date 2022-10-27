@@ -5,6 +5,8 @@ import QuizResultFilter from './core-components/QuizResultFilter';
 import { checkAnswer, selectAnswer, rawMarkup } from './core-components/helpers';
 import InstantFeedback from './core-components/InstantFeedback';
 import Explanation from './core-components/Explanation';
+import Link from 'next/link';
+import Router from 'next/router';
 
 const Core = function ({
   questions,
@@ -276,6 +278,22 @@ const Core = function ({
       <br />
       <QuizResultFilter filteredValue={filteredValue} handleChange={handleChange} appLocale={appLocale} />
       {renderQuizResultQuestions()}
+      <button
+        onClick={() => Router.reload(window.location.pathname)}
+        type='button'
+        className='mb-3 w-full place-content-center items-center rounded-md border  bg-green-600 py-2 px-4 
+        text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
+      >
+        Retake Quiz
+      </button>
+      <button
+        onClick={() => Router.back()}
+        type='button'
+        className='w-full place-content-center items-center rounded-md border border-green-600 bg-white py-2 px-4  
+        text-base font-medium text-green-600 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'
+      >
+        Return to Home
+      </button>
     </div>
   );
   return (
