@@ -6,6 +6,7 @@ import Loading from '../components/common/Loading';
 import ActionPanel from '../components/landing/ActionPanel';
 import DashboardCard from '../components/landing/DashboardCard';
 import TipCard from '../components/landing/TipCard';
+import ESGQuiz from '../components/landing/ESGQuiz';
 import { usePostsQuery, useTipQuery, useUserQuery } from '../hooks/queries';
 import { useCarbonBreakdown } from '../hooks/dashboard';
 
@@ -45,6 +46,10 @@ const Home: NextPage = () => {
           {/* Dashboard Card */}
           <section aria-labelledby='dashboard-card'>
             <DashboardCard sections={[carbonSections, cashbackSections]} totals={[totalCarbon, totalCashback]} />
+          </section>
+          {/* ESG Quiz Card */}
+          <section aria-labelledby='esg-quiz-card'>
+            <ESGQuiz />
           </section>
         </div>
       </div>
