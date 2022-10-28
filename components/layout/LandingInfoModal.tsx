@@ -101,7 +101,7 @@ const LandingInfoModal = ({
           firstFeatureDescription={'See how your efforts stand up to with others!'}
           secondFeatureName={'Recommendation'}
           secondFeatureImage={recommendation}
-          secondFeatureDescription={'Take our quiz and get recommendations for purchases!'}
+          secondFeatureDescription={'Take our survey and get recommendations for purchases!'}
         />
       </Carousel.Slide>
     </Carousel>

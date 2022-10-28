@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
-import classes from '../../styles/components/quiz/RecommendationQuizHeader.module.css';
+import classes from '../../styles/components/survey/RecommendationSurveyHeader.module.css';
 
 interface HeaderProps {
   title: string;
@@ -9,7 +9,7 @@ interface HeaderProps {
 /**
  * Reusable component for Header
  */
-const RecommendationQuizHeader = ({title}: HeaderProps) => {
+const RecommendationSurveyHeader = ({title}: HeaderProps) => {
   return (
     <section className={classes['header']}>
       {/* Title */}
@@ -18,4 +18,4 @@ const RecommendationQuizHeader = ({title}: HeaderProps) => {
   )
 }
 
-export default RecommendationQuizHeader
+export default RecommendationSurveyHeader

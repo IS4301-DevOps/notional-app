@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { NextButton } from '../../components/quiz/NextButton';
-import PreviousButton from '../../components/quiz/PreviousButton';
-import QuizButton from '../../components/quiz/QuizButton';
-import Steps from '../../components/quiz/Steps';
-import { CONTAINER_STATE } from '../../constants/quiz'
-import classes from '../../styles/pages/quiz/Quiz.module.css';
-import { QuizQuestions as quizQuestions } from "../../constants";
-import QuizOption from '../../components/quiz/QuizOption';
-import quiz from '.';
+import { NextButton } from '../../components/survey/NextButton';
+import PreviousButton from '../../components/survey/PreviousButton';
+import SurveyButton from '../../components/survey/SurveyButton';
+import Steps from '../../components/survey/Steps';
+import { CONTAINER_STATE } from '../../constants/survey'
+import classes from '../../styles/pages/survey/Survey.module.css';
+import { SurveyQuestions as surveyQuestions } from "../../constants";
+import SurveyOption from '../../components/survey/SurveyOption';
+import survey from '.';
 
-interface IQuizQuestionPanelProps {
+interface ISurveyQuestionPanelProps {
   containerState: CONTAINER_STATE,
   handleButtonClick: () => void
 }
 
-interface IQuizResponses {
+interface ISurveyResponses {
   [key: string]: boolean;
 }
 
@@ -24,12 +24,12 @@ const intToChar = (int: number) => {
   return String.fromCharCode(code + int);
 }
 
-export const QuizResponsesContext = React.createContext(null);
+export const SurveyResponsesContext = React.createContext(null);
 
-export const QuizQuestionPanel = ({
+export const SurveyQuestionPanel = ({
   containerState,
   handleButtonClick
-}: IQuizQuestionPanelProps) => {
+}: ISurveyQuestionPanelProps) => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ export const QuizQuestionPanel = ({
   const [pageNumber, setPageNumber] = useState<number>(1);
 
 
-  const [questionResponses, setQuestionResponses] = useState<IQuizResponses>({});
+  const [questionResponses, setQuestionResponses] = useState<ISurveyResponses>({});
 
   const handleOptionClick = (id) => {
     setQuestionResponses({...questionResponses, [id]: !questionResponses[id]});
@@ -48,7 +48,7 @@ export const QuizQuestionPanel = ({
 
 
   return (
-    <QuizResponsesContext.Provider value={questionResponses}>
+    <SurveyResponsesContext.Provider value={questionResponses}>
       <form className={classes['questions']}>
         {/* Steps */}
         <Steps
@@ -56,10 +56,10 @@ export const QuizQuestionPanel = ({
           currentStep={pageNumber}
         />
         {/* Question */}
-        <h2>{quizQuestions[pageNumber - 1].question}</h2>
+        <h2>{surveyQuestions[pageNumber - 1].question}</h2>
         {/* Options */}
-        {quizQuestions[pageNumber - 1].options.map((text, index) =>
-          <QuizOption
+        {surveyQuestions[pageNumber - 1].options.map((text, index) =>
+          <SurveyOption
             id={text + index}
             key={text + index}
             option={intToChar(index)}
@@ -72,7 +72,7 @@ export const QuizQuestionPanel = ({
             onClickHandler={(e) => setPageNumber(pageNumber - 1)}
           />
           {pageNumber === 5 &&
-          <QuizButton
+          <SurveyButton
             state={containerState}
             onClickHandler={(e) => handleSubmitForm(e)}
           />
@@ -84,8 +84,8 @@ export const QuizQuestionPanel = ({
         </div>
       </form>
 
-    </QuizResponsesContext.Provider>
+    </SurveyResponsesContext.Provider>
   )
 }
 
-export default QuizQuestionPanel
+export default SurveyQuestionPanel

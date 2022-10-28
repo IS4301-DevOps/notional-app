@@ -13,7 +13,7 @@ import deckersOutdoor from '../../public/logos/deckers-outdoor-logo.svg';
 import adidas from '../../public/logos/adidas-logo.svg';
 import { sortRatings } from '../../utils/helpers';
 import SearchBar from '../../components/recommend/SearchBar';
-import QuizCard from '../../components/recommend/QuizCard';
+import SurveyCard from '../../components/recommend/SurveyCard';
 import { useDebounceSearch } from '../../hooks';
 
 const SORT_DEFAULT = 'desc';
@@ -79,9 +79,9 @@ const Recommend = () => {
               </div>
             </div>
           </section>
-          <section aria-labelledby='start-quiz'>
+          <section aria-labelledby='start-survey'>
             <div className='sticky bottom-0'>
-              <QuizCard />
+              <SurveyCard />
             </div>
           </section>
         </div>

@@ -1,23 +1,23 @@
 import React, { useContext, useState } from 'react'
 import { Circle } from './Steps';
-import classes from '../../styles/components/quiz/QuizOption.module.css';
-import { QuizResponsesContext } from '../../pages/quiz/quiz-questions';
+import classes from '../../styles/components/survey/SurveyOption.module.css';
+import { SurveyResponsesContext } from '../../pages/survey/survey-questions';
 
-interface IQuizOption {
+interface ISurveyOption {
   id: string;
   option: string;
   text: string;
   handleOptionClick: (id:string) => void;
 }
 
-const QuizOption = ({
+const SurveyOption = ({
   id,
   option,
   text,
   handleOptionClick
-}: IQuizOption) => {
+}: ISurveyOption) => {
 
-  const quizData = useContext(QuizResponsesContext);
+  const surveyData = useContext(SurveyResponsesContext);
 
   const [isChosen, setIsChosen] = useState<boolean>(false);
   return (
@@ -28,11 +28,11 @@ const QuizOption = ({
     >
       <Circle
         option={option}
-        color={!!quizData[id] ? '#7FB77E' : '#D4D4D4'}
+        color={!!surveyData[id] ? '#7FB77E' : '#D4D4D4'}
       />
       <span>{text}</span>
     </button>
   )
 }
 
-export default QuizOption
+export default SurveyOption

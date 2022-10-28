@@ -25,7 +25,7 @@ const getModalContent = (pathName: string) => {
     case '/recommend':
       return <RecommendationInfoModal/>
       break;
-    case '/quiz':
+    case '/survey':
       return <RecommendationInfoModal/>
       break;
     case '/leaderboard':
@@ -48,7 +48,7 @@ const getModalTitle = (pathName: string) => {
     case '/recommend':
       return "Recommendation";
       break;
-    case '/quiz':
+    case '/survey':
       return "Recommendation";
       break;
     case '/leaderboard':
