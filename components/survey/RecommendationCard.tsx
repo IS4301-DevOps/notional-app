@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function RecommendationCard(props) {
   return (
-    <Link href='/quiz/view-recommendation'>
+    <Link href='/survey/view-recommendation'>
       <div className='relative  rounded-lg border border-gray-300 bg-white px-6 py-5 drop-shadow-md focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400'>
         <div className='align-middle; text-center'>
           <Image objectFit='cover' width='350px' height='100px' src={`/recommendation-results/${props.shop.imageURL}.svg`} alt='' />

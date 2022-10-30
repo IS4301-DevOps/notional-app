@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
-import { CONTAINER_STATE } from '../../constants/quiz';
-import classes from '../../styles/components/quiz/QuizButton.module.css';
+import { CONTAINER_STATE } from '../../constants/survey';
+import classes from '../../styles/components/survey/SurveyButton.module.css';
 
-interface IQuizButtonProps {
+interface ISurveyButtonProps {
   state: CONTAINER_STATE
   onClickHandler: (e) => void;
 }
 
-const QuizButton = ({
+const SurveyButton = ({
   state,
   onClickHandler 
-}: IQuizButtonProps) => {
+}: ISurveyButtonProps) => {
 
   
   return (
     <button
-      className={classes['quiz-button']}
+      className={classes['survey-button']}
       type={state === CONTAINER_STATE.BRIEF ? 'button' : 'submit'}
       onClick={(e) => onClickHandler(e)}
     >
@@ -24,4 +24,4 @@ const QuizButton = ({
   )
 }
 
-export default QuizButton
+export default SurveyButton

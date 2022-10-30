@@ -21,7 +21,7 @@ export const notiData = [
     },
     {
         id: 1,
-        message: 'Take our personalised quiz to find out which vendors are most suitable for you in your journey to making ESG choices!',
+        message: 'Take our personalised survey to find out which vendors are most suitable for you in your journey to making ESG choices!',
         date: '01 Nov 2022 15:21'
     },
 ]

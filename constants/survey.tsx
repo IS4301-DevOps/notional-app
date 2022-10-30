@@ -1,32 +1,32 @@
-import { IInformationRow } from "../components/quiz/InformationRow";
+import { IInformationRow } from "../components/survey/InformationRow";
 
-export const TITLE = "Recommendation Quiz";
+export const TITLE = "Recommendation Survey";
 export const BRIEF_TITLE = "Brief explanation about how it works";
 export const BRIEF_PROMPT = "Please read the text below carefully to understand how the process works";
 
 export enum CONTAINER_STATE {
   BRIEF = 0,
-  QUIZ = 1
+  SURVEY = 1
 }
 
 interface InfoRowContent extends Omit<IInformationRow, "index"> {}
 
 export const InfoRowContents: InfoRowContent[] = [
   {
-    imageUrl: "/quiz/questions_brief.svg",
+    imageUrl: "/survey/questions_brief.svg",
     imageAlt: "Image of Questions Brief",
     mainText: "5 Questions",
     secondaryText: "Indicate aspects that matters the most for you",
   },
   {
-    imageUrl: "/quiz/time_brief.svg",
+    imageUrl: "/survey/time_brief.svg",
     imageAlt: "Image of Duration Brief",
     mainText: "2 - 4 Minutes",
     secondaryText: "Total duration estimated",
 
   },
   {
-    imageUrl: "/quiz/recommended_brief.svg",
+    imageUrl: "/survey/recommended_brief.svg",
     imageAlt: "Image of Recommended Companies Brief",
     mainText: "Recommended companies",
     secondaryText: "Companies are recommended!",
@@ -49,12 +49,12 @@ export const PromptContents: IPromptContent[] = [
   },
 ]
 
-interface IQuizQuestion {
+interface ISurveyQuestion {
   question: string;
   options: string[] 
 }
 
-export const QuizQuestions: IQuizQuestion[] = [
+export const SurveyQuestions: ISurveyQuestion[] = [
   {
     question: "What are the aspects of ESG (Environmental , Social, Governance) you would like to consider?",
     options: [
