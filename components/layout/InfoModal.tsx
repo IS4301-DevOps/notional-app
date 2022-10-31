@@ -31,6 +31,9 @@ const getModalContent = (pathName: string) => {
     case '/leaderboard':
       return <LeaderboardInfoModal/>
       break;
+    case '/rewards':
+      return <LeaderboardInfoModal/>
+      break;
     default:
       return <LandingInfoModal/>
       break;
@@ -54,6 +57,9 @@ const getModalTitle = (pathName: string) => {
       break;
     case '/leaderboard':
       return "Leaderboard";
+      break;
+    case '/rewards':
+      return "Rewards";
       break;
     default:
       break;
