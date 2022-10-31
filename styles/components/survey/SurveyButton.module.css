@@ -1,0 +1,9 @@
+.survey-button {
+  color: #7FB77E;
+  border: 1px #7FB77E solid;
+  padding: 1rem 3rem;
+  margin: 0rem 1rem;
+  width: 50%;
+  align-self: center;
+  border-radius: 5px;
+}

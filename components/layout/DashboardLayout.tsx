@@ -1,19 +1,25 @@
 import { User } from '@prisma/client';
 import Link from 'next/link';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Tab } from '../../interfaces';
 import MonthCarousel from '../dashboard/MonthCarousel';
 import Tabs from '../dashboard/Tabs';
 import Layout from './Layout';
 import Image from 'next/image';
+import GoalCard from '../dashboard/GoalCard';
 
 type Props = {
   user: User;
   tabs: Tab[];
+  exceededLimit: boolean;
   children?: ReactNode;
 };
 
-const DashboardLayout = ({ user, tabs, children }: Props) => {
+const DashboardLayout = ({ user, tabs, exceededLimit, children }: Props) => {
+  const progressCardText = exceededLimit
+    ? 'You have exceeded your carbon limit this month.'
+    : 'You have not exceeded your carbon limit this month.';
+
   return (
     <Layout title='LiveBetter | DBS Bank' heading='LiveBetter' user={user}>
       <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
@@ -42,49 +48,52 @@ const DashboardLayout = ({ user, tabs, children }: Props) => {
               </div>
             </div>
           </section>
+          <section aria-labelledby='goal-card'>
+            <GoalCard cardText={progressCardText} />
+          </section>
           <section className='mt-6' aria-labelledby='dashboard-card'>
             <div className='overflow-hidden rounded-lg bg-white shadow'>
               <div className='p-6'>
                 <div className='text-center'>
                   <p className='text-2xl font-bold text-gray-900 pb-10'>
-                    {window.location.pathname === "/dashboard" ? 'How to reduce Carbon Footprint?' : 'How to earn Cashback?'}
+                    {window.location.pathname === '/dashboard' ? 'How to reduce Carbon Footprint?' : 'How to earn Cashback?'}
                   </p>
-                  <Image src="https://img.icons8.com/bubbles/200/000000/shop.png" width={150} height={150} alt='browse' />
-                  <p className='text-base font-semibold text-gray-900'>
-                    Step 1: Browse for vendor
-                  </p>
+                  <Image src='https://img.icons8.com/bubbles/200/000000/shop.png' width={150} height={150} alt='browse' />
+                  <p className='text-base font-semibold text-gray-900'>Step 1: Browse for vendor</p>
                   <p className='text-base text-gray-900 pb-10'>
-                    <span className='underline'><Link href={'/recommend'} className="">Click here</Link></span>
+                    <span className='underline'>
+                      <Link href={'/recommend'} className=''>
+                        Click here
+                      </Link>
+                    </span>
                     &nbsp;to look for participating vendors which&nbsp;
-                    {window.location.pathname === "/dashboard" ? 'have a high ESG ratings which will reduce your carbon footprint!' : 'will provide you with a cashback on each transaction!'}
+                    {window.location.pathname === '/dashboard'
+                      ? 'have a high ESG ratings which will reduce your carbon footprint!'
+                      : 'will provide you with a cashback on each transaction!'}
                   </p>
-                  <Image src="https://img.icons8.com/bubbles/200/000000/buy.png" width={150} height={150} alt='browse' />
-                  <p className='text-base font-semibold text-gray-900'>
-                    Step 2: Shop with participating vendor
-                  </p>
+                  <Image src='https://img.icons8.com/bubbles/200/000000/buy.png' width={150} height={150} alt='browse' />
+                  <p className='text-base font-semibold text-gray-900'>Step 2: Shop with participating vendor</p>
                   <p className='text-base text-gray-900 pb-10'>
-                    Make a purchase with your DBS LiveFresh card to automatically earn a cashback! Both online and offline methods are accepted.
+                    Make a purchase with your DBS LiveFresh card to automatically earn a cashback! Both online and offline methods are
+                    accepted.
                   </p>
-                  {window.location.pathname === "/dashboard" ?
+                  {window.location.pathname === '/dashboard' ? (
                     <>
-                      <Image src="https://img.icons8.com/bubbles/200/000000/eco-fuel.png" width={150} height={150} alt='browse' />
-                      <p className='text-base font-semibold text-gray-900'>
-                        Step 3: Make a difference!
-                      </p>
+                      <Image src='https://img.icons8.com/bubbles/200/000000/eco-fuel.png' width={150} height={150} alt='browse' />
+                      <p className='text-base font-semibold text-gray-900'>Step 3: Make a difference!</p>
                       <p className='text-base text-gray-900 pb-10'>
                         Congratulations! You have made a difference by shopping with an ESG company!
                       </p>
                     </>
-                    :
+                  ) : (
                     <>
-                      <Image src="https://img.icons8.com/bubbles/200/000000/cash.png" width={150} height={150} alt='browse' />
-                      <p className='text-base font-semibold text-gray-900'>
-                        Step 3: Earn cashback!
-                      </p>
+                      <Image src='https://img.icons8.com/bubbles/200/000000/cash.png' width={150} height={150} alt='browse' />
+                      <p className='text-base font-semibold text-gray-900'>Step 3: Earn cashback!</p>
                       <p className='text-base text-gray-900 pb-10'>
                         Cashback will be credited right into your card once the transaction has been confirmed!
                       </p>
-                    </>}
+                    </>
+                  )}
                 </div>
               </div>
             </div>

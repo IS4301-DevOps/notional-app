@@ -1,1 +1,1 @@
-export { TITLE, BRIEF_PROMPT, BRIEF_TITLE, InfoRowContents, PromptContents, QuizQuestions } from './quiz';
+export { TITLE, BRIEF_PROMPT, BRIEF_TITLE, InfoRowContents, PromptContents, SurveyQuestions } from './survey';
