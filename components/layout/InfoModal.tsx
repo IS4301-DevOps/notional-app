@@ -31,7 +31,11 @@ const getModalContent = (pathName: string) => {
     case '/leaderboard':
       return <LeaderboardInfoModal/>
       break;
+    case '/rewards':
+      return <LeaderboardInfoModal/>
+      break;
     default:
+      return <LandingInfoModal/>
       break;
   }
 };
@@ -54,13 +58,16 @@ const getModalTitle = (pathName: string) => {
     case '/leaderboard':
       return "Leaderboard";
       break;
+    case '/rewards':
+      return "Rewards";
+      break;
     default:
       break;
   }
 }
 
 const InfoModal = ({ isOpen, setIsOpen }: InfoModalProps) => {
-  const modalContent = useMemo(() => getModalContent(window.location.pathname), [window.location.pathname]);
+  const modalContent = useMemo(() => getModalContent(window.location.pathname), []);
   const modalTitle = useMemo(() => getModalTitle(window.location.pathname),[]);
 
   const closeModal = () => {
