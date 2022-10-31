@@ -32,6 +32,7 @@ const getModalContent = (pathName: string) => {
       return <LeaderboardInfoModal/>
       break;
     default:
+      return <LandingInfoModal/>
       break;
   }
 };
