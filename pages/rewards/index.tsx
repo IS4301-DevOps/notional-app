@@ -9,13 +9,13 @@ import northFace from '../../public/logos/the-north-face-logo.svg';
 import RewardsLayout from '../../components/layout/RewardsLayout';
 
 const featured = [
-  { id: 1, name: 'Complimentary Drink', company: 'Starbucks', logo: starbucks, points: 150 },
-  { id: 2, name: '$20 off Next Purchase', company: 'Lululemon', logo: lululemon, points: 200 },
+  { id: 1, name: 'Complimentary Drink', company: 'Starbucks', logo: starbucks, points: 500 },
+  { id: 2, name: '$20 off Next Purchase', company: 'Lululemon', logo: lululemon, points: 2000 },
 ];
 
 const others = [
-  { id: 1, name: '$10 off Regular Price Product', company: 'H&M', logo: hnm, points: 80 },
-  { id: 2, name: '10% off', company: 'The North Face', logo: northFace, points: 25 },
+  { id: 1, name: '$10 off Regular Price Product', company: 'H&M', logo: hnm, points: 1000 },
+  { id: 2, name: '10% off', company: 'The North Face', logo: northFace, points: 800 },
 ];
 
 const Rewards = () => {
