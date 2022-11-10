@@ -9,17 +9,6 @@ const quiz = {
   quizSynopsis: 'Test your ESG knowledge!',
   questions: [
     {
-      question: 'What does the “S” in “ESG” refer to?',
-      questionType: 'text',
-      answers: ['Societal', 'Sustainability', 'Social', 'None of the above'],
-      correctAnswer: '3',
-      messageForInorrectAnswer: 'Incorrect answer. Please try again.',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      point: '2',
-      explanation: 'The correct answer should be Social.',
-      segment: segment.basic,
-    },
-    {
       question: 'What are some existing features of LiveBetter?',
       questionType: 'text',
       answerSelectionType: 'multiple',
@@ -29,23 +18,6 @@ const quiz = {
       messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
       point: '3',
       segment: segment.medium,
-    },
-
-    {
-      question: 'Which of the following is not a part of the Monetary of Singapore’s Green Finance Action Plan?',
-      questionType: 'text',
-      answers: [
-        'Environmental risk management guidelines',
-        'Green Investments Programme',
-        'Fintech hackcelerator',
-        'Internal reviewers and rating agencies',
-      ],
-      correctAnswer: '4',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForInorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'The correct answer should be "Internal reviewers and rating agencies".',
-      point: '2',
-      segment: segment.basic,
     },
     {
       question:
@@ -63,17 +35,6 @@ const quiz = {
       segment: segment.advanced,
     },
     {
-      question: ' ________  launched the 17 Sustainable Development Goals (SDGs) in _____.',
-      answers: ['The United Nations in 2015', 'The IPCC in 2016', 'The Conference of the Parties (COP) in 2015'],
-      correctAnswer: '1',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForInorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'The United Nations launched the 17 SDGs in 2015.',
-      point: '2',
-      questionType: 'text',
-      segment: segment.medium,
-    },
-    {
       question:
         'Governance has a broad scope and essentially covers all _________ of a company to maximize value creation and mitigate risk.',
       questionType: 'text',
@@ -84,7 +45,7 @@ const quiz = {
       messageForInorrectAnswer: 'Incorrect answer. Please try again.',
       point: '2',
       correctAnswer: '3',
-      segment: segment.medium,
+      segment: segment.basic,
     },
   ],
 };
